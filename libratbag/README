@@ -2,7 +2,7 @@ libratbag provides ratbagd, a DBus daemon to configure input devices,
 mainly high-end and gaming mice.
 
 This Slackbuild does not build documentation files by default.
-To build documentation files (which requires Sphinx 
+To build documentation files (which additionally requires Sphinx 
 and sphinx-rtd-theme), run the script with the following command:
 
 DOCS=yes ./libratbag.SlackBuild
