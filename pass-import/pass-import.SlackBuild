@@ -74,14 +74,8 @@ python3 setup.py install --root=$PKG
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
-# Man files should be in /usr/man rather than /usr/share/man
-mkdir -p $PKG/usr/man/man1
-mv $PKG/usr/share/man/man1/*.1 $PKG/usr/man/man1/
-rmdir $PKG/usr/share/man/man1
-rmdir $PKG/usr/share/man
-
-find $PKG/usr/man -type f -exec gzip -9 {} \;
-for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+find $PKG/usr/share/man -type f -exec gzip -9 {} \;
+for i in $( find $PKG/usr/share/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a CHANGELOG.rst CONTRIBUTING.rst LICENSE README.md $PKG/usr/doc/$PRGNAM-$VERSION
