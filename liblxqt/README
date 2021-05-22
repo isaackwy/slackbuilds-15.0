@@ -1,0 +1,10 @@
+liblxqt represents the core library of LXQt providing essential
+functionality needed by nearly all of its components.
+
+ponce repository (https://github.com/Ponce/slackbuilds/) has 
+libqtxdg 3.6.0. This SlackBuild instead depends on
+libqtxdg 3.7.1.
+
+This SlackBuild also requires kwindowsystem and polkit-qt-1
+(available in default Slackware repo). After all, not everyone
+installs KDE.
