@@ -1,2 +1,5 @@
-# slackbuilds-current
-Slackbuild scripts for current (upcoming 15.0), which I maintain
+This repository contains slackbuilds which I have maintained for Slackware current (15.0 beta).
+
+If you have any questions, please contact me by email, listed with the Slackbuild or info files.
+
+Enjoy!
