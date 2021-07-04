@@ -6,7 +6,7 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
         |-----handy-ruler------------------------------------------------------|
-libfm-qt: libfm-qt (pcmanfm-qt library)
+libfm-qt: libfm-qt (PCManFM-Qt library)
 libfm-qt:
 libfm-qt: libfm-qt is the Qt port of libfm, a library providing components to
 libfm-qt: build desktop file managers.
