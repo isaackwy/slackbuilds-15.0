@@ -5,6 +5,6 @@ DOWNLOAD="https://pypi.python.org/packages/source/s/statsmodels/statsmodels-0.12
 MD5SUM="af466764683e41fabde27547d5c50fd6" 
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="python3-pandas python3-patsy scipy3"
+REQUIRES="scipy3 python3-pandas python3-patsy"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
