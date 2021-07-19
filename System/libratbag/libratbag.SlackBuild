@@ -80,7 +80,8 @@ CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 meson --prefix /usr --mandir /usr/man --libdir lib${LIBDIRSUFFIX} -Dsystemd=false -Dlogind-provider=elogind -Ddocumentation=$DOCS build
 
-DESTDIR=$PKG ninja -C build all install
+"${NINJA:=ninja}"
+DESTDIR=$PKG $NINJA -C build all install
 
 # Compress man files
 find $PKG/usr/man -type f -exec gzip -9 {} \;
