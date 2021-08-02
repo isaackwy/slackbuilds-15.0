@@ -2,7 +2,7 @@
 
 # Slackware build script for python3-patsy
 
-# Copyright 2020 Isaac Yu <isaacyu1@isaacyu1.com>
+# Copyright 2020-2021 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -26,9 +26,11 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=python3-patsy
 VERSION=${VERSION:-0.5.1}
-SRCNAM=patsy
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
+PKGTYPE=${PKGTYPE:-tgz}
+
+SRCNAM=patsy
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -36,6 +38,14 @@ if [ -z "$ARCH" ]; then
     arm*) ARCH=arm ;;
        *) ARCH=$( uname -m ) ;;
   esac
+fi
+
+# If the variable PRINT_PACKAGE_NAME is set, then this script will report what
+# the name of the created package would be, and then exit. This information
+# could be useful to other scripts.
+if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
+  echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
+  exit 0
 fi
 
 TMP=${TMP:-/tmp/SBo}
@@ -85,4 +95,4 @@ mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
 
 cd $PKG
-/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.${PKGTYPE:-tgz}
+/sbin/makepkg -l y -c n $OUTPUT/$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE
