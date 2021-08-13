@@ -25,7 +25,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=piper
-VERSION=${VERSION:-0.5.1}
+VERSION=${VERSION:-0.6}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -79,11 +79,17 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-CFLAGS="$SLKCFLAGS" \
-CXXFLAGS="$SLKCFLAGS" \
-meson --prefix /usr --mandir /usr/man --libdir lib${LIBDIRSUFFIX} build
-"${NINJA:=ninja}"
-DESTDIR=$PKG $NINJA -C build all install
+mkdir -p build
+cd build
+  CFLAGS="$SLKCFLAGS" \
+  CXXFLAGS="$SLKCFLAGS" \
+  meson .. \
+    --prefix /usr \
+    --mandir /usr/man \
+    --libdir /usr/lib${LIBDIRSUFFIX}
+  "${NINJA:=ninja}"
+  DESTDIR=$PKG $NINJA install
+cd ..
 
 # Compress man files
 find $PKG/usr/man -type f -exec gzip -9 {} \;
