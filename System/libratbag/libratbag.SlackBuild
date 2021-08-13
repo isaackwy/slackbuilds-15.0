@@ -25,7 +25,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=libratbag
-VERSION=${VERSION:-0.15}
+VERSION=${VERSION:-0.16}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -85,11 +85,22 @@ else
 	DOCS=false
 fi
 
-CFLAGS="$SLKCFLAGS" \
-CXXFLAGS="$SLKCFLAGS" \
-meson --prefix /usr --mandir /usr/man --libdir lib${LIBDIRSUFFIX} -Dsystemd=false -Dlogind-provider=elogind -Ddocumentation=$DOCS build
-"${NINJA:=ninja}"
-DESTDIR=$PKG $NINJA -C build all install
+mkdir -p build
+cd build
+  CFLAGS="$SLKCFLAGS" \
+  CXXFLAGS="$SLKCFLAGS" \
+  meson .. \
+    --buildtype=release \
+    --prefix /usr \
+    --libdir=/usr/lib${LIBDIRSUFFIX} \
+    --mandir /usr/man \
+    -Dsystemd=false \
+    -Dlogind-provider=elogind \
+    -Ddocumentation=$DOCS \
+    -Ddocdir=/usr/doc/$PRGNAM-$VERSION
+  "${NINJA:=ninja}"
+  DESTDIR=$PKG $NINJA install
+cd ..
 
 # Compress man files
 find $PKG/usr/man -type f -exec gzip -9 {} \;
