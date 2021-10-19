@@ -1,8 +1,8 @@
 PRGNAM="tela-icon-theme"
-VERSION="2021-01-21"
+VERSION="2021-10-08"
 HOMEPAGE="https://www.pling.com/p/1279924"
-DOWNLOAD="https://github.com/vinceliuice/tela-icon-theme/archive/tela-icon-theme/tela-icon-theme-2021-01-21.tar.gz"
-MD5SUM="d0ad21d10edd47a13095b5079b29d5b8
+DOWNLOAD="https://github.com/vinceliuice/tela-icon-theme/archive/2021-10-08.tar.gz"
+MD5SUM="905da6452d068d0dffe90bfaa15420c1"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
 REQUIRES=""
