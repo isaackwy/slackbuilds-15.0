@@ -1,6 +1,6 @@
 PRGNAM="threadpoolctl"
 VERSION="3.0.0"
-HOMEPAGE="https://github.com/joblib/threadpoolctl/releases"
+HOMEPAGE="https://github.com/joblib/threadpoolctl/"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/t/threadpoolctl/threadpoolctl-3.0.0.tar.gz"
 MD5SUM="7ea59df7897f267528e9254552ab004c"
 DOWNLOAD_x86_64=""
