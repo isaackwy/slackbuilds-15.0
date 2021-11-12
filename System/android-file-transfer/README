@@ -1,0 +1,7 @@
+Android File Transfer for Linux - reliable MTP client with
+minimalistic UI similar to Android File Transfer for Mac.
+
+In building only the command-line client (without the qt5 ui),
+run the script with the following command:
+
+QT_GUI=no ./android-file-transfer.SlackBuild
