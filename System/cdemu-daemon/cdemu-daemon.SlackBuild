@@ -108,7 +108,7 @@ mkdir -p $PKG/usr/share/dbus-1/services
 cp $TMP/$PRGNAM-$VERSION/service-example/net.sf.cdemu.CDEmuDaemon.service \
   $PKG/usr/share/dbus-1/services/net.sf.cdemu.CDEmuDaemon.service
 
-# Adapt systemd service to OpenRC
+# Adapt systemd service for Slackware
 sed \
   -e "/^SystemdService/d" \
   -e "/^Exec=/s|/bin/true|/usr/libexec/cdemu-daemon-session.sh|" \
