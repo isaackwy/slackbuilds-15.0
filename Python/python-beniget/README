@@ -1,0 +1,6 @@
+Beniget is a collection of Compile-time analyse on Python
+Abstract Syntax Tree (AST). It is a building block for writing
+static analyzer or compiler for Python.
+
+Beniget relies on python-gast to provide a cross version abstraction
+of the AST, effectively working on both Python2 and Python3.
