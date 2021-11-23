@@ -1,6 +1,6 @@
 PRGNAM="python-beniget"
 VERSION="0.4.1"
-HOMEPAGE="https://github.com/serge-sans-paille/beniget
+HOMEPAGE="https://github.com/serge-sans-paille/beniget"
 DOWNLOAD="https://github.com/serge-sans-paille/beniget/archive/0.4.1/beniget-0.4.1.tar.gz"
 MD5SUM="0b6b55daf2313f04f7759cfeac46a448"
 DOWNLOAD_x86_64=""
