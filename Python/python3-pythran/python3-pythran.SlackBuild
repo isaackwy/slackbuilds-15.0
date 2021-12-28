@@ -24,7 +24,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=python3-pythran
-VERSION=${VERSION:-0.10.0}
+VERSION=${VERSION:-0.11.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -79,11 +79,6 @@ find -L . \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
-
-# Port to xsimd 8
-# Upstream (Serge Sans Paille) provided the patch:
-# https://github.com/serge-sans-paille/pythran/commit/418bd3e8.patch
-zcat $CWD/pythran-xsimd-8.patch.gz || patch -p1 --verbose
 
 python3 setup.py install --root=$PKG
 
