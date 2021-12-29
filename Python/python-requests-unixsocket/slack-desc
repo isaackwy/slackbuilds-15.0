@@ -9,7 +9,7 @@
 python-requests-unixsocket: python-requests-unixsocket (talk to HTTP)
 python-requests-unixsocket:
 python-requests-unixsocket: requests-unixsocket uses python-requests to talk HTTP via a UNIX
-python-requests-unixsocket: domain socket
+python-requests-unixsocket: domain socket.
 python-requests-unixsocket:
 python-requests-unixsocket:
 python-requests-unixsocket:
