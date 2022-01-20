@@ -1,0 +1,2 @@
+pathspec is a utility library for gitignore style pattern matching
+of file paths.
