@@ -5,3 +5,6 @@ flexibility of the language to make it fit your needs.
 
 You will need to build cairocffi with its optional python3-xcffib
 dependency.
+
+python-dbus-next is an optional dependency (it provides notifications
+in qtile)
