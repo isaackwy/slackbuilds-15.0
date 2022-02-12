@@ -85,7 +85,7 @@ find -L . \
 
 cat << EOF > setup.py
 from setuptools import setup
-setup(name="${SRCNAM}", version="${VERSION}", packages=["${SRCNAM}"], package_data={"": ["*"]})
+setup(use_scm_version=True, name="${SRCNAM}", version="${VERSION}", packages=["${SRCNAM}"], package_data={"": ["*"]})
 EOF
 
 unshare -n python3 setup.py install --root=$PKG || exit 1
