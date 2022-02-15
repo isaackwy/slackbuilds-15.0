@@ -79,6 +79,12 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
+if [ ${TESTS:-no} = yes ]; then
+	ENABLE_TESTS=true
+else
+	ENABLE_TESTS=false
+fi
+
 mkdir -p build
 cd build
   CFLAGS="$SLKCFLAGS" \
@@ -86,7 +92,8 @@ cd build
   meson .. \
     --prefix /usr \
     --mandir /usr/man \
-    --libdir /usr/lib${LIBDIRSUFFIX}
+    --libdir /usr/lib${LIBDIRSUFFIX} \
+    -Dtests=$ENABLE_TESTS
   "${NINJA:=ninja}"
   DESTDIR=$PKG $NINJA install
 cd ..
