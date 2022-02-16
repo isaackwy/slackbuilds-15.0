@@ -1,4 +1,4 @@
-This repository contains slackbuilds which I have maintained for Slackware current (15.0 beta). Slackbuilds on this repository are unofficial - submissions on SlackBuilds.org are currently closed.
+This repository contains slackbuilds which I am maintaining for Slackware 15.0. Slackbuilds on this repository are unofficial - these are scripts prepared for the SlackBuilds.org repository.
 
 Data science slackbuilds are available in the 'Data_Science' folder.  
 LXQt slackbuilds are available in the 'LXQt' folder.  
