@@ -5,6 +5,6 @@ DOWNLOAD="https://github.com/ipython/traitlets/archive/5.1.1/traitlets-5.1.1.tar
 MD5SUM="47ccdf0ac59b1818956bf8f6f6534aac"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="ipython_genutils decorator"
+REQUIRES="decorator"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
