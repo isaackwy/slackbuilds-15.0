@@ -123,9 +123,6 @@ ln -sfT common/pandoc pandoc
 
 cd $TMP/$SRCNAM-$SRCVER
 
-#echo "Downloading and installing R packages..."
-#bash $TMP/$SRCNAM-$SRCVER/dependencies/common/install-packages
-
 export PATH=/usr/lib64/java/jre/bin/:${PATH}
 
 mkdir -p build
