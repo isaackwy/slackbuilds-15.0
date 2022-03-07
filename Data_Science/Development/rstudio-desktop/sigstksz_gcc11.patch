@@ -1,3 +1,5 @@
+This patch was taken from the Arch Linux AUR:
+https://aur.archlinux.org/cgit/aur.git/tree/sigstksz_gcc11.patch?h=rstudio-desktop
 diff -ru rstudio-2022.02.0-443.original/src/cpp/tests/cpp/tests/vendor/catch.hpp rstudio-2022.02.0-443/src/cpp/tests/cpp/tests/vendor/catch.hpp
 --- a/src/cpp/tests/cpp/tests/vendor/catch.hpp	2022-02-17 08:26:03.000000000 +1300
 +++ b/src/cpp/tests/cpp/tests/vendor/catch.hpp	2022-02-18 19:04:27.382806708 +1300
