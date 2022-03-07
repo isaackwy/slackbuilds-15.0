@@ -123,8 +123,6 @@ ln -sfT common/pandoc pandoc
 
 cd $TMP/$SRCNAM-$SRCVER
 
-export PATH=/usr/lib64/java/jre/bin/:${PATH}
-
 mkdir -p build
 cd build
   cmake -S "$TMP/$SRCNAM-$SRCVER" \
