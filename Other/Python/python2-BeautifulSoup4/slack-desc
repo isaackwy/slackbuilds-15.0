@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
                      |-----handy-ruler------------------------------------------------------|
-BeautifulSoup4-legacy: BeautifulSoup4-legacy (Python HTML/XML parser)
-BeautifulSoup4-legacy:
-BeautifulSoup4-legacy: BeautifulSoup is a Python HTML/XML parser designed for quick
-BeautifulSoup4-legacy: turnaround projects like screen-scraping.
-BeautifulSoup4-legacy:
-BeautifulSoup4-legacy: Homepage: http://www.crummy.com/software/BeautifulSoup/
-BeautifulSoup4-legacy:
-BeautifulSoup4-legacy:
-BeautifulSoup4-legacy:
-BeautifulSoup4-legacy:
-BeautifulSoup4-legacy:
+python2-BeautifulSoup4: python2-BeautifulSoup4 (Python HTML/XML parser)
+python2-BeautifulSoup4:
+python2-BeautifulSoup4: BeautifulSoup is a Python HTML/XML parser designed for quick
+python2-BeautifulSoup4: turnaround projects like screen-scraping.
+python2-BeautifulSoup4:
+python2-BeautifulSoup4: Homepage: http://www.crummy.com/software/BeautifulSoup/
+python2-BeautifulSoup4:
+python2-BeautifulSoup4:
+python2-BeautifulSoup4:
+python2-BeautifulSoup4:
+python2-BeautifulSoup4:
