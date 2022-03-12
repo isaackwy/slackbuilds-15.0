@@ -5,6 +5,6 @@ DOWNLOAD="https://files.pythonhosted.org/packages/80/14/215050c5ee184bd60e7d1e9e
 MD5SUM="28c32e4e199c18ebcbfc57a0f1d5b60a"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="jupyter-server"
+REQUIRES="jupyter_server"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
