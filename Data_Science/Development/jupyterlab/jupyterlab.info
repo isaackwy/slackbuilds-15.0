@@ -5,6 +5,6 @@ DOWNLOAD="https://files.pythonhosted.org/packages/f5/3a/538a05d4595a693300c8605f
 MD5SUM="6578124aad12bb0c7d79738e03c285fb"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="jupyter-nbclassic nodejs jupyter_packaging jupyterlab_server"
+REQUIRES="jupyter-nbclassic nodejs jupyterlab_server"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
