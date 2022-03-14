@@ -29,6 +29,7 @@ PRGNAM=rstudio-desktop
 SRCNAM=rstudio
 VERSION=${VERSION:-2022.02.0+443}
 SRCVER=${SRCVER:-$(echo $VERSION | sed 's/+/-/g')}
+GITCOMMIT_VER=fc9e217
 GWT_SDK_VER=${GWT_SDK_VER:-2.8.2}
 NODE_VER=${NODE_VER:-14.17.5}
 BUILD=${BUILD:-1}
@@ -122,6 +123,15 @@ ln -sfT common/mathjax-27 mathjax-27
 ln -sfT common/pandoc pandoc
 
 cd $TMP/$SRCNAM-$SRCVER
+
+# Environmental variables (RStudio version numbers, architecture, etc.)
+VERSION_AWK=${VERSION_AWK:-$(echo $VERSION | sed 's/+/\.+/g')}
+export RSTUDIO_VERSION_MAJOR=$(echo $VERSION_AWK | awk -F '.' '{print $1}')
+export RSTUDIO_VERSION_MINOR=$(echo $VERSION_AWK | awk -F '.' '{print $2}')
+export RSTUDIO_VERSION_PATCH=$(echo $VERSION_AWK | awk -F '.' '{print $3}')
+export RSTUDIO_VERSION_SUFFIX=$(echo $VERSION_AWK | awk -F '.' '{print $4}')
+export GIT_COMMIT=$GITCOMMIT_VER
+export PACKAGE_OS=$(uname -om)
 
 mkdir -p build
 cd build
