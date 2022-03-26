@@ -27,7 +27,7 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=rstudio-desktop
 SRCNAM=rstudio
-VERSION=${VERSION:-2022.02.0+443}
+VERSION=${VERSION:-2022.02.1+461}
 SRCVER=${SRCVER:-$(echo $VERSION | sed 's/+/-/g')}
 GITCOMMIT_VER=fc9e217
 GWT_SDK_VER=${GWT_SDK_VER:-2.8.2}
