@@ -3,4 +3,4 @@ functionality needed by nearly all of its components.
 
 This SlackBuild also requires kwindowsystem and polkit-qt-1
 (available in default Slackware repo). After all, not everyone
-installs KDE.
+has KDE installed.
