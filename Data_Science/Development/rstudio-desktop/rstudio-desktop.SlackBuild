@@ -133,7 +133,7 @@ export RSTUDIO_VERSION_SUFFIX=$(echo $VERSION_AWK | awk -F '.' '{print $4}')
 export GIT_COMMIT=$GITCOMMIT_VER
 export PACKAGE_OS=$(uname -om)
 
-# Ensure that RStudio builds on multilib systems
+# Ensure that RStudio builds successfully on multilib systems
 QT5_CORE=-DQt5Core_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Core
 QT5_DBUS=-DQt5DBus_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5DBus
 QT5_GUI=-DQt5Gui_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Gui
