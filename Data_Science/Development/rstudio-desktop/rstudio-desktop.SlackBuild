@@ -133,6 +133,34 @@ export RSTUDIO_VERSION_SUFFIX=$(echo $VERSION_AWK | awk -F '.' '{print $4}')
 export GIT_COMMIT=$GITCOMMIT_VER
 export PACKAGE_OS=$(uname -om)
 
+# Ensure that RStudio builds on multilib systems
+QT5_CORE=-DQt5Core_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Core
+QT5_DBUS=-DQt5DBus_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5DBus
+QT5_GUI=-DQt5Gui_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Gui
+QT5_NETWORK=-DQt5Network_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Network
+QT5_OPENGL=-DQt5OpenGL_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5OpenGL
+QT5_POSITIONING=-DQt5Positioning_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Positioning
+QT5_PRINTSUPPORT=-DQt5PrintSupport_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5PrintSupport
+QT5_QMLMODELS=-DQt5QmlModels_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5QmlModels
+QT5_QML=-DQt5Qml_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Qml
+QT5_QUICKWIDGETS=-DQt5QuickWidgets_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5QuickWidgets
+QT5_QUICK=-DQt5Quick_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Quick
+QT5_SENSORS=-DQt5Sensors_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Sensors
+QT5_SQL=-DQt5Sql_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Sql
+QT5_SVG=-DQt5Svg_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Svg
+QT5_WEBCHANNEL=-DQt5WebChannel_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5WebChannel
+QT5_WEBENGINECORE=-DQt5WebEngineCore_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5WebEngineCore
+QT5_WEBENGINEWIDGETS=-DQt5WebEngineWidgets_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5WebEngineWidgets
+QT5_WEBENGINE=-DQt5WebEngine_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5WebEngine
+QT5_WIDGETS=-DQt5Widgets_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Widgets
+QT5_XMLPATTERNS=-DQt5XmlPatterns_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5XmlPatterns
+QT5_XML=-DQt5Xml_DIR:PATH=/usr/lib${LIBDIRSUFFIX}/cmake/Qt5Xml
+
+MULTILIB=($QT5_CORE $QT5_DBUS $QT5_GUI $QT5_NETWORK $QT5_NETWORK $QT5_OPENGL \
+	  $QT5_POSITIONING $QT5_PRINTSUPPORT $QT5_QMLMODELS $QT5_QML $QT5_QUICKWIDGETS \
+          $QT5_QUICK $QT5_SENSORS $QT5_SQL $QT5_SVG $QT5_WEBCHANNEL $QT5_WEBENGINECORE \
+          $QT5_WEBENGINEWIDGETS $QT5_WEBENGINE $QT5_WIDGETS $QT5_XMLPATTERNS $QT5_XML)
+
 mkdir -p build
 cd build
   cmake -S "$TMP/$SRCNAM-$SRCVER" \
@@ -147,7 +175,8 @@ cd build
     -DBoost_NO_BOOST_CMAKE=ON \
     -DQUARTO_ENABLED=FALSE \
     -DRSTUDIO_USE_SYSTEM_SOCI=yes \
-    -DRSTUDIO_BUNDLE_QT=FALSE
+    -DRSTUDIO_BUNDLE_QT=FALSE \
+    ${MULTILIB[@]}
   make
   make install DESTDIR=$PKG
 cd ..
