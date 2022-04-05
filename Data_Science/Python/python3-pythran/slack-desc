@@ -6,7 +6,7 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
                |-----handy-ruler------------------------------------------------------|
-python3-pythran: python-pythran (Ahead of Time compiler for numeric kernels)
+python3-pythran: python3-pythran (Ahead of Time compiler for numeric kernels)
 python3-pythran:
 python3-pythran: Pythran is an ahead of time compiler for a subset of the Python
 python3-pythran: language, with a focus on scientific computing. It takes a Python
