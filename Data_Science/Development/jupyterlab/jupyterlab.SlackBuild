@@ -2,7 +2,7 @@
 
 # Slackware build script for jupyterlab
 
-# Copyright 2021-2022 Isaac Yu <isaacyu1@isaacyu1.com>
+# Copyright 2022 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -25,7 +25,7 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=jupyterlab
-VERSION=${VERSION:-3.3.2}
+VERSION=${VERSION:-3.3.3}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -85,7 +85,7 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a LICENSE PKG-INFO *.md docs/ $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a LICENSE PKG-INFO *.md $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
