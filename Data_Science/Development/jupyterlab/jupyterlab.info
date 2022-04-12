@@ -5,6 +5,6 @@ DOWNLOAD="https://files.pythonhosted.org/packages/29/e1/49f9577a959f0dbc00d4b02d
 MD5SUM="4ff3dba15afff6b6f7ebaa0f222fbe0b"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="jupyter-notebook-shim nodejs jupyterlab_server"
+REQUIRES="jupyter-notebook-shim nodejs jupyterlab_server jupyter-ipykernel"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
