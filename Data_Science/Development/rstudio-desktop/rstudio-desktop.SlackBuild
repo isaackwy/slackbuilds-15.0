@@ -2,7 +2,7 @@
 
 # Slackware build script for rstudio-desktop
 
-# Copyright 2018 Ekin Akoglu, Erdemli/Mersin, Turkey <ekinakoglu@gmail.com> 
+# Copyright 2018 Ekin Akoglu, Erdemli/Mersin, Turkey <ekinakoglu@gmail.com>
 # Copyright 2022 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
 #
@@ -76,7 +76,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $SRCNAM-$SRCVER
-tar xvf $CWD/v$VERSION.tar.gz
+tar xvf $CWD/$SRCNAM-$SRCVER.tar.gz
 cd $SRCNAM-$SRCVER
 chown -R root:root .
 find -L . \
@@ -110,9 +110,9 @@ ln -sfT /usr/bin/pandoc pandoc/$PANDOCVER/pandoc
 
 mkdir -p node
 cd node && tar xvf $CWD/node-v$NODE_VER-linux-x64.tar.gz
-cd ../ 
+cd ../
 mv node/node-v$NODE_VER-linux-x64 node/$NODE_VER
-cd $TMP/$SRCNAM-$SRCVER/src/gwt/panmirror/src/editor 
+cd $TMP/$SRCNAM-$SRCVER/src/gwt/panmirror/src/editor
 yarn config set ignore-engines true
 yarn install
 
