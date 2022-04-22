@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Slackware build script for python-tomlkit
+# Slackware build script for python3-tomlkit
 
 # Copyright 2022 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
@@ -24,7 +24,7 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=python-tomlkit
+PRGNAM=python3-tomlkit
 VERSION=${VERSION:-0.10.1}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}

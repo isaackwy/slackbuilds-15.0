@@ -1,4 +1,4 @@
-PRGNAM="python-tomlkit"
+PRGNAM="python3-tomlkit"
 VERSION="0.10.1"
 HOMEPAGE="https://github.com/sdispater/tomlkit"
 DOWNLOAD="https://github.com/sdispater/tomlkit/releases/download/0.10.1/tomlkit-0.10.1.tar.gz"
