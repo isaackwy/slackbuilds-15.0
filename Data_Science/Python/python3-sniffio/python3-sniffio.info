@@ -1,4 +1,4 @@
-PRGNAM="python-sniffio"
+PRGNAM="python3-sniffio"
 VERSION="1.2.0"
 HOMEPAGE="https://github.com/python-trio/sniffio"
 DOWNLOAD="https://github.com/python-trio/sniffio/archive/v1.2.0/sniffio-1.2.0.tar.gz"
