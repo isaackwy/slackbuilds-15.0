@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Slackware build script for python-requests-unixsocket
+# Slackware build script for python3-requests-unixsocket
 
 # Copyright 2022 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
@@ -24,7 +24,7 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=python-requests-unixsocket
+PRGNAM=python3-requests-unixsocket
 VERSION=${VERSION:-0.3.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
