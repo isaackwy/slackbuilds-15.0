@@ -5,6 +5,6 @@ DOWNLOAD="https://pypi.io/packages/source/j/jupyterlab_server/jupyterlab_server-
 MD5SUM="8652cc0cb628ece1f4cb5fe7bf005900"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="jupyter_server python3-babel python-json5"
+REQUIRES="jupyter_server python3-babel python3-json5"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
