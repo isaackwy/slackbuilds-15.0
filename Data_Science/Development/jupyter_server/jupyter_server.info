@@ -5,6 +5,6 @@ DOWNLOAD="https://files.pythonhosted.org/packages/94/1f/b459045b6a4c4c94a461cbf1
 MD5SUM="9d809417fc6d8a619747a64218beee32"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="argon2-cffi jupyter-nbconvert jupyter_packaging python-anyio python-prometheus_client python-requests-unixsocket send2trash terminado websocket-client"
+REQUIRES="argon2-cffi jupyter-nbconvert jupyter_packaging python3-anyio python-prometheus_client python3-requests-unixsocket send2trash terminado websocket-client"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
