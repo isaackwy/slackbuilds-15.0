@@ -1,7 +1,7 @@
 PRGNAM="python3-requests-unixsocket"
 VERSION="0.3.0"
 HOMEPAGE="https://github.com/msabramo/requests-unixsocket"
-DOWNLOAD="https://files.pythonhosted.org/packages/c3/ea/0fb87f844d8a35ff0dcc8b941e1a9ffc9eb46588ac9e4267b9d9804354eb/requests-unixsocket-0.3.0.tar.gz"
+DOWNLOAD="https://files.pythonhosted.org/packages/source/r/requests-unixsocket/requests-unixsocket-0.3.0.tar.gz"
 MD5SUM="2da31f8d76fb563bc3fd6d59a2fb260a"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
