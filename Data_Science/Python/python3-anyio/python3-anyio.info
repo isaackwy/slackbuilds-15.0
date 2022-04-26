@@ -5,6 +5,6 @@ DOWNLOAD="https://files.pythonhosted.org/packages/4f/d0/b957c0679a9bd0ed334e2e58
 MD5SUM="e8def29aa096045e250d9d9cf3f18e65"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="python-sniffio"
+REQUIRES="python3-sniffio"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
