@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Slackware build script for jupyter-notebook-shim
+# Slackware build script for jupyter-notebook_shim
 
 # Copyright 2022 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
@@ -24,7 +24,7 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=jupyter-notebook-shim
+PRGNAM=jupyter-notebook_shim
 VERSION=${VERSION:-0.1.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}

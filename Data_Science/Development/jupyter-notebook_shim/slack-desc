@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
                      |-----handy-ruler------------------------------------------------------|
-jupyter-notebook-shim: jupyter-notebook-shim (shim layer for Jupyter Notebook)
-jupyter-notebook-shim:
-jupyter-notebook-shim: Notebook Shim provides a way for JupyterLab and other frontends to
-jupyter-notebook-shim: switch to Jupyter Server for their Python Web application backend.
-jupyter-notebook-shim:
-jupyter-notebook-shim:
-jupyter-notebook-shim:
-jupyter-notebook-shim:
-jupyter-notebook-shim:
-jupyter-notebook-shim:
-jupyter-notebook-shim:
+jupyter-notebook_shim: jupyter-notebook_shim (shim layer for Jupyter Notebook)
+jupyter-notebook_shim:
+jupyter-notebook_shim: Notebook Shim provides a way for JupyterLab and other frontends to
+jupyter-notebook_shim: switch to Jupyter Server for their Python Web application backend.
+jupyter-notebook_shim:
+jupyter-notebook_shim:
+jupyter-notebook_shim:
+jupyter-notebook_shim:
+jupyter-notebook_shim:
+jupyter-notebook_shim:
+jupyter-notebook_shim:
