@@ -1,5 +1,5 @@
-SIMD (Single Instruction, Multiple Data) is a feature of microprocessors 
-that has been available for many years. SIMD instructions perform a 
+SIMD (Single Instruction, Multiple Data) is a feature of microprocessors
+that has been available for many years. SIMD instructions perform a
 single operation on a batch of values at once, and thus provide a way
 to significantly accelerate code execution. However, these instructions
 differ between microprocessor vendors and compilers.
