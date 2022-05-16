@@ -82,6 +82,9 @@ find -L . \
 
 python3 setup.py install --root=$PKG
 
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
+
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
   CODE_OF_CONDUCT.md CONTRIBUTING.md COPYING README.rst \
