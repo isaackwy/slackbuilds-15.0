@@ -87,10 +87,6 @@ sed -i '/flit_core/d' pyproject.toml
 cat << EOF > setup.py
 from distutils.core import setup
 setup(name='${PRGNAM}',
-      description='Test utilities for code working with files and commands',
-      author=None,
-      author_email='Jupyter Development Team <jupyter@googlegroups.com>',
-      url=None,
       version='${VERSION}',
       packages=['${PRGNAM}'],
       package_data={'': ['*']})
