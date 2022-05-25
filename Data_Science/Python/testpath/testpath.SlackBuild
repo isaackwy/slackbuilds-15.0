@@ -86,7 +86,14 @@ sed -i '/flit_core/d' pyproject.toml
 # Use this setup.py shim:
 cat << EOF > setup.py
 from distutils.core import setup
-setup(name='${PRGNAM}', version='${VERSION}', packages=['${PRGNAM}'], package_data={'': ['*']})
+setup(name='${PRGNAM}',
+      description='Test utilities for code working with files and commands',
+      author=None,
+      author_email='Jupyter Development Team <jupyter@googlegroups.com>',
+      url=None,
+      version='${VERSION}',
+      packages=['${PRGNAM}'],
+      package_data={'': ['*']})
 EOF
 
 # With the shim, it's a good idea to use "unshare -n" to prevent downloading
