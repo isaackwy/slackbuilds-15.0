@@ -80,9 +80,6 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-# Use the version number from upstream _version.py for building traitlets
-PYTHON_VER=$(cat traitlets/_version.py | grep -m1 '__version__' | awk '{print $3}' | tr -d \" )
-
 # Use this setup.py shim:
 cat << EOF > setup.py
 from distutils.core import setup
@@ -94,7 +91,7 @@ for d, _, _ in os.walk(pjoin(here, 'traitlets')):
    if os.path.exists(pjoin(d, '__init__.py')):
       packages.append(d[len(here)+1:].replace(os.path.sep, '.'))
 setup(name='${PRGNAM}',
-      version='${PYTHON_VER}',
+      version='${VERSION}',
       packages=packages,
       package_data={'': ['*']},  
 )
