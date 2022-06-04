@@ -9,7 +9,7 @@
 threadpoolctl: threadpoolctl (Python helpers)
 threadpoolctl:
 threadpoolctl: threadpoolctl contains Python helpers to limit the number of threads
-threadpoolctl: used in native libraries that handle their own internal threadpool
+threadpoolctl: used in native libraries that handle their own internal threadpool.
 threadpoolctl:
 threadpoolctl:
 threadpoolctl:
