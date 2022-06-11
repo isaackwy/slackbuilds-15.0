@@ -113,6 +113,7 @@ mkdir -p node
 cd node && tar xvf $CWD/node-v$NODE_VER-linux-x64.tar.gz
 cd ../
 mv node/node-v$NODE_VER-linux-x64 node/$NODE_VER
+export PATH=$TMP/$SRCNAM-$SRCVER/dependencies/common/node/$NODE_VER/bin:$PATH     # use bundled node
 cd $TMP/$SRCNAM-$SRCVER/src/gwt/panmirror/src/editor
 yarn config set ignore-engines true
 yarn install
