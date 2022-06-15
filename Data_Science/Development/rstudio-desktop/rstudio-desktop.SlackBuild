@@ -122,7 +122,7 @@ yarn install
 # Fix links for src/cpp/session/CMakeLists.txt
 cd $TMP/$SRCNAM-$SRCVER/dependencies
 ln -sfT common/dictionaries dictionaries
-ln -sfT common/mathjax2 mathjax-27
+ln -sfT common/mathjax-27 mathjax-27
 ln -sfT common/pandoc pandoc
 
 cd $TMP/$SRCNAM-$SRCVER
