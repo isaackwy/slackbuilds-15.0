@@ -33,7 +33,7 @@ GITCOMMIT_VER=8acbd38
 GWT_SDK_VER=${GWT_SDK_VER:-2.8.2}
 NODE_VER=${NODE_VER:-14.17.5}
 PANDOCVER=current
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -115,13 +115,14 @@ cd ../
 mv node/node-v$NODE_VER-linux-x64 node/$NODE_VER
 export PATH=$TMP/$SRCNAM-$SRCVER/dependencies/common/node/$NODE_VER/bin:$PATH     # use bundled node
 cd $TMP/$SRCNAM-$SRCVER/src/gwt/panmirror/src/editor
+yarn config set cache-folder $TMP/$SRCNAM-$SRCVER/cache/yarn
 yarn config set ignore-engines true
 yarn install
 
 # Fix links for src/cpp/session/CMakeLists.txt
 cd $TMP/$SRCNAM-$SRCVER/dependencies
 ln -sfT common/dictionaries dictionaries
-ln -sfT common/mathjax-27 mathjax-27
+ln -sfT common/mathjax2 mathjax-27
 ln -sfT common/pandoc pandoc
 
 cd $TMP/$SRCNAM-$SRCVER
