@@ -101,7 +101,6 @@ if os.path.exists(dest):
 write_kernel_spec(dest, overrides={"argv": make_ipkernel_cmd()})
 setup(name='ipykernel',
     version='${VERSION}',
-    scripts=glob(pjoin("scripts", "*")),
     packages=packages,
     py_modules=["ipykernel_launcher"],
     data_files=[(pjoin("share", "jupyter", "kernels", KERNEL_NAME), glob(pjoin("data_kernelspec", "*")))],
