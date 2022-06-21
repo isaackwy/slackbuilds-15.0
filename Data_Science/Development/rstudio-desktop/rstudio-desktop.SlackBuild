@@ -115,16 +115,18 @@ cd ../
 mv node/node-v$NODE_VER-linux-x64 node/$NODE_VER
 export PATH=$TMP/$SRCNAM-$SRCVER/dependencies/common/node/$NODE_VER/bin:$PATH     # use bundled node
 cd $TMP/$SRCNAM-$SRCVER/src/gwt/panmirror/src/editor
-yarn config set cache-folder $TMP/$SRCNAM-$SRCVER/cache/yarn
-yarn config set ignore-engines true
-yarn install
+
+# Prevent creation of cache files in /usr/local/share/
+env YARN_DISABLE_SELF_UPDATE_CHECK=true \
+  YARN_CACHE_FOLDER=$TMP/$SRCNAM-$SRCVER/cache/yarn \
+  yarn install --ignore-engines
 
 # Fix links for src/cpp/session/CMakeLists.txt
 cd $TMP/$SRCNAM-$SRCVER/dependencies
-mkdir -p pandoc/$PANDOCVER/bin/tools 
+mkdir -p pandoc/$PANDOCVER
 ln -sfT /usr/share/myspell/dicts dictionaries
 ln -sfT /usr/share/mathjax2 mathjax-27
-ln -sfT /usr/bin/pandoc pandoc/$PANDOCVER/bin/tools/pandoc
+ln -sfT /usr/bin/pandoc pandoc/$PANDOCVER/pandoc
 
 cd $TMP/$SRCNAM-$SRCVER
 
@@ -187,6 +189,11 @@ cd ..
 
 mkdir -p $PKG/usr/bin
 ln -sf /usr/lib/rstudio/bin/rstudio $PKG/usr/bin
+
+# fix symlinks
+ln -sfrT /usr/share/myspell/dicts $PKG/usr/lib/rstudio/resources/dictionaries
+ln -sfrT /usr/share/mathjax2 $PKG/usr/lib/rstudio/resources/mathjax-27
+ln -sfrT /usr/bin/pandoc $PKG/usr/lib/rstudio/bin/pandoc/pandoc
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
