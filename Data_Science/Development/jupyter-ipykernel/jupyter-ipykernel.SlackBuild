@@ -99,7 +99,7 @@ dest = pjoin(here, "data_kernelspec")
 if os.path.exists(dest):
     shutil.rmtree(dest)
 write_kernel_spec(dest, overrides={"argv": make_ipkernel_cmd()})
-setup(name='ipykernel',
+setup(name='${SRCNAM}',
     version='${VERSION}',
     packages=packages,
     py_modules=["ipykernel_launcher"],
