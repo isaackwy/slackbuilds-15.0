@@ -4,4 +4,4 @@ structures and data analysis tools for the Python programming
 language.
 
 python3-pandas 1.4.2 is the last possible version for Slackware 15.0.
-Newer versions of Cython are required for building python3-pandas.
+Newer versions require a newer Cython (as a build dependency).
