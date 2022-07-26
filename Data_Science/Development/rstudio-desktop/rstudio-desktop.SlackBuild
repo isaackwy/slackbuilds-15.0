@@ -27,9 +27,9 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=rstudio-desktop
 SRCNAM=rstudio
-VERSION=${VERSION:-2022.07.0+548}
+VERSION=${VERSION:-2022.07.1+554}
 SRCVER=${SRCVER:-$(echo $VERSION | sed 's/+/-/g')}
-GITCOMMIT_VER=34ea303
+GITCOMMIT_VER=7872775
 NODE_VER=${NODE_VER:-16.14.0}
 PANDOCVER=current
 BUILD=${BUILD:-1}
@@ -177,9 +177,12 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/bin
-cd $PKG/usr/bin && ln -sf ../lib/rstudio/bin/rstudio rstudio
+(
+  cd $PKG/usr/bin 
+  ln -sf ../lib/rstudio/bin/rstudio rstudio
+)
 
-# Make symlinks relative
+# Update symlinks to be relative
 ln -sfrT /usr/share/myspell/dicts $PKG/usr/lib/rstudio/resources/dictionaries
 ln -sfrT /usr/share/mathjax2 $PKG/usr/lib/rstudio/resources/mathjax-27
 ln -sfrT /usr/bin/pandoc $PKG/usr/lib/rstudio/bin/pandoc/pandoc
