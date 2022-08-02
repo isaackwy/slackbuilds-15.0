@@ -83,6 +83,9 @@ find -L . \
 sed -e '/nbclassic/d' -i setup.cfg
 patch -p1 < $CWD/no-nbclassic.patch
 
+# Remove jupyter-notebook requirement (Why is that within setup.cfg?)
+sed -e '/notebook/d' -i setup.cfg
+
 # Fix /etc/jupyter path 
 sed 's|etc|/etc|' -i setup.py
 
