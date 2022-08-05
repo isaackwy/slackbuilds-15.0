@@ -83,7 +83,7 @@ find -L . \
 # Please change JAVA_HOME if not using zulu-openjdk11
 env JAVA_HOME=/usr/lib$LIBDIRSUFFIX/zulu-openjdk11 \
   EMBED_LABEL=$VERSION \
-  EXTRA_BAZEL_ARGS="--host_javabase=@local_jdk//:jdk" \
+  EXTRA_BAZEL_ARGS="--java_runtime_version=local_jdk --tool_java_runtime_version=local_jdk" \
   ./compile.sh
 ./output/bazel build scripts:bazel-complete.bash
 cd output
