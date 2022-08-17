@@ -83,7 +83,7 @@ find -L . \
 # compile
 make CFLAGS="$SLKCFLAGS"
 
-# install executable
+# install executable, including desktop icons
 make DESTDIR=$PKG PREFIX=/usr MANPREFIX=/usr/man install
 make DESTDIR=$PKG PREFIX=/usr MANPREFIX=/usr/man install-desktop
 
@@ -95,14 +95,11 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
 gzip -9 $PKG/usr/man/man1/$PRGNAM.1
 
 # install bash and zsh completions 
-mkdir -p $PKG/usr/share/bash-completion/completions
 install -Dm644 misc/auto-completion/bash/nnn-completion.bash $PKG/usr/share/bash-completion/completions/nnn
-mkdir -p $PKG/usr/share/zsh/site-functions
 install -Dm644 misc/auto-completion/zsh/_nnn $PKG/usr/share/zsh/site-functions/_nnn
 
 # install quitcd (cd on quit script)
 # More details at: https://wiki.archlinux.org/title/Nnn#cd_on_quit_(Ctrl-G)
-mkdir -p $PKG/usr/share/nnn
 install -Dm644 -t $PKG/usr/share/nnn/quitcd/ misc/quitcd/*
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
