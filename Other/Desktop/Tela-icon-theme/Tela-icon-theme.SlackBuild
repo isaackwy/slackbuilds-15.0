@@ -25,9 +25,8 @@
 cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM="Tela-icon-theme"
-SRCNAM="tela-icon-theme"
-SRCVER=${SRCVER:-2022-02-21}
-VERSION=${VERSION:-2022_02_21}
+SRCVER=${SRCVER:-2022-08-28}
+VERSION=${VERSION:-2022_08_28}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
@@ -49,7 +48,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$SRCVER
-tar xvf $CWD/$SRCNAM-$SRCVER.tar.gz
+tar xvf $CWD/$PRGNAM-$SRCVER.tar.gz
 cd $PRGNAM-$SRCVER
 
 chown -R root:root .
