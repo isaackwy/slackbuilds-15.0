@@ -1,4 +1,4 @@
-PRGNAM="pypandoc"
+PRGNAM="python3-pypandoc"
 VERSION="1.8.1"
 HOMEPAGE="https://github.com/JessicaTegner/pypandoc"
 DOWNLOAD="https://github.com/JessicaTegner/pypandoc/archive/v1.8.1/pypandoc-1.8.1.tar.gz"
