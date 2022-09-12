@@ -5,6 +5,6 @@ DOWNLOAD="https://github.com/JessicaTegner/pypandoc/archive/v1.8.1/pypandoc-1.8.
 MD5SUM="5efdda3615a1f52e8bb74ef3497cb322"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="pandoc-bin"
+REQUIRES="pandoc-bin wheel"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
