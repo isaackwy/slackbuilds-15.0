@@ -12,4 +12,4 @@ notification daemon such as dunst for displaying notifications on qtile.
 
 pywlroots (another optional dependency) provides experimental Wayland
 support. If pywlroots is installed, then this SlackBuild will also
-install a Wayland session file.
+install a Wayland .desktop session file.
