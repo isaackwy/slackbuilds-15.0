@@ -89,11 +89,11 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
 mkdir -p $PKG/etc/X11/xinit
 install -m 0755 $CWD/xinitrc.$PRGNAM $PKG/etc/X11/xinit/xinitrc.$PRGNAM
 
-# Install desktop file for X
+# Install Xsession desktop file
 mkdir -p $PKG/usr/share/xsessions
 install -D -m644 resources/$PRGNAM.desktop $PKG/usr/share/xsessions/$PRGNAM.desktop
 
-# If pywlroots is installed, install desktop file for Wayland
+# If pywlroots is installed, install Wayland session desktop file
 if $(python3 -c 'import pkgutil; exit(not pkgutil.find_loader("wlroots"))'); then
   mkdir -p $PKG/usr/share/wayland-sessions
   install -D -m644 resources/$PRGNAM-wayland.desktop $PKG/usr/share/wayland-sessions/$PRGNAM-wayland.desktop
