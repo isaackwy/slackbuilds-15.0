@@ -1,4 +1,4 @@
-PRGNAM="scipy3"
+PRGNAM="python3-scipy"
 VERSION="1.9.1"
 HOMEPAGE="https://www.scipy.org/"
 DOWNLOAD="https://github.com/scipy/scipy/releases/download/v1.9.1/scipy-1.9.1.tar.gz"
