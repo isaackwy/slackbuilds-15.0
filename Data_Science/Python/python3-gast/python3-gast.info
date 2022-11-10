@@ -1,4 +1,4 @@
-PRGNAM="python-gast"
+PRGNAM="python3-gast"
 VERSION="0.5.3"
 HOMEPAGE="https://github.com/serge-sans-paille/gast"
 DOWNLOAD="https://github.com/serge-sans-paille/gast/archive/0.5.3/gast-0.5.3.tar.gz"
