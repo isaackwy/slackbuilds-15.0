@@ -1,4 +1,4 @@
-PRGNAM="python-joblib"
+PRGNAM="python3-joblib"
 VERSION="1.2.0"
 HOMEPAGE="https://joblib.readthedocs.io/"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/j/joblib/joblib-1.2.0.tar.gz"
