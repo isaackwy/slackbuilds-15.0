@@ -32,7 +32,7 @@ SRCVER=${SRCVER:-$(echo $VERSION | sed 's/+/-/g')}
 GITCOMMIT_VER=e7373ef
 NODE_VER=${NODE_VER:-16.14.0}
 PANDOCVER=current
-BUILD=${BUILD:-1}
+BUILD=${BUILD:-2}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -85,9 +85,16 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-# patches 
-patch -p1 < $CWD/pandoc_version.patch     # Do not use outdated pandoc version number
-patch -p1 < $CWD/disable_quarto.patch     # cmake ignores -DQUARTO_ENABLED for some reason
+# Do not use outdated pandoc version number
+patch -p1 < $CWD/pandoc_version.patch
+
+# Enable or disable quarto build option 
+if [ ${QUARTO:-no} = yes ]; then
+  BUILD_QUARTO=TRUE
+else
+  patch -p1 < $CWD/disable_quarto.patch     # cmake ignores -DQUARTO_ENABLED for some reason
+  BUILD_QUARTO=FALSE
+fi
 
 cd dependencies/common
 mkdir -p pandoc/$PANDOCVER
@@ -112,7 +119,16 @@ env YARN_DISABLE_SELF_UPDATE_CHECK=true \
 cd $TMP/$SRCNAM-$SRCVER/dependencies
 ln -sfT common/dictionaries dictionaries
 ln -sfT common/mathjax-27 mathjax-27
-ln -sfT common/pandoc pandoc
+
+# Fix links (depending on whether quarto is enabled)
+if [ ${QUARTO:-no} = yes ]; then
+  mkdir -p quarto/bin/tools
+  ln -sfT /usr/bin/quarto common/quarto
+  ln -sfT ../../common/quarto quarto/bin/quarto
+  ln -sfT ../../../common/pandoc quarto/bin/tools/pandoc
+else
+  ln -sfT common/pandoc pandoc
+fi
 
 cd $TMP/$SRCNAM-$SRCVER
 
@@ -165,7 +181,7 @@ cd build
     -DRSTUDIO_USE_SYSTEM_YAML_CPP=yes \
     -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
     -DBoost_NO_BOOST_CMAKE=ON \
-    -DQUARTO_ENABLED=FALSE \
+    -DQUARTO_ENABLED=$BUILD_QUARTO \
     -DRSTUDIO_USE_SYSTEM_SOCI=yes \
     -DRSTUDIO_BUNDLE_QT=FALSE \
     ${MULTILIB[@]}
@@ -185,7 +201,14 @@ mkdir -p $PKG/usr/bin
 # Update symlinks to be relative
 ln -sfrT /usr/share/myspell/dicts $PKG/usr/lib/rstudio/resources/dictionaries
 ln -sfrT /usr/share/mathjax2 $PKG/usr/lib/rstudio/resources/mathjax-27
-ln -sfrT /usr/bin/pandoc $PKG/usr/lib/rstudio/bin/pandoc/pandoc
+
+# Update symlinks (depending on whether quarto is enabled)
+if [ ${QUARTO:-no} = yes ]; then
+  ln -sfrT /usr/bin/quarto $PKG/usr/lib/rstudio/bin/quarto/bin/quarto
+  ln -sfrT /usr/bin/pandoc $PKG/usr/lib/rstudio/bin/quarto/bin/tools/pandoc
+else
+  ln -sfrT /usr/bin/pandoc $PKG/usr/lib/rstudio/bin/pandoc/pandoc
+fi
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
