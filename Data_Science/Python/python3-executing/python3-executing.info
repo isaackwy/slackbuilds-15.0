@@ -1,4 +1,4 @@
-PRGNAM="python-executing"
+PRGNAM="python3-executing"
 VERSION="1.2.0"
 HOMEPAGE="https://github.com/alexmojaki/executing"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/e/executing/executing-1.2.0.tar.gz"
