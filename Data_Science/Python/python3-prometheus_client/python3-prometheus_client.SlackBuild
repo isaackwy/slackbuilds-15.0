@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Slackware build script for prometheus_client
+# Slackware build script for python3-prometheus_client
 
 # Copyright 2018-2021 Benjamin Trigona-Harany <slackbuilds@jaxartes.net>
 # Copyright 2022 Isaac Yu <isaacyu1@isaacyu1.com>
@@ -25,7 +25,7 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=python-prometheus_client
+PRGNAM=python3-prometheus_client
 VERSION=${VERSION:-0.15.0}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
