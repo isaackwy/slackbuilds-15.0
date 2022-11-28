@@ -1,7 +1,8 @@
 #!/bin/bash
 
-# Slackware build script for electron19
+# Slackware build script for electron
 
+# Copyright 2017 Dhaby Xiloj <slack.dhabyx@gmail.com>
 # Copyright 2022 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
 #
@@ -24,13 +25,11 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=electron19
+PRGNAM=electron
 VERSION=${VERSION:-19.1.7}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
-
-SRCNAM=electron
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -64,10 +63,10 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $SRCNAM-$VERSION
-mkdir $SRCNAM-$VERSION
-cd $SRCNAM-$VERSION
-unzip $CWD/$SRCNAM-v$VERSION-linux-$PKG_ARCH.zip
+rm -rf $PRGNAM-$VERSION
+mkdir $PRGNAM-$VERSION
+cd $PRGNAM-$VERSION
+unzip $CWD/$PRGNAM-v$VERSION-linux-$PKG_ARCH.zip
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -78,12 +77,12 @@ find -L . \
 # Manual installation
 mkdir -p $PKG/usr/share/$PRGNAM
 mkdir -p $PKG/usr/bin
-cp -a *.bin *.pak *.so $SRCNAM icudtl.dat version locales resources \
+cp -a *.bin *.pak *.so $PRGNAM icudtl.dat version locales resources \
   $PKG/usr/share/$PRGNAM
 
 (
   cd $PKG/usr/bin
-  ln -sf ../share/$PRGNAM/$SRCNAM ${SRCNAM}${VERSION}
+  ln -sf ../share/$PRGNAM/$PRGNAM ${PRGNAM}${VERSION}
 )
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
@@ -92,7 +91,7 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
 # Install prebuilt version for build binary apps
 if [ "${INSTALL_ZIP:-no}" != no ]; then
   mkdir -p $PKG/usr/share/$PRGNAM/release
-  cp $CWD/$SRCNAM-v$VERSION-linux-$PKG_ARCH.zip $PKG/usr/share/$PRGNAM/release
+  cp $CWD/$PRGNAM-v$VERSION-linux-$PKG_ARCH.zip $PKG/usr/share/$PRGNAM/release
 fi
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
