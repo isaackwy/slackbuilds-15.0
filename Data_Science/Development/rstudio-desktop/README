@@ -5,7 +5,7 @@ This builds the Linux desktop version.
 RStudio currently only supports 64-bit systems.
 
 This SlackBuild disables Quarto support by default. To enable Quarto
-(quarto-cli additionally required), pass QUARTO=yes to the SlackBuild:
+(quarto-cli-bin additionally required), pass QUARTO=yes to the script:
 QUARTO=yes ./rstudio-desktop.SlackBuild
 
 The last supported version of RStudio for 32-bit systems is 1.1.463.
