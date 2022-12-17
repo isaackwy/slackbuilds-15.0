@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
    |-----handy-ruler------------------------------------------------------|
-qps: qps (Qt process viewer)
+qps: qps (qt process viewer)
 qps:
 qps: qps is a monitor that displays the status of the processes currently
 qps: in existence, much like top(1) or ps(1).
 qps: The user interface uses the Qt toolkit, and most operations should be
 qps: fairly intuitive.
 qps:
-qps:
+qps: homepage: https://github.com/QtDesktop/qps
 qps:
 qps:
 qps:
