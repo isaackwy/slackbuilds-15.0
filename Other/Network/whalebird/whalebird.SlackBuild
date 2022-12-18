@@ -92,7 +92,7 @@ cp $CWD/electron-builder.yml electron-builder.yml
 make build
 yarn exec \
   electron-builder --linux --dir --config electron-builder.yml \
-  -c.electronDist=/usr/share/electron19 -c.electronVersion="$ELECTRONVER"
+  -c.electronDist=/usr/share/electron -c.electronVersion="$ELECTRONVER"
 
 mkdir -p "$PKG/usr/bin"
 mkdir -p "$PKG/usr/share"
