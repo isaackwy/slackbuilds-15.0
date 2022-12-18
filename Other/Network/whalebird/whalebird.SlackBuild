@@ -30,7 +30,7 @@ BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
-ELECTRONVER=$(</usr/share/electron19/version)
+ELECTRONVER=$(</usr/share/electron/version)
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
