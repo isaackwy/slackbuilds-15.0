@@ -5,6 +5,6 @@ DOWNLOAD="https://github.com/iterative/shtab/releases/download/v1.5.8/shtab-1.5.
 MD5SUM="5857270c2dcd0c43e80afad19e40a101"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES=""
+REQUIRES="wheel"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
