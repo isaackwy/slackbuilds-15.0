@@ -11,4 +11,4 @@ trash-restore : restore a trashed file.
 trash-rm      : remove individual files from trash can.
 
 If python3-shtab is installed, then this SlackBuild will add trash-cli's
-shell completions.
+built-in shell completions.
