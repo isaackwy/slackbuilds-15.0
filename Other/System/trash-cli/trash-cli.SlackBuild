@@ -87,9 +87,9 @@ sed 's|share/man/|man/|' -i setup.cfg
 
 python3 setup.py install --root=$PKG
 
-# If user passed SHELL=yes, install trash-cli shell completions
+# Add trash-cli shell completions (requires python3-shtab)
 # Reference: https://github.com/zsh-users/zsh-completions/pull/895
-if [ ${SHELL:-no} = yes ]; then
+if $(python3 -c 'import pkgutil; exit(not pkgutil.find_loader("shtab"))'); then
   mkdir -p $PKG/usr/share/bash-completion/completions
   mkdir -p $PKG/usr/share/zsh/site-functions
   for CMD in trash-empty trash-list trash-restore trash-put trash; do

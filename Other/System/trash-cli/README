@@ -10,5 +10,5 @@ trash-list    : list trashed files.
 trash-restore : restore a trashed file.
 trash-rm      : remove individual files from trash can.
 
-For adding shell completions (python3-shtab additionally required), pass
-SHELL=yes to the SlackBuild: SHELL=yes ./trash-cli.SlackBuild
+If python3-shtab is installed, then this SlackBuild will also add
+trash-cli shell completions.
