@@ -9,6 +9,3 @@ trash-empty   : empty the trashcan(s).
 trash-list    : list trashed files.
 trash-restore : restore a trashed file.
 trash-rm      : remove individual files from trash can.
-
-If python3-shtab is installed, then this SlackBuild will add trash-cli's
-built-in shell completions.
