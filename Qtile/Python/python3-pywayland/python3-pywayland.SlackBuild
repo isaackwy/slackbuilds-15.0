@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Slackware build script for pywlroots
+# Slackware build script for python3-pywayland
 
-# Copyright 2022-2023 Isaac Yu <isaacyu1@isaacyu1.com>
+# Copyright 2023 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -24,11 +24,13 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=pywlroots
-VERSION=${VERSION:-0.15.24}
+PRGNAM=python3-pywayland
+VERSION=${VERSION:-0.4.14}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
+
+SRCNAM=pywayland
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -66,15 +68,19 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$VERSION
+rm -rf $SRCNAM-$VERSION
 tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
-cd $PRGNAM-$VERSION
+cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
   -o -perm 511 \) -exec chmod 755 {} \; -o \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
+
+# Backport patch from pywayland 0.4.15 for directory traversal vulnerability 
+# The patch is relevant for building docs
+patch -p1 < $CWD/CVE_2007_4559.patch   
 
 python3 setup.py install --root=$PKG
 

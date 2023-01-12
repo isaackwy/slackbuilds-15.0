@@ -5,15 +5,15 @@
 # You must make exactly 11 lines for the formatting to be correct.  It's also
 # customary to leave one space after the ':' except on otherwise blank lines.
 
-                |-----handy-ruler------------------------------------------------------|
-python-xkbcommon: python-xkbcommon (Python bindings for libxkbcommon using cffi)
-python-xkbcommon:
-python-xkbcommon: Python bindings for libxkbcommon using cffi.
-python-xkbcommon:
-python-xkbcommon:
-python-xkbcommon:
-python-xkbcommon:
-python-xkbcommon:
-python-xkbcommon:
-python-xkbcommon:
-python-xkbcommon:
+                 |-----handy-ruler------------------------------------------------------|
+python3-xkbcommon: python3-xkbcommon (Python bindings for libxkbcommon using cffi)
+python3-xkbcommon:
+python3-xkbcommon: Python bindings for libxkbcommon using cffi.
+python3-xkbcommon:
+python3-xkbcommon:
+python3-xkbcommon:
+python3-xkbcommon:
+python3-xkbcommon:
+python3-xkbcommon:
+python3-xkbcommon:
+python3-xkbcommon:
