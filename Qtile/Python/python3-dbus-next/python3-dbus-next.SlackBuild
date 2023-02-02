@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # Slackware build script for python3-dbus-next
+#
 # Copyright 2023 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
 #
