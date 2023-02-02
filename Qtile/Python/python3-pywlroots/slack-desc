@@ -8,9 +8,9 @@
                  |-----handy-ruler------------------------------------------------------|
 python3-pywlroots: python3-pywlroots (Python binding to the wlroots library using cffi)
 python3-pywlroots:
-python3-pywlroots: pywlroots is a Python binding to the wlroots library using cffi.
-python3-pywlroots: The library uses pywayland to provide the Wayland bindings and
-python3-pywlroots: python-xkbcommon to provide wlroots keyboard functionality.
+python3-pywlroots: python3-pywlroots is a Python binding to the wlroots library using
+python3-pywlroots: cffi. The library uses pywayland to provide the Wayland bindings and
+python3-pywlroots: python3-xkbcommon to provide wlroots keyboard functionality.
 python3-pywlroots:
 python3-pywlroots:
 python3-pywlroots:
