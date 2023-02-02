@@ -9,5 +9,7 @@ may appear on top of the screen saver), or sometimes even worse.
 In XSecureLock, security is achieved using a modular design to avoid the
 usual pitfalls of screen locking utility design on X11.
 
-mpv is required for building (and running) the saver_mpv module
-(which plays video clips in $HOME/Videos).
+pandoc-bin (listed in REQUIRES) is required for generating man pages.
+
+mpv is additionally required for building (and running) the saver_mpv
+module (which plays video clips in $HOME/Videos).
