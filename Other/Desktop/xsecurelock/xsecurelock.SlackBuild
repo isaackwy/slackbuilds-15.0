@@ -87,8 +87,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --localstatedir=/var \
   --mandir=/usr/man \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
-  --enable-static=no \
-  --disable-Werror \
+  --disable-static \
   --build=$ARCH-slackware-linux \
   --with-pam-service-name=system-auth
 
@@ -98,8 +97,8 @@ make install DESTDIR=$PKG
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
-find $PKG/usr/man -type f -exec gzip -9 {} \;
-for i in $( find $PKG/usr/man -type l ) ; do ln -s $( readlink $i ).gz $i.gz ; rm $i ; done
+# compress man page
+gzip -9 $PKG/usr/man/man1/$PRGNAM.1
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a CONTRIBUTING LICENSE README.md $PKG/usr/doc/$PRGNAM-$VERSION
