@@ -1,4 +1,4 @@
-PRGNAM="python-helpdev"
+PRGNAM="python3-helpdev"
 VERSION="0.7.1"
 HOMEPAGE="https://gitlab.com/dpizetta/helpdev"
 DOWNLOAD="https://gitlab.com/dpizetta/helpdev/-/archive/v0.7.1/helpdev-v0.7.1.tar.gz"
