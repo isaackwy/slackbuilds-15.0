@@ -5,6 +5,6 @@ DOWNLOAD="https://github.com/jupyter/jupyter_client/archive/v8.0.2/jupyter_clien
 MD5SUM="02f0dc0cc885edec47053a4aeaf9577a"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="jupyter_core python3-dateutil python3-pyzmq python3-tornado python3-hatchling python-importlib_metadata"
+REQUIRES="jupyter_core python3-dateutil python3-pyzmq python3-tornado python3-hatchling python3-importlib_metadata"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
