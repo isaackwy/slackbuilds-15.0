@@ -77,8 +77,8 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 # Backports from jupyter-server 2.3.0
-patch -p1 < $CWD/redact_tokens_from_logs.patch     # Redact tokens in url parameters from request logs. See PR #1212
-patch -p1 < $CWD/fix_get_loader.patch    # PR #1193
+patch -p1 < $CWD/redact_tokens_from_logs.patch     # Redact tokens in url parameters from request logs. See upstream PR #1212
+patch -p1 < $CWD/fix_get_loader.patch    # See upstream PR #1193
 
 python3 -m build --no-isolation
 python3 -m installer -d "$PKG" dist/*.whl
