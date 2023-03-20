@@ -3,7 +3,7 @@
 # Slackware build script for rstudio-desktop
 
 # Copyright 2018 Ekin Akoglu, Erdemli/Mersin, Turkey <ekinakoglu@gmail.com>
-# Copyright 2022 Isaac Yu <isaacyu1@isaacyu1.com>
+# Copyright 2022-2023 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -27,12 +27,12 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=rstudio-desktop
 SRCNAM=rstudio
-VERSION=${VERSION:-2022.12.0+353}
+VERSION=${VERSION:-2023.03.0+386}
 SRCVER=${SRCVER:-$(echo $VERSION | sed 's/+/-/g')}
-GITCOMMIT_VER=7d165dc
+GITCOMMIT_VER=3c53477
 NODE_VER=${NODE_VER:-16.14.0}
 PANDOCVER=current
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
@@ -44,9 +44,6 @@ if [ -z "$ARCH" ]; then
   esac
 fi
 
-# If the variable PRINT_PACKAGE_NAME is set, then this script will report what
-# the name of the created package would be, and then exit. This information
-# could be useful to other scripts.
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
   exit 0
@@ -88,13 +85,6 @@ find -L . \
 # Do not use outdated pandoc version number
 patch -p1 < $CWD/pandoc_version.patch
 
-# Enable or disable quarto build option 
-if [ ${QUARTO:-no} = yes ]; then
-  BUILD_QUARTO=TRUE
-else
-  BUILD_QUARTO=FALSE
-fi
-
 cd dependencies/common
 mkdir -p pandoc/$PANDOCVER
 
@@ -107,27 +97,21 @@ cd node && tar xvf $CWD/node-v$NODE_VER-linux-x64.tar.gz
 cd ../
 mv node/node-v$NODE_VER-linux-x64 node/$NODE_VER
 export PATH=$TMP/$SRCNAM-$SRCVER/dependencies/common/node/$NODE_VER/bin:$PATH     # use bundled node
-cd $TMP/$SRCNAM-$SRCVER/src/gwt/panmirror/src/editor
 
-# Prevent creation of cache files in /usr/local/share/
-env YARN_DISABLE_SELF_UPDATE_CHECK=true \
-  YARN_CACHE_FOLDER=$TMP/$SRCNAM-$SRCVER/cache/yarn \
-  yarn install --ignore-engines
+# Panmirror is picked up now from Quarto repo
+cd $TMP/$SRCNAM-$SRCVER/src/gwt/lib
+unzip $CWD/rstudio-cherry-blossom.zip
+mv quarto-release-rstudio-cherry-blossom quarto
 
 # Fix links for src/cpp/session/CMakeLists.txt
 cd $TMP/$SRCNAM-$SRCVER/dependencies
 ln -sfT common/dictionaries dictionaries
 ln -sfT common/mathjax-27 mathjax-27
+ln -sfT common/pandoc pandoc
 
-# Fix links (depending on whether quarto is enabled)
-if [ ${QUARTO:-no} = yes ]; then
-  mkdir -p quarto/bin/tools
-  ln -sfT /usr/bin/quarto common/quarto
-  ln -sfT ../../common/quarto quarto/bin/quarto
-  ln -sfT ../../../common/pandoc quarto/bin/tools/pandoc
-else
-  ln -sfT common/pandoc pandoc
-fi
+# Prevent creation of cache files in /usr/local/share/
+export YARN_DISABLE_SELF_UPDATE_CHECK=true
+export YARN_CACHE_FOLDER=$TMP/$SRCNAM-$SRCVER/cache/yarn
 
 cd $TMP/$SRCNAM-$SRCVER
 
@@ -180,7 +164,7 @@ cd build
     -DRSTUDIO_USE_SYSTEM_YAML_CPP=yes \
     -DQT_QMAKE_EXECUTABLE=/usr/bin/qmake-qt5 \
     -DBoost_NO_BOOST_CMAKE=ON \
-    -DQUARTO_ENABLED=$BUILD_QUARTO \
+    -DQUARTO_ENABLED=FALSE \
     -DRSTUDIO_USE_SYSTEM_SOCI=yes \
     -DRSTUDIO_BUNDLE_QT=FALSE \
     ${MULTILIB[@]}
@@ -200,14 +184,7 @@ mkdir -p $PKG/usr/bin
 # Update symlinks to be relative
 ln -sfrT /usr/share/myspell/dicts $PKG/usr/lib/rstudio/resources/dictionaries
 ln -sfrT /usr/share/mathjax2 $PKG/usr/lib/rstudio/resources/mathjax-27
-
-# Update symlinks (depending on whether quarto is enabled)
-if [ ${QUARTO:-no} = yes ]; then
-  ln -sfrT /usr/bin/quarto $PKG/usr/lib/rstudio/bin/quarto/bin/quarto
-  ln -sfrT /usr/bin/pandoc $PKG/usr/lib/rstudio/bin/quarto/bin/tools/pandoc
-else
-  ln -sfrT /usr/bin/pandoc $PKG/usr/lib/rstudio/bin/pandoc/pandoc
-fi
+ln -sfrT /usr/bin/pandoc $PKG/usr/lib/rstudio/bin/pandoc/pandoc
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
