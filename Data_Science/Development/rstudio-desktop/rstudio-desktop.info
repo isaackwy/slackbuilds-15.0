@@ -8,7 +8,7 @@ DOWNLOAD_x86_64="https://github.com/rstudio/rstudio/archive/refs/tags/v2023.03.0
                  https://github.com/quarto-dev/quarto/archive/9fb2b85/rstudio-cherry-blossom.zip"
 MD5SUM_x86_64="0981e9006094e26d1bbb0d87efd48be5 \
                a46e501a201be6c3c05c0f770c375372 \
-               d44b65cdc0a62b0ee5366760e6d27a63"             
+               d44b65cdc0a62b0ee5366760e6d27a63"
 REQUIRES="R pandoc-bin yaml-cpp hunspell-en yarn apache-ant zulu-openjdk8 mathjax2 soci"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu1@isaacyu1.com"
