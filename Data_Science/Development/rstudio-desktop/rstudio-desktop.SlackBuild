@@ -36,8 +36,6 @@ BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
-QUARTO_COMMIT_VER=9fb2b850681e23b12237511093eb690a2e9509e0
-
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
     i?86) ARCH=i586 ;;
@@ -103,7 +101,7 @@ export PATH=$TMP/$SRCNAM-$SRCVER/dependencies/common/node/$NODE_VER/bin:$PATH   
 # Panmirror is picked up now from Quarto repo
 cd $TMP/$SRCNAM-$SRCVER/src/gwt/lib
 unzip $CWD/rstudio-cherry-blossom.zip
-mv quarto-$QUARTO_COMMIT_VER quarto
+mv quarto-release-rstudio-cherry-blossom quarto
 
 # Fix links for src/cpp/session/CMakeLists.txt
 cd $TMP/$SRCNAM-$SRCVER/dependencies
