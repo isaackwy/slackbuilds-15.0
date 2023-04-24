@@ -1,4 +1,4 @@
-PRGNAM="pyasn1"
+PRGNAM="python2-pyasn1"
 VERSION="0.4.8"
 HOMEPAGE="https://github.com/etingof/pyasn1"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/p/pyasn1/pyasn1-0.4.8.tar.gz"
