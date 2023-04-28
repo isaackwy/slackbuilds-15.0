@@ -28,17 +28,19 @@ cd $(dirname $0) ; CWD=$(pwd)
 
 PRGNAM=vhba-module
 VERSION=${VERSION:-20211218}
-BUILD=${BUILD:-2}
+BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
-# Setting ARCH is not supported (and the build crashes if ARCH is exported).
-unset ARCH
 case "$( uname -m )" in
-  i?86) SLKARCH=i586 ;;
-  arm*) SLKARCH=arm ;;
-     *) SLKARCH=$( uname -m ) ;;
+  i?86) ARCH=i586 ;;
+  arm*) ARCH=arm ;;
+     *) ARCH=$( uname -m ) ;;
 esac
+
+# Setting ARCH is not supported (and the build crashes if ARCH is exported).
+SLKARCH="$ARCH"
+unset ARCH
 
 KERNEL=${KERNEL:-$(uname -r)}
 PKGKERNEL=$(echo $KERNEL | tr - _)
