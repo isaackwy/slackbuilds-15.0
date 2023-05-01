@@ -3,7 +3,6 @@ environment. It is available in desktop and server versions.
 This is the Linux desktop version.
 
 This script repackages the Fedora/Redhat package provided by RStudio.
-
 RStudio currently only supports 64-bit systems.
 
 The last supported version of RStudio for 32-bit systems is 1.1.463.
