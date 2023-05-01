@@ -53,7 +53,7 @@ OUTPUT=${OUTPUT:-/tmp}
 if [ "$ARCH" = "x86_64" ]; then
   PACKAGESUFFIX="x86_64"
 else
-  echo "$ARCH is not supported." >&2
+  echo "$ARCH is not supported for $PRGNAM-$VERSION." >&2
   exit 1
 fi
 
