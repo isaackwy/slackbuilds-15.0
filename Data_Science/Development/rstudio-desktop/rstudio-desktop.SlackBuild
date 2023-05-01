@@ -50,9 +50,7 @@ TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
-if [ "$ARCH" = "i586" ] || [ "$ARCH" = "i686" ]; then
-  PACKAGESUFFIX="i386"
-elif [ "$ARCH" = "x86_64" ]; then
+if [ "$ARCH" = "x86_64" ]; then
   PACKAGESUFFIX="x86_64"
 else
   echo "$ARCH is not supported." >&2
