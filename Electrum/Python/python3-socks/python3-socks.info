@@ -1,4 +1,4 @@
-PRGNAM="python-socks"
+PRGNAM="python3-socks"
 VERSION="2.2.0"
 HOMEPAGE="https://github.com/romis2012/python-socks/"
 DOWNLOAD="https://github.com/romis2012/python-socks/archive/v2.2.0/python-socks-2.2.0.tar.gz"
