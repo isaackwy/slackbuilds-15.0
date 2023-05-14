@@ -1,6 +1,7 @@
 #!/bin/bash
 
-# Slackware build script for yarl
+# Slackware build script for python3-yarl
+
 # Copyright 2019-2023 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
 #
@@ -23,11 +24,13 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=yarl
-VERSION=${VERSION:-1.8.2}
+PRGNAM=python3-yarl
+VERSION=${VERSION:-1.9.2}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
+
+SRCNAM=yarl
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -65,9 +68,9 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
-cd $PRGNAM-$VERSION
+rm -rf $SRCNAM-$VERSION
+tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -85,7 +88,7 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a *.rst requirements/ LICENSE $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a CHANGES.rst README.rst LICENSE $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
