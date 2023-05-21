@@ -1,7 +1,0 @@
-archy-slstatus is archy's fork of slstatus (a status bar for dwm).
-
-suckless's slstatus (the original) is available at:
-https://tools.suckless.org/slstatus/
-
-If a config.h is found in the SlackBuild directory it will be copied to
-the source directory and used in the build, allowing easy customisation.
