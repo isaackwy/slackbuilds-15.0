@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Slackware build script for slstatus
+# Slackware build script for slbar
 #
 # Copyright 2023 Isaac Yu <isaacyu1@isaacyu1.com>
 # All rights reserved.
@@ -24,13 +24,13 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=slstatus
-VERSION=${VERSION:-20230515}
+PRGNAM=slbar
+VERSION=${VERSION:-20230105}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
-COMMIT=${COMMIT:-86c7a84c2397e5bbdcebe2a06bada7ee48f0d480}
+COMMIT=${COMMIT:-74e915ad8b50354b2153709a41972e00556f5c7e}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -80,7 +80,7 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 if [ -e "$CWD/config.h" ]; then
-  cp -v $CWD/config.h config.def.h
+  cp -v $CWD/config.h config.h
 fi
 
 make \
@@ -101,11 +101,8 @@ make install \
 # Strip ELF binary
 strip --strip-unneeded $PKG/usr/bin/$PRGNAM
 
-# Compress man page
-gzip -9 $PKG/usr/man/man1/$PRGNAM.1
-
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a LICENSE README $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a LICENSE README.md $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install

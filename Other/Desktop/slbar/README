@@ -1,5 +1,4 @@
-slstatus is a status monitor for window managers (ex. dwm) that use 
-WM_NAME or stdin to fill the status bar.
+slbar is an extremely fast, small status bar for dwm.
 
 If a config.h is found in the SlackBuild directory it will be copied to
 the source directory and used in the build, allowing easy customisation.
