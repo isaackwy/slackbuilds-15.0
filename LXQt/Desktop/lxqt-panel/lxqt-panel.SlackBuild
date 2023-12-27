@@ -77,18 +77,10 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 # Build with libstatgrab as optional dependency (enable CPU Load and Network Monitor plugins)
-if [ ${LIBSTATGRAB:-no} = yes ]; then
-	ENABLE_STATGRAB=YES
-else
-	ENABLE_STATGRAB=NO
-fi
+[ ${LIBSTATGRAB:-no} = yes ] && ENABLE_STATGRAB=YES || ENABLE_STATGRAB=NO
 
 # Build with libsysstat as optional dependency (enable System Stats plugin)
-if [ ${LIBSYSSTAT:-no} = yes ]; then
-	ENABLE_SYSSTAT=YES
-else
-	ENABLE_SYSSTAT=NO
-fi
+[ ${LIBSYSSTAT:-no} = yes ] && ENABLE_SYSSTAT=YES || ENABLE_SYSSTAT=NO
 
 mkdir build
 cd build
