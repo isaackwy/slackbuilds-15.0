@@ -4,4 +4,3 @@ multiple clocks for different world timezones.
 
 This SlackBuild builds gsimplecal with gtk2 by default. For a gtk3
 build, pass GTK3=yes to the SlackBuild.
-
