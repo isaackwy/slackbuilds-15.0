@@ -5,6 +5,6 @@ DOWNLOAD="https://github.com/ubernostrum/webcolors/archive/1.13/webcolors-1.13.t
 MD5SUM="8afdb7951961563dc2c1e48bda407cb8"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="python3-setuptools_opt"
+REQUIRES="python3-setuptools-opt"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu@protonmail.com"
