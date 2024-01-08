@@ -5,6 +5,6 @@ DOWNLOAD="https://github.com/grpc/grpc/archive/v1.48.2/python3-grpcio-1.48.2.tar
 MD5SUM="2ba02b2582beabc1935e11603c181d62"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="abseil-cpp protobuf3 re2"
+REQUIRES="protobuf3 re2"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu@protonmail.com"
