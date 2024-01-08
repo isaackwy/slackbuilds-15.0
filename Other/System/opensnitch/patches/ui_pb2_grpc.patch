@@ -1,0 +1,17 @@
+This patch is taken from Arch Linux repositories (patch by George Rawlinson).
+However, the patch is abridged - it only includes the modification of ui_pb2_grpc.py
+https://gitlab.archlinux.org/archlinux/packaging/packages/opensnitch/-/blob/main/add-translations.patch
+
+diff --git a/ui/opensnitch/ui_pb2_grpc.py b/ui/opensnitch/ui_pb2_grpc.py
+index 0cdaab63..4e3a7865 100644
+--- a/ui/opensnitch/ui_pb2_grpc.py
++++ b/ui/opensnitch/ui_pb2_grpc.py
+@@ -2,7 +2,7 @@
+ """Client and server classes corresponding to protobuf-defined services."""
+ import grpc
+ 
+-import ui_pb2 as ui__pb2
++from . import ui_pb2 as ui__pb2
+ 
+ 
+ class UIStub(object):
