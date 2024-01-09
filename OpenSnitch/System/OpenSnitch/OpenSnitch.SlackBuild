@@ -160,7 +160,7 @@ cp utils/packaging/daemon/deb/debian/opensnitch.logrotate $PKG/etc/logrotate.d/o
 
 # Create log files in such a way that they won't clobber existing ones
 # This was taken from ponce's clamav SlackBuild
-mkdir -p $PKG/var/log; chmod 0771 $PKG/var/log
+mkdir -p $PKG/var/log
 touch $PKG/var/log/opensnitchd.log.new
 chmod 0660 $PKG/var/log/opensnitchd.log.new
 
