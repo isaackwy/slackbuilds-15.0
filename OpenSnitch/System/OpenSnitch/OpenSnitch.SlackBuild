@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Slackware build script for opensnitch
+# Slackware build script for OpenSnitch
 
 # Copyright 2024 Isaac Yu <isaacyu@protonmail.com>
 # All rights reserved.
@@ -24,11 +24,13 @@
 
 cd $(dirname $0) ; CWD=$(pwd)
 
-PRGNAM=opensnitch
+PRGNAM=OpenSnitch
 VERSION=${VERSION:-1.6.4}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
+
+SRCNAM=opensnitch
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
@@ -66,9 +68,9 @@ set -e
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$VERSION.tar.gz
-cd $PRGNAM-$VERSION
+rm -rf $SRCNAM-$VERSION
+tar xvf $CWD/$SRCNAM-$VERSION.tar.gz
+cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
@@ -79,8 +81,13 @@ find -L . \
 # site-packages directory
 SITE_PACKAGES=$(python3 -c "import site; print(site.getsitepackages()[0])")
 
-# Add generated protobuf files
-patch -p1 < $CWD/patches/add-generated-protobuf-files.patch
+# Prevent creation of cache files in /root/.cache/go-build
+export GOCACHE="${GOCACHE:-"$TMP/$SRCNAM-$VERSION/go-cache"}"
+
+# Generate protobuf files
+cd proto
+make
+cd ../
 
 # Add the resource_rc file (for fixing an ui issue)
 patch -p1 < $CWD/patches/add-resource_rc.patch
@@ -99,7 +106,7 @@ patch -p1 < $CWD/patches/remove-debian-path.patch
 patch -p1 < $CWD/patches/use-system-python-packages.patch 
 
 # Since this build uses system python packages, change the ui_pb2_grpc.py file accordingly
-patch -p1 < $CWD/patches/ui_pb2_grpc.patch
+#patch -p1 < $CWD/patches/ui_pb2_grpc.patch
 
 # Set up vendored modules
 cd daemon
@@ -142,7 +149,7 @@ cd ../ui
 python3 setup.py install --root=$PKG
 cd ../
 
-# configuration
+# configuration files
 mkdir -p $PKG/etc/opensnitchd
 cp daemon/default-config.json $PKG/etc/opensnitchd/default-config.json.new
 cp daemon/system-fw.json $PKG/etc/opensnitchd/system-fw.json.new
@@ -150,6 +157,12 @@ cp daemon/system-fw.json $PKG/etc/opensnitchd/system-fw.json.new
 # logrotate
 mkdir -p $PKG/etc/logrotate.d
 cp utils/packaging/daemon/deb/debian/opensnitch.logrotate $PKG/etc/logrotate.d/opensnitch.new
+
+# Create log files in such a way that they won't clobber existing ones
+# This was taken from ponce's clamav SlackBuild
+mkdir -p $PKG/var/log; chmod 0771 $PKG/var/log
+touch $PKG/var/log/opensnitchd.log.new
+chmod 0660 $PKG/var/log/opensnitchd.log.new
 
 # Generate translations
 LANGS=( de_DE es_ES eu_ES fi_FI fr_FR hu_HU ja_JP lt_LT nb_NO nl_NL pt_BR ro_RO ru_RU tr_TR zh_TW )

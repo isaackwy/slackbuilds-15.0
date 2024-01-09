@@ -6,14 +6,14 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
           |-----handy-ruler------------------------------------------------------|
-opensnitch: opensnitch (Inbound application firewall)
-opensnitch:
-opensnitch: OpenSnitch is a GNU/Linux interactive application firewall inspired by
-opensnitch: Little Snitch.
-opensnitch:
-opensnitch:
-opensnitch:
-opensnitch:
-opensnitch:
-opensnitch:
-opensnitch:
+OpenSnitch: OpenSnitch (Inbound application firewall)
+OpenSnitch:
+OpenSnitch: OpenSnitch is a GNU/Linux interactive application firewall inspired by
+OpenSnitch: Little Snitch.
+OpenSnitch:
+OpenSnitch:
+OpenSnitch:
+OpenSnitch:
+OpenSnitch:
+OpenSnitch:
+OpenSnitch:

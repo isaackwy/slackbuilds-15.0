@@ -1,4 +1,4 @@
-PRGNAM="opensnitch"
+PRGNAM="OpenSnitch"
 VERSION="1.6.4"
 HOMEPAGE="https://github.com/evilsocket/opensnitch"
 DOWNLOAD="https://github.com/evilsocket/opensnitch/archive/v1.6.4/opensnitch-1.6.4.tar.gz \
