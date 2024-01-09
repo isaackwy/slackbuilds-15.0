@@ -83,6 +83,8 @@ SITE_PACKAGES=$(python3 -c "import site; print(site.getsitepackages()[0])")
 
 # Prevent creation of cache files in /root/.cache/go-build
 export GOCACHE="${GOCACHE:-"$TMP/$SRCNAM-$VERSION/go-cache"}"
+export GOTMPDIR="${GOTMPDIR:-"$TMP/$SRCNAM-$VERSION"}"
+export GOMODCACHE="${GOMODCACHE:-"$TMP/$SRCNAM-$VERSION/go"}"
 
 # Generate protobuf files
 cd proto
