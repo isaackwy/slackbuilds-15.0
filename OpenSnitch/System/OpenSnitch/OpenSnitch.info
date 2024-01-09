@@ -41,6 +41,6 @@ MD5SUM="072ebb1632ada723623203a8248e1996 \
         2e97ffc1575be0c3c82702464a8d7e01"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="google-go-lang python3-grpcio pyinotify python3-slugify"
+REQUIRES="google-go-lang protoc-gen-go-grpc python3-grpcio pyinotify python3-slugify"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu@protonmail.com"
