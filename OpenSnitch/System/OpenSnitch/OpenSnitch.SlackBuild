@@ -106,7 +106,7 @@ patch -p1 < $CWD/patches/remove-debian-path.patch
 patch -p1 < $CWD/patches/use-system-python-packages.patch 
 
 # Since this build uses system python packages, change the ui_pb2_grpc.py file accordingly
-#patch -p1 < $CWD/patches/ui_pb2_grpc.patch
+patch -p1 < $CWD/patches/ui_pb2_grpc.patch
 
 # Set up vendored modules
 cd daemon
