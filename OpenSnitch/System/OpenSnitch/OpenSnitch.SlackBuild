@@ -91,7 +91,7 @@ make
 cd ../
 
 # Fix version number
-sed -i 's/1.6.2/1.6.4/' daemon/core/version.go
+sed -i "s/1.6.2/$VERSION/g" daemon/core/version.go
 
 # Fix an issue with setup.py installing to python's site-packages instead of /usr
 # prefer scaled SVG instead of pixellated 48x48 PNG
@@ -104,7 +104,7 @@ patch -p1 < $CWD/patches/modify-go.mod-file.patch
 patch -p1 < $CWD/patches/remove-debian-path.patch
 
 # Use system python packages
-patch -p1 < $CWD/patches/use-system-python-packages.patch 
+patch -p1 < $CWD/patches/use-system-python-packages.patch
 
 # Generate resource files
 pyrcc5 -o ui/opensnitch/{resources_rc.py,/res/resources.qrc}
