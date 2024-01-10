@@ -4,3 +4,6 @@ Little Snitch.
 Opensnitch requires the opensnitchd rc script to execute upon startup.
 That is, add the following line to /etc/rc.local:
 [ -x /etc/rc.d/rc.opensnitchd ] && /etc/rc.d/rc.opensnitchd start
+
+To install the eBPF process monitor module (requires kernel-source),
+pass in eBPF=yes to the SlackBuild.

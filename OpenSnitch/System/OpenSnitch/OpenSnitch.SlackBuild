@@ -189,6 +189,25 @@ chmod 0644 $PKG/etc/rc.d/rc.opensnitchd.new
 # Remove tests from the site-packages directory
 rm -rf "$PKG/$SITE_PACKAGES/tests"
 
+# Install eBPF modules if eBPF=yes is passed
+if [ ${eBPF:-no} = yes ]; then
+  cd ebpf_prog
+  KDIR="/usr/src/linux"
+
+  # set -fno-stack-protector to work around a clang regression
+  # this is fine - bpf programs do not use stack protectors
+  # Reference: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=opensnitch-ebpf-module
+  CLANG="clang -fno-stack-protector" ARCH="$ARCH" KERNEL_DIR="$KDIR" KERNEL_HEADERS="$KDIR" make
+
+  # Remove debug info
+  llvm-strip -g opensnitch*.o
+
+  # Finalize eBPF module installation
+  install -Dm644 opensnitch*.o -t $PKG/usr/lib/opensnitchd/ebpf
+
+  cd ../
+fi
+
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
