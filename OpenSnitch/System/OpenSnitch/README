@@ -7,3 +7,7 @@ That is, add the following line to /etc/rc.local:
 
 To install the eBPF process monitor module (requires kernel-source),
 pass in eBPF=yes to the SlackBuild.
+
+The eBFP module additionally requires kernel support for KProbes
+(kernel probes) and syscalls tracing. README.SLACKWARE contains
+instructions for compiling a kernel with these features.
