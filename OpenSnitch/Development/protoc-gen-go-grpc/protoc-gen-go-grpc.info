@@ -1,7 +1,7 @@
 PRGNAM="protoc-gen-go-grpc"
 VERSION="1.3.0"
 HOMEPAGE="https://github.com/grpc/grpc-go"
-DOWNLOAD="https://github.com/grpc/grpc-go/archive/refs/tags/cmd/protoc-gen-go-grpc/v1.3.0/protoc-gen-go-grpc-1.3.0.tar.gz \
+DOWNLOAD="https://github.com/grpc/grpc-go/archive/refs/tags/cmd/protoc-gen-go-grpc/v1.3.0/grpc-go-cmd-protoc-gen-go-grpc-1.3.0.tar.gz \
           https://github.com/protocolbuffers/protobuf-go/archive/v1.28.1/protobuf-go-1.28.1.tar.gz"
 MD5SUM="9d3abc100f411a59907528e55e772a10 \
         e11cccd452bbf4296f72bf323d7b8690"
