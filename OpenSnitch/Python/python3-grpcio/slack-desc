@@ -13,7 +13,7 @@ python3-grpcio: (RPC) framework that can run anywhere. gRPC enables client and s
 python3-grpcio: applications to communicate transparently, and simplifies the building
 python3-grpcio: of connected systems.
 python3-grpcio:
-python3-grpcio:
+python3-grpcio: Homepage: https://grpc.io/
 python3-grpcio:
 python3-grpcio:
 python3-grpcio:

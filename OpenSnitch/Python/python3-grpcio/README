@@ -5,3 +5,6 @@ of connected systems.
 
 This SlackBuild bundles python3-grpcio-tools (a protobuf code generator
 for gRPC).
+
+grpc (available at SlackBuilds.org) builds gRPC in C++ (rather than in
+Python 3).
