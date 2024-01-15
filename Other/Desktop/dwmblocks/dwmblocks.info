@@ -1,7 +1,7 @@
 PRGNAM="dwmblocks"
 VERSION="20231219"
 HOMEPAGE="https://github.com/UtkarshVerma/dwmblocks-async"
-DOWNLOAD="https://github.com/UtkarshVerma/dwmblocks-async/archive/12d4dec/dwmblocks-12d4decdd45015b9b6f1ac50a2bd65c98695f1c3.tar.gz"
+DOWNLOAD="https://github.com/UtkarshVerma/dwmblocks-async/archive/12d4dec/dwmblocks-async-12d4decdd45015b9b6f1ac50a2bd65c98695f1c3.tar.gz"
 MD5SUM="87280dd1996fdcd2870e74aea20deebb"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
