@@ -144,7 +144,7 @@ do
   DIR=vendor/$DIR
   echo $DIR
   if [ $DIR = "vendor/github.com/golang/protobuf" ]; then
-    tar xvf $CWD/$NAME-[0-9]*.tar.gz 
+    tar xvf $CWD/$NAME-[0-9]*.tar.gz
   elif [ $DIR = "vendor/github.com/mdlayher/netlink" ]; then
     tar xvf $CWD/$NAME-[0-9].[0-9].[0-9].tar.gz
   elif [ $DIR = "vendor/github.com/varlink/go" ]; then
