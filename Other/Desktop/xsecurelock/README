@@ -9,7 +9,8 @@ may appear on top of the screen saver), or sometimes even worse.
 In XSecureLock, security is achieved using a modular design to avoid the
 usual pitfalls of screen locking utility design on X11.
 
-pandoc-bin (listed in REQUIRES) is required for generating man pages.
+To build manpages (requires pandoc-bin), pass MAN=yes to the SlackBuild:
+MAN=yes ./xsecurelock.SlackBuild
 
-mpv is additionally required for building (and running) the saver_mpv
-module (which plays video clips in $HOME/Videos).
+mpv is also required for building and running the saver_mpv module
+(which plays video clips in $HOME/Videos).
