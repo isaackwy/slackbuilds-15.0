@@ -79,7 +79,7 @@ find -L . \
 # Install man files to /usr/man, rather than /usr/share/man 
 sed -i "s/\$(DATADIR)\\/man/\$(DESTDIR)\\/\$(PREFIX)\\/man/g" misc/Makefile
 
-# Do not install licnese files to /usr/share/licenses
+# Do not install license files to /usr/share/licenses
 sed -i "/LICENSEDIR/d" misc/Makefile
 
 make -f misc/Makefile DESTDIR=$PKG install
