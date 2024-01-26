@@ -105,14 +105,12 @@ cp config/user.tmpl $PKG/usr/doc/$PRGNAM-$VERSION/user.tmpl
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION/themes
 cp config/themes/* $PKG/usr/doc/$PRGNAM-$VERSION/themes
 
-# Install man pages
+# Install and compress man pages
 for i in {1,5,7};
 do
   mkdir -p $PKG/usr/man/man$i
   cp -r docs/man/tut.$i $PKG/usr/man/man$i/tut.$i
 done
-
-# Compress man pages
 gzip -9 $PKG/usr/man/man[0-9]/$PRGNAM.[0-9]
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
