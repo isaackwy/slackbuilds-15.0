@@ -143,7 +143,7 @@ do
   NAME=$(echo $DIR | sed 's/[./]v[0-9]\+$//' | xargs basename)
   DIR=vendor/$DIR
 
-  # The general rule is to extract the tarball:  "tar xvf $CWD/$NAME-*.tar.gz"
+  # The general rule is to extract the tarball: "tar xvf $CWD/$NAME-*.tar.gz"
   # However, a few exceptions to this are necessary.
   if [ $DIR = "vendor/github.com/golang/protobuf" ]; then
     tar xvf $CWD/$NAME-[0-9]*.tar.gz
