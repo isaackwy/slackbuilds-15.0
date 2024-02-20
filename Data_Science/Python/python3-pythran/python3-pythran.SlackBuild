@@ -49,7 +49,7 @@ TMP=${TMP:-/tmp/SBo}
 PKG=$TMP/package-$PRGNAM
 OUTPUT=${OUTPUT:-/tmp}
 
-# Only LIBDIRSUFFIX is used in the SlackBuild
+# Only LIBDIRSUFFIX is used within the SlackBuild
 if [ "$ARCH" = "i586" ]; then
   LIBDIRSUFFIX=""
 elif [ "$ARCH" = "i686" ]; then
