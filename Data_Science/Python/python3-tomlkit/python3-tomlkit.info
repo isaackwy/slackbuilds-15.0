@@ -5,6 +5,6 @@ DOWNLOAD="https://github.com/sdispater/tomlkit/releases/download/0.12.4/tomlkit-
 MD5SUM="e182df9625d617692a9ae035266634fe"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="python3-poetry-core python3-wheel"
+REQUIRES="python3-poetry-core"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu@protonmail.com"
