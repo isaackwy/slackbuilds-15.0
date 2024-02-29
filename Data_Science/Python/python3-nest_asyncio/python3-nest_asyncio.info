@@ -1,4 +1,4 @@
-PRGNAM="nest_asyncio"
+PRGNAM="python3-nest_asyncio"
 VERSION="1.6.0"
 HOMEPAGE="https://github.com/erdewit/nest_asyncio"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/n/nest_asyncio/nest_asyncio-1.6.0.tar.gz"
