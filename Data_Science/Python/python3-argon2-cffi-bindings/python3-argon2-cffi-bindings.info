@@ -1,4 +1,4 @@
-PRGNAM="argon2-cffi-bindings"
+PRGNAM="python3-argon2-cffi-bindings"
 VERSION="21.2.0"
 HOMEPAGE="https://github.com/hynek/argon2-cffi-bindings"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/a/argon2-cffi-bindings/argon2-cffi-bindings-21.2.0.tar.gz"
