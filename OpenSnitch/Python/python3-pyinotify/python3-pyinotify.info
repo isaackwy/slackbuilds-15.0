@@ -1,4 +1,4 @@
-PRGNAM="pyinotify"
+PRGNAM="python3-pyinotify"
 VERSION="0.9.6"
 HOMEPAGE="https://github.com/seb-m/pyinotify"
 DOWNLOAD="https://pypi.python.org/packages/source/p/pyinotify/pyinotify-0.9.6.tar.gz"
