@@ -71,7 +71,7 @@ sed -e "s|version = \"0.0.0-dev\"|version = \"$VERSION\"|" -i pyproject.toml
 # The source (optionally) requires tomli at >=1.2.3 for reading .toml configs.
 # However, the only change between tomli 1.2.2 and 1.2.3 is a fix that allows lower case "t" and "z" within datetimes:
 # https://github.com/hukkin/tomli/compare/1.2.2...1.2.3
-# These 2 edits allow python3-pydocstyle to use tomli 1.2.2 (the version installed in Slackware 15.0) instead.
+# These edits allow python3-pydocstyle to use tomli 1.2.2 (the version installed in Slackware 15.0) instead.
 sed -e "s|version = \">=1.2.3\"|version = \">=1.2.2\"|" -i pyproject.toml
 sed "s/tomli>=1.2.3/tomli>=1.2.2/g" -i requirements/runtime.txt
 
