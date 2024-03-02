@@ -64,7 +64,7 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-# Fix version number within metadata (taken from Arch Linux PKGBUILD):
+# Fix version number within metadata (code taken from the Arch Linux PKGBUILD):
 # https://gitlab.archlinux.org/archlinux/packaging/packages/python-pydocstyle/-/blob/main/PKGBUILD
 sed -e "s|^version = .*|version = \"$VERSION\"|" -i pyproject.toml
 
