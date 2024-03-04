@@ -9,7 +9,7 @@
 lximage-qt: lximage-qt (LXQt image viewer)
 lximage-qt:
 lximage-qt: LXImage-Qt is the Qt port of LXImage, a simple and fast image viewer.
-lximage-qt: It also features a tool to take screenshots.
+lximage-qt: It also features a tool for taking screenshots.
 lximage-qt:
 lximage-qt:
 lximage-qt:
