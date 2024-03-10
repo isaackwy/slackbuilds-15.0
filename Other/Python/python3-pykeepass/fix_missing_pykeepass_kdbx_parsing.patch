@@ -1,5 +1,5 @@
 This patch was taken from Arch Linux's gitlab repo:
-https://gitlab.archlinux.org/archlinux/packaging/packages/python-pykeepass/-/blob/main/python-pykeepass-fix-install.patch
+https://gitlab.archlinux.org/archlinux/packaging/packages/python-pykeepass/-/blob/main/0001-fix_missing_pykeepass_kdbx_parsing.patch
 --- a/pyproject.toml
 +++ b/pyproject.toml
 @@ -37,7 +37,7 @@
