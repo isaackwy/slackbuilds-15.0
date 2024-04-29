@@ -1,4 +1,4 @@
-PRGNAM="pluggy"
+PRGNAM="python2-pluggy"
 VERSION="0.13.1"
 HOMEPAGE="https://github.com/pytest-dev/pluggy"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/p/pluggy/pluggy-0.13.1.tar.gz"
