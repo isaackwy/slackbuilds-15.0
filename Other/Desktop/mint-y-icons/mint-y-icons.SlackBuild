@@ -71,6 +71,10 @@ for COLOR in ${COLORS[@]}; do
   cp $CWD/icons/22/view-preview.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/view-preview.svg
   cp $CWD/icons/22/view-list-text.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/view-list-text.svg
   cp $CWD/icons/22/view-list-details.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/view-list-details.svg
+
+  # Icons for Krita
+  cp $CWD/icons/22/preview.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/preview.svg
+  cp $CWD/icons/22/document-preview.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/document-preview.svg
 done
 
 # install docs & license
