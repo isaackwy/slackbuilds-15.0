@@ -66,6 +66,10 @@ find -L . \
 python3 -m build --no-isolation
 python3 -m installer -d "$PKG" dist/*.whl
 
+# Install shell (bash and zsh) completions. This feature requires python3-argcomplete.
+install -Dm644 examples/jupyter-completion.bash $PKG/usr/share/bash-completion/completions/jupyter
+install -Dm644 examples/completions-zsh $PKG/usr/share/zsh/site-functions/_jupyter
+
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
