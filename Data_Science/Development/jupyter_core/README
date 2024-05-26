@@ -1,4 +1,5 @@
 The Jupyter core contains the base application classes and
 configuration used by other Jupyter projects.
 
-Bash and zsh completions additionally require python3-argcomplete.
+This SlackBuild also installs shell completions.
+Bash completion in particular additionally requires python3-argcomplete.
