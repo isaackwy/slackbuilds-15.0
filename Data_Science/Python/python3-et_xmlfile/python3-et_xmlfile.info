@@ -1,4 +1,4 @@
-PRGNAM="et_xmlfile"
+PRGNAM="python3-et_xmlfile"
 VERSION="1.1.0"
 HOMEPAGE="https://et-xmlfile.readthedocs.io/en/latest/"
 DOWNLOAD="https://pypi.python.org/packages/source/e/et_xmlfile/et_xmlfile-1.1.0.tar.gz"
