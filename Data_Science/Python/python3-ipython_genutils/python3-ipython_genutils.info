@@ -1,4 +1,4 @@
-PRGNAM="ipython_genutils"
+PRGNAM="python3-ipython_genutils"
 VERSION="0.2.0"
 HOMEPAGE="https://jupyter.org/"
 DOWNLOAD="https://github.com/ipython/ipython_genutils/archive/0.2.0/ipython_genutils-0.2.0.tar.gz"
