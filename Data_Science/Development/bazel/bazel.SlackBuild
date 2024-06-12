@@ -78,9 +78,6 @@ export JAVA_HOME=/usr/lib$LIBDIRSUFFIX/zulu-openjdk11
 export EMBED_LABEL=$VERSION
 export EXTRA_BAZEL_ARGS="--java_runtime_version=local_jdk --tool_java_runtime_version=local_jdk"
 
-# Allow safe stripping of the bazel binary
-patch -p1 < $CWD/trust_install_base.patch
-
 # Compile bazel
 ./compile.sh
 ./scripts/generate_bash_completion.sh \
@@ -96,18 +93,18 @@ cd ../
 mkdir -p $PKG/usr/bin
 mkdir -p $PKG/usr/share/bash-completion/completions/bazel
 mkdir -p $PKG/usr/share/zsh/site-functions/_bazel
-mkdir -p $PKG/opt/bazel
 
-# Install bazel to $PKG/usr/bin
+# Move the bazel binary (It alone is 33MB).
+# /usr/bin/bazel should not be stripped - otherwise, bazel becomes unusable:
+# https://github.com/bazelbuild/bazel/issues/600
 mv $TMP/$PRGNAM-$VERSION/output/bazel $PKG/usr/bin
-strip --strip-unneeded $PKG/usr/bin/bazel
 
 # Copy scripts
 cp $TMP/$PRGNAM-$VERSION/scripts/packages/bazel.sh $PKG/usr/bin
 cp $TMP/$PRGNAM-$VERSION/bazel-complete.bash $PKG/usr/share/bash-completion/completions/bazel
 cp $TMP/$PRGNAM-$VERSION/scripts/zsh_completion/_bazel $PKG/usr/share/zsh/site-functions/_bazel
 for d in examples third_party tools; do
-    cp -r $TMP/$PRGNAM-$VERSION/$d $PKG/opt/bazel/
+    cp -r $TMP/$PRGNAM-$VERSION/$d $PKG/usr/share/bazel/
 done
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
