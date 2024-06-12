@@ -1,0 +1,361 @@
+--- a/site/docs/user-manual.html
++++ b/site/docs/user-manual.html
+@@ -2583,10 +2583,11 @@
+ </ul>
+ 
+ <p>
+-  <code>bazel --version</code>, with no other args, will emit the same output as
++  <code>bazel --version</code>, will emit the same output as
+   <code>bazel version --gnu_format</code>, except without the side-effect of potentially starting
+   a Bazel server or unpacking the server archive. <code>bazel --version</code> can be run from
+-  anywhere - it does not require a workspace directory.
++  anywhere - it does not require a workspace directory. When <code>--version</code> is passed, all
++  other flags and Bazel command will be ignored.
+ </p>
+ 
+ <h3 id='mobile-install'><code>mobile-install</code></h3>
+--- a/src/main/cpp/BUILD
++++ b/src/main/cpp/BUILD
+@@ -119,7 +119,10 @@
+             "-ldl",
+         ],
+     }),
+-    visibility = ["//src:__pkg__"],
++    visibility = [
++        "//src:__pkg__",
++        "//src/test/py/bazel:__pkg__",
++    ],
+     deps = [
+         ":archive_utils",
+         ":bazel_startup_options",
+--- a/src/main/cpp/archive_utils.cc
++++ b/src/main/cpp/archive_utils.cc
+@@ -11,6 +11,7 @@
+ // WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ // See the License for the specific language governing permissions and
+ // limitations under the License.
++#include <algorithm>
+ #include <functional>
+ #include <memory>
+ #include <string>
+@@ -99,6 +100,31 @@
+   bool done_ = false;
+ };
+ 
++void DetermineArchiveContentsFromInstallBase(const string &install_base_str,
++                              vector<string> &files, string &install_md5) {
++  blaze_util::Path install_base(install_base_str);
++
++  // Read install_md5 value from <install_base>/install_base_key
++  if (!blaze_util::ReadFile(install_base.GetRelative("install_base_key"), &install_md5)) {
++    BAZEL_DIE(blaze_exit_code::LOCAL_ENVIRONMENTAL_ERROR)
++      << "Cannot read install_base_key file from install base: "
++      << install_base.AsPrintablePath();
++  }
++
++  // Read all archive content entries and calculate the relative paths to install base.
++  blaze_util::GetAllFilesUnder(install_base_str, &files);
++  std::size_t pos = install_base.AsNativePath().length() + 1;
++  for (std::size_t i = 0; i < files.size(); i++) {
++    blaze_util::Path entry(files[i]);
++    #if defined(_WIN32) || defined(__CYGWIN__)
++      files[i] = blaze_util::WstringToCstring(entry.AsNativePath().substr(pos));
++    #else
++      files[i] = entry.AsNativePath().substr(pos);
++    #endif
++  }
++  std::sort(files.begin(), files.end());
++}
++
+ void DetermineArchiveContents(const string &archive_path, vector<string> *files,
+                               string *install_md5) {
+   PartialZipExtractor pze;
+--- a/src/main/cpp/archive_utils.h
++++ b/src/main/cpp/archive_utils.h
+@@ -20,6 +20,11 @@
+ 
+ namespace blaze {
+ 
++void DetermineArchiveContentsFromInstallBase(
++                              const std::string &install_base,
++                              std::vector<std::string> &files,
++                              std::string &install_md5);
++
+ // Determines the contents of the archive, storing the names of the contained
+ // files into `files` and the install md5 key into `install_md5`.
+ void DetermineArchiveContents(const std::string &archive_path,
+--- a/src/main/cpp/blaze.cc
++++ b/src/main/cpp/blaze.cc
+@@ -1008,6 +1008,11 @@
+           << "install base directory '" << install_base
+           << "' could not be created. It exists but is not a directory.";
+     }
++
++    if (startup_options.trust_install_base) {
++      return DurationMillis();
++    }
++
+     blaze_util::Path install_dir(install_base);
+     // Check that all files are present and have timestamps from BlessFiles().
+     std::unique_ptr<blaze_util::IFileMtime> mtime(
+@@ -1204,7 +1209,10 @@
+     // find install bases that haven't been used for a long time
+     std::unique_ptr<blaze_util::IFileMtime> mtime(
+         blaze_util::CreateFileMtime());
+-    if (!mtime->SetToNow(blaze_util::Path(startup_options.install_base))) {
++    // We skip touching the install base if --trust_install_base is enabled,
++    // because the provided install base might not be writable.
++    if (!startup_options.trust_install_base &&
++        !mtime->SetToNow(blaze_util::Path(startup_options.install_base))) {
+       string err = GetLastErrorString();
+       BAZEL_DIE(blaze_exit_code::LOCAL_ENVIRONMENTAL_ERROR)
+           << "failed to set timestamp on '" << startup_options.install_base
+@@ -1492,9 +1500,20 @@
+   return custom_exit_code;
+ }
+ 
+-void PrintVersionInfo(const string &self_path, const string &product_name) {
++void PrintVersionInfo(const string &self_path,
++                      const string &product_name,
++                      const StartupOptions &startup_options) {
+   string build_label;
+-  ExtractBuildLabel(self_path, &build_label);
++  if (startup_options.trust_install_base) {
++    blaze_util::Path install_base(startup_options.install_base);
++    if (!blaze_util::ReadFile(install_base.GetRelative("build-label.txt"), &build_label)) {
++      BAZEL_DIE(blaze_exit_code::LOCAL_ENVIRONMENTAL_ERROR)
++        << "Cannot read build-label.txt file from install base: "
++        << install_base.AsPrintablePath();
++    }
++  } else {
++    ExtractBuildLabel(self_path, &build_label);
++  }
+   printf("%s %s\n", product_name.c_str(), build_label.c_str());
+ }
+ 
+@@ -1588,11 +1607,6 @@
+ 
+   const string self_path = GetSelfPath(argv[0]);
+ 
+-  if (argc == 2 && strcmp(argv[1], "--version") == 0) {
+-    PrintVersionInfo(self_path, option_processor->GetLowercaseProductName());
+-    return blaze_exit_code::SUCCESS;
+-  }
+-
+   string cwd = GetCanonicalCwd();
+   LoggingInfo logging_info(CheckAndGetBinaryPath(cwd, argv[0]), start_time);
+ 
+@@ -1623,11 +1637,21 @@
+   StartupOptions *startup_options = option_processor->GetParsedStartupOptions();
+   startup_options->MaybeLogStartupOptionWarnings();
+ 
++  if (startup_options->trust_install_base && startup_options->install_base.empty()) {
++    BAZEL_DIE(blaze_exit_code::BAD_ARGV)
++        << "--trust_install_base requires --install_base to be provided";
++  }
++
+   SetDebugLog(startup_options->client_debug);
+   // If client_debug was false, this is ignored, so it's accurate.
+   BAZEL_LOG(INFO) << "Debug logging requested, sending all client log "
+                      "statements to stderr";
+ 
++  if (startup_options->version) {
++    PrintVersionInfo(self_path, option_processor->GetLowercaseProductName(), *startup_options);
++    return blaze_exit_code::SUCCESS;
++  }
++
+   if (startup_options->unlimit_coredumps) {
+     UnlimitCoredumps();
+   }
+@@ -1647,7 +1671,12 @@
+ 
+   vector<string> archive_contents;
+   string install_md5;
+-  DetermineArchiveContents(self_path, &archive_contents, &install_md5);
++  if (startup_options->trust_install_base) {
++    DetermineArchiveContentsFromInstallBase(
++      startup_options->install_base, archive_contents, install_md5);
++  } else {
++    DetermineArchiveContents(self_path, &archive_contents, &install_md5);
++  }
+ 
+   UpdateConfiguration(install_md5, workspace,
+                       IsServerMode(option_processor->GetCommand()),
+--- a/src/main/cpp/startup_options.cc
++++ b/src/main/cpp/startup_options.cc
+@@ -97,7 +97,9 @@
+       macos_qos_class(QOS_CLASS_UNSPECIFIED),
+ #endif
+       unlimit_coredumps(false),
+-      windows_enable_symlinks(false) {
++      windows_enable_symlinks(false),
++      version(false),
++      trust_install_base(false) {
+   if (blaze::IsRunningWithinTest()) {
+     output_root = blaze_util::MakeAbsolute(blaze::GetPathEnv("TEST_TMPDIR"));
+     max_idle_secs = 15;
+@@ -148,6 +150,10 @@
+   RegisterNullaryStartupFlag("write_command_log", &write_command_log);
+   RegisterNullaryStartupFlag("windows_enable_symlinks",
+                              &windows_enable_symlinks);
++  RegisterNullaryStartupFlag("version",
++                             &version);
++  RegisterNullaryStartupFlag("trust_install_base",
++                             &trust_install_base);
+   RegisterUnaryStartupFlag("command_port");
+   RegisterUnaryStartupFlag("connect_timeout_secs");
+   RegisterUnaryStartupFlag("local_startup_timeout_secs");
+--- a/src/main/cpp/startup_options.h
++++ b/src/main/cpp/startup_options.h
+@@ -279,6 +279,15 @@
+   // developer mode to be enabled.
+   bool windows_enable_symlinks;
+ 
++  // Whether to print version info and exit.
++  bool version;
++
++  // Whether to trust the install base directory provided by --install_base
++  // and skip all the checks. This will allow running the Bazel client without
++  // appending the zip archive when a install base is available, eg. for Debian
++  // installation.
++  bool trust_install_base;
++
+  protected:
+   // Constructor for subclasses only so that site-specific extensions of this
+   // class can override the product name.  The product_name must be the
+--- a/src/main/java/com/google/devtools/build/lib/runtime/BlazeServerStartupOptions.java
++++ b/src/main/java/com/google/devtools/build/lib/runtime/BlazeServerStartupOptions.java
+@@ -478,6 +478,27 @@
+   public boolean enableWindowsSymlinks;
+ 
+   @Option(
++      name = "trust_install_base",
++      defaultValue = "false", // Only for documentation; value is set by the client.
++      documentationCategory = OptionDocumentationCategory.BAZEL_CLIENT_OPTIONS,
++      effectTags = {OptionEffectTag.BAZEL_INTERNAL_CONFIGURATION},
++      help =
++          "If passed, the client will trust the install base directory provided by "
++              + "--install_base and skip any verification of the install base. "
++              + "Requires --install_base to be set.")
++  public boolean trustInstallBase;
++
++  @Option(
++      name = "version",
++      defaultValue = "false", // Only for documentation; value is set by the client.
++      documentationCategory = OptionDocumentationCategory.BAZEL_CLIENT_OPTIONS,
++      effectTags = {OptionEffectTag.BAZEL_INTERNAL_CONFIGURATION},
++      help =
++          "If passed, the client will print Bazel version info and exit, "
++              + "all other flags and the command will be ignored.")
++  public boolean version;
++
++  @Option(
+       name = "unix_digest_hash_attribute_name",
+       defaultValue = "",
+       documentationCategory = OptionDocumentationCategory.UNDOCUMENTED,
+--- a/src/test/py/bazel/BUILD
++++ b/src/test/py/bazel/BUILD
+@@ -59,6 +59,7 @@
+     size = "medium",
+     srcs = ["bazel_server_mode_test.py"],
+     deps = [":test_base"],
++    data = ["//src/main/cpp:client"],
+ )
+ 
+ py_test(
+@@ -252,6 +253,12 @@
+     deps = [":test_base"],
+ )
+ 
++py_test(
++    name = "bazel_version_test",
++    srcs = ["bazel_version_test.py"],
++    deps = [":test_base"],
++)
++
+ py_library(
+     name = "bzlmod_test_utils",
+     srcs = ["bzlmod/test_utils.py"],
+--- a/src/test/py/bazel/bazel_server_mode_test.py
++++ b/src/test/py/bazel/bazel_server_mode_test.py
+@@ -33,5 +33,30 @@
+     self.assertEqual(pid1, pid2)
+ 
+ 
++  def testRunBazelClientWithTrustedInstallBase(self):
++    self.ScratchFile('WORKSPACE')
++
++    exit_code, stdout, stderr = self.RunBazel(['info', 'install_base'])
++    self.AssertExitCode(exit_code, 0, stderr)
++    install_base = stdout[0]
++
++    if self.IsWindows():
++        bazel_client = self.Rlocation('io_bazel/src/main/cpp/client.exe')
++    else:
++        bazel_client = self.Rlocation('io_bazel/src/main/cpp/client')
++
++    cmd = [bazel_client, '--install_base=%s' % install_base, '--trust_install_base', 'info', 'server_pid']
++
++    exit_code, stdout, stderr = self.RunProgram(cmd)
++    self.AssertExitCode(exit_code, 0, stderr)
++    pid1 = stdout[0]
++
++    exit_code, stdout, stderr = self.RunProgram(cmd)
++    self.AssertExitCode(exit_code, 0, stderr)
++    pid2 = stdout[0]
++
++    self.assertEqual(pid1, pid2)
++
++
+ if __name__ == '__main__':
+   unittest.main()
+--- /dev/null
++++ b/src/test/py/bazel/bazel_version_test.py
+@@ -0,0 +1,47 @@
++# pylint: disable=g-bad-file-header
++# Copyright 2017 The Bazel Authors. All rights reserved.
++#
++# Licensed under the Apache License, Version 2.0 (the "License");
++# you may not use this file except in compliance with the License.
++# You may obtain a copy of the License at
++#
++#    http://www.apache.org/licenses/LICENSE-2.0
++#
++# Unless required by applicable law or agreed to in writing, software
++# distributed under the License is distributed on an "AS IS" BASIS,
++# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
++# See the License for the specific language governing permissions and
++# limitations under the License.
++
++import os
++import unittest
++from src.test.py.bazel import test_base
++
++
++class BazelVersionTest(test_base.TestBase):
++
++  def testStartupVersionOption(self):
++    exit_code, stdout, stderr = self.RunBazel(["--version"])
++    self.AssertExitCode(exit_code, 0, stderr)
++    version_info = stdout[0]
++    self.assertEqual(version_info, "bazel no_version")
++
++    # build //... -s should be ignored since --version is passed
++    exit_code, stdout, stderr = self.RunBazel(["--version", "build", "//...", "-s"])
++    self.AssertExitCode(exit_code, 0, stderr)
++    version_info = stdout[0]
++    self.assertEqual(version_info, "bazel no_version")
++
++  def testStartupVersionOptionWithTrustedInstallBase(self):
++    install_base = self.ScratchDir("my_install_base")
++    self.ScratchFile("my_install_base/build-label.txt", ["x.x.x"])
++
++    exit_code, stdout, stderr = self.RunBazel([
++        "--version", "--install_base=%s" % install_base, "--trust_install_base"])
++    self.AssertExitCode(exit_code, 0, stderr)
++    version_info = stdout[0]
++    self.assertEqual(version_info, "bazel x.x.x")
++
++
++if __name__ == "__main__":
++  unittest.main()
