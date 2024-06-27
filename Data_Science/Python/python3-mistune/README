@@ -5,4 +5,4 @@ It has the following features:
  *  Very Fast. It is the fastest in all pure Python markdown parsers.
  *  More Features. Table, footnotes, autolink, fenced code etc.
 
-This SlackBuild only supports the python3 build of mistune.
+This SlackBuild only installs the python3 build of mistune.
