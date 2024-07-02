@@ -81,22 +81,24 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
-# Fix mandir directory.
-sed -i 's|share/man|man|' CMakeLists.txt
-
 mkdir build
 cd build
   cmake -G "Unix Makefiles" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
     -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
-    -DPODOFO_BUILD_STATIC:BOOL=FALSE \
+    -DPODOFO_BUILD_TOOLS=TRUE \
+    -DPODOFO_BUILD_STATIC=FALSE \
     -DCMAKE_CXX_STANDARD:STRING=11 \
     -DCMAKE_BUILD_TYPE=Release ..
 
   make VERBOSE=1
   make install/strip DESTDIR=$PKG
 cd -
+
+# Install man files
+install -Dm644 -t $PKG/usr/man/man1 man/*.1
+find $PKG/usr/man -type f -exec gzip -9 {} \;
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a \
