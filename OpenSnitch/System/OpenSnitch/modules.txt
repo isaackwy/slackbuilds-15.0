@@ -96,4 +96,4 @@ google.golang.org/protobuf/types/known/wrapperspb
 google.golang.org/protobuf/types/pluginpb
 # honnef.co/go/tools v0.2.2
 ## explicit
-honnef.co/go/tools/cmd/staticcheck
+honnef.co/go/tools
