@@ -27,7 +27,6 @@ DOWNLOAD="https://github.com/evilsocket/opensnitch/archive/v1.6.6/opensnitch-1.6
           https://github.com/protocolbuffers/protobuf-go/archive/v1.26.0/protobuf-go-1.26.0.tar.gz \
           https://github.com/dominikh/go-tools/archive/v0.2.2/go-tools-0.2.2.tar.gz"
 MD5SUM="95ff63a05327f6456da567604a6f40da \
-        6d8317d89e3928b9e6641035e7b95e57 \
         e23b3240fc9e807fcffb97d12a433138 \
         7bff4630d93dc4f9081b5dbc31067899 \
         5e4827e740a060b8f97116955718de19 \
