@@ -11,4 +11,4 @@ file systems and integrates readily with other Python GIS packages
 such as pyproj, Rtree and Shapely.
 
 Fiona 1.9.4.post1 is the last available version for Slackware 15.0.
-Newer versions require a newer Cython (at >= 3.0.2)
+Newer versions require a newer Cython (at >= 3.0.2).
