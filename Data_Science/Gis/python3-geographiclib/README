@@ -1,3 +1,0 @@
-This package is a python implementation of the geodesic routines in
-GeographicLib. It allows the solution of geodesic problems on an
-ellipsoid model of the earth.
