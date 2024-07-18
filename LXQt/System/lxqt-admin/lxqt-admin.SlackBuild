@@ -80,6 +80,10 @@ find -L . \
 # See https://github.com/lxqt/lxqt-admin/pull/280
 patch -p1 < $CWD/bash-shell-default.patch
 
+# Various code improvements
+# See https://github.com/lxqt/lxqt-admin/pull/284
+patch -p1 < $CWD/code-improvements.patch
+
 mkdir build
 cd build
   cmake \
