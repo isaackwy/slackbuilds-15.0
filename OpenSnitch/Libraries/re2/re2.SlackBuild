@@ -78,7 +78,7 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-# Do not find Googletest and Benchmark. This SlackBuild is not building tests.
+# Do not find Googletest and Benchmark. This SlackBuild is not making tests.
 # That is, reverse the following commit:
 # https://github.com/google/re2/commit/2b354c6ad0d0479dcff68dab23fb0d1143a482c2
 patch -p1 < $CWD/do-not-find-googletest-and-benchmark.patch
