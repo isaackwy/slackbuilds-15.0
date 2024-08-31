@@ -1,4 +1,4 @@
-PRGNAM="testpath"
+PRGNAM="python3-testpath"
 VERSION="0.6.0"
 HOMEPAGE="https://github.com/jupyter/testpath"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/t/testpath/testpath-0.6.0.tar.gz"
