@@ -1,4 +1,4 @@
-PRGNAM="pandocfilters"
+PRGNAM="python3-pandocfilters"
 VERSION="1.5.1"
 HOMEPAGE="https://github.com/jgm/pandocfilters"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/p/pandocfilters/pandocfilters-1.5.1.tar.gz"
