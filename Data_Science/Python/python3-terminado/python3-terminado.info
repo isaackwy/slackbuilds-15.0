@@ -1,4 +1,4 @@
-PRGNAM="terminado"
+PRGNAM="python3-terminado"
 VERSION="0.18.1"
 HOMEPAGE="https://github.com/jupyter/terminado"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/t/terminado/terminado-0.18.1.tar.gz"
