@@ -51,6 +51,9 @@ cd $PKG
 tar xvf $CWD/$PRGNAM"_"$VERSION.tar.xz --strip-components=1 \
   $PRGNAM/usr/
 
+# Remove the folder-color-switcher folder
+rm -r usr/share/folder-color-switcher
+
 # Remove broken relative symlinks
 find $PKG/usr/share/icons -xtype l -delete
 
