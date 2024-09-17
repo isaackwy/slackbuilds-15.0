@@ -78,7 +78,7 @@ install -m 0644 vhba.ko $PKG/lib/modules/$KERNEL/extra/
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION"_"$KERNEL
 cp -a \
-  AUTHORS COPYING ChangeLog INSTALL README \
+  AUTHORS COPYING ChangeLog README \
   $PKG/usr/doc/$PRGNAM-$VERSION"_"$KERNEL/
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION"_"$KERNEL/$PRGNAM.SlackBuild
 
