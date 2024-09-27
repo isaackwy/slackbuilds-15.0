@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Slackware build script for qt5gtk2
+# Slackware build script for qt6gtk2
 
 # Copyright 2024 Isaac Yu <isaacyu@protonmail.com>
 # All rights reserved.
