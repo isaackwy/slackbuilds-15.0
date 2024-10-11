@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Slackware build script for pytz
+# Slackware build script for python3-pytz
 
 # Copyright 2009-2021 Heinz Wiesinger, Amsterdam, The Netherlands <pprkut@slackbuilds.org>
 # Copyright 2024 Isaac Yu <isaacyu@protonmail.com>
