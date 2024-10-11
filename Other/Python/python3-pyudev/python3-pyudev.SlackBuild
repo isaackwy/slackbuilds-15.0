@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Slackware build script for pyudev
+# Slackware build script for python3-pyudev
 
 # Copyright 2012 Jon Ware <jon@waremail.net>
 # Copyright 2018-2024 Isaac Yu <isaacyu@protonmail.com>
