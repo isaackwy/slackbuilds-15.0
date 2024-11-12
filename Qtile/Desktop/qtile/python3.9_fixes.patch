@@ -28,6 +28,15 @@
  if TYPE_CHECKING:
      from collections.abc import Callable, Coroutine
      from typing import Any, TypeVar
+@@ -112,7 +112,7 @@
+ 
+     Which is returned as (1.0, 0.0, 0.0, 0.5).
+     """
+-    if isinstance(x, tuple | list):
++    if isinstance(x, (tuple, list)):
+         if len(x) == 4:
+             alpha = x[-1]
+         else:
 @@ -152,7 +152,7 @@
      Where a list of colours is passed, returns True if any
      colour is not fully opaque.
