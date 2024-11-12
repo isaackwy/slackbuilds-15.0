@@ -1,0 +1,39 @@
+--- a/libqtile/utils.py
++++ b/libqtile/utils.py
+@@ -31,7 +31,7 @@
+ from pathlib import Path
+ from random import randint
+ from shutil import which
+-from typing import TYPE_CHECKING
++from typing import TYPE_CHECKING, Union
+ 
+ try:
+     from dbus_next import AuthError, Message, Variant
+@@ -44,8 +44,8 @@
+ 
+ from libqtile.log_utils import logger
+ 
+-ColorType = str | tuple[int, int, int] | tuple[int, int, int, float]
+-ColorsType = ColorType | list[ColorType]
++ColorType = Union[str, tuple[int, int, int], tuple[int, int, int, float]]
++ColorsType = Union[ColorType, list[ColorType]]
+ if TYPE_CHECKING:
+     from collections.abc import Callable, Coroutine
+     from typing import Any, TypeVar
+--- a/libqtile/command/graph.py
++++ b/libqtile/command/graph.py
+@@ -26,7 +26,7 @@
+ from __future__ import annotations
+ 
+ import abc
+-from typing import TYPE_CHECKING
++from typing import TYPE_CHECKING, Union
+ 
+ if TYPE_CHECKING:
+     SelectorType = tuple[str, str | int | None]
+@@ -218,4 +218,4 @@
+ }
+ 
+ 
+-GraphType = CommandGraphNode | CommandGraphCall
++GraphType = Union[CommandGraphNode, CommandGraphCall]
