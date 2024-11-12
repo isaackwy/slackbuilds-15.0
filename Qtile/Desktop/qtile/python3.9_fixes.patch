@@ -1,11 +1,3 @@
---- a/libqtile/bar.py
-+++ b/libqtile/bar.py
-@@ -767,4 +767,4 @@
-                 self.window.keep_above(enable=True)
- 
- 
--BarType = Bar | Gap
-+BarType = typing.Union[Bar, Gap]
 --- a/libqtile/backend/base/window.py
 +++ b/libqtile/backend/base/window.py
 @@ -581,4 +581,4 @@
@@ -36,6 +28,14 @@
  
  
  class PointerConstraint(HasListeners):
+--- a/libqtile/bar.py
++++ b/libqtile/bar.py
+@@ -767,4 +767,4 @@
+                 self.window.keep_above(enable=True)
+ 
+ 
+-BarType = Bar | Gap
++BarType = typing.Union[Bar, Gap]
 --- a/libqtile/command/graph.py
 +++ b/libqtile/command/graph.py
 @@ -26,7 +26,7 @@
