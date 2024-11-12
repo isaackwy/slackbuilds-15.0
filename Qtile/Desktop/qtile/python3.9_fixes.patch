@@ -1,3 +1,11 @@
+--- a/libqtile/bar.py
++++ b/libqtile/bar.py
+@@ -767,4 +767,4 @@
+                 self.window.keep_above(enable=True)
+ 
+ 
+-BarType = Bar | Gap
++BarType = typing.Union[Bar, Gap]
 --- a/libqtile/utils.py
 +++ b/libqtile/utils.py
 @@ -31,7 +31,7 @@
@@ -20,6 +28,14 @@
  if TYPE_CHECKING:
      from collections.abc import Callable, Coroutine
      from typing import Any, TypeVar
+--- a/libqtile/backend/base/window.py
++++ b/libqtile/backend/base/window.py
+@@ -581,4 +581,4 @@
+         )
+ 
+ 
+-WindowType = Window | Internal | Static
++WindowType = typing.Union[Window, Internal, Static]
 --- a/libqtile/command/graph.py
 +++ b/libqtile/command/graph.py
 @@ -26,7 +26,7 @@
