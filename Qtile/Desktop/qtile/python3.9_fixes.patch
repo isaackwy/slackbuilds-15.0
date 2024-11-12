@@ -6,55 +6,6 @@
  
 -BarType = Bar | Gap
 +BarType = typing.Union[Bar, Gap]
---- a/libqtile/utils.py
-+++ b/libqtile/utils.py
-@@ -31,7 +31,7 @@
- from pathlib import Path
- from random import randint
- from shutil import which
--from typing import TYPE_CHECKING
-+from typing import TYPE_CHECKING, Union
- 
- try:
-     from dbus_next import AuthError, Message, Variant
-@@ -44,8 +44,8 @@
- 
- from libqtile.log_utils import logger
- 
--ColorType = str | tuple[int, int, int] | tuple[int, int, int, float]
--ColorsType = ColorType | list[ColorType]
-+ColorType = Union[str, tuple[int, int, int], tuple[int, int, int, float]]
-+ColorsType = Union[ColorType, list[ColorType]]
- if TYPE_CHECKING:
-     from collections.abc import Callable, Coroutine
-     from typing import Any, TypeVar
-@@ -112,7 +112,7 @@
- 
-     Which is returned as (1.0, 0.0, 0.0, 0.5).
-     """
--    if isinstance(x, tuple | list):
-+    if isinstance(x, (tuple, list)):
-         if len(x) == 4:
-             alpha = x[-1]
-         else:
-@@ -152,7 +152,7 @@
-     Where a list of colours is passed, returns True if any
-     colour is not fully opaque.
-     """
--    if isinstance(colour, str | tuple):
-+    if isinstance(colour, (str, tuple)):
-         return rgb(colour)[3] < 1
-     return any(has_transparency(c) for c in colour)
- 
-@@ -161,7 +161,7 @@
-     """
-     Returns a tuple of (r, g, b) with no alpha.
-     """
--    if isinstance(colour, str | tuple):
-+    if isinstance(colour, (str, tuple)):
-         return tuple(x * 255.0 for x in rgb(colour)[:3])
-     return [remove_transparency(c) for c in colour]
- 
 --- a/libqtile/backend/base/window.py
 +++ b/libqtile/backend/base/window.py
 @@ -581,4 +581,4 @@
@@ -128,6 +79,55 @@
              raise ValueError("Split rect should have 4 float/int members.")
  
          if isinstance(layout, ScreenSplit):
+--- a/libqtile/utils.py
++++ b/libqtile/utils.py
+@@ -31,7 +31,7 @@
+ from pathlib import Path
+ from random import randint
+ from shutil import which
+-from typing import TYPE_CHECKING
++from typing import TYPE_CHECKING, Union
+ 
+ try:
+     from dbus_next import AuthError, Message, Variant
+@@ -44,8 +44,8 @@
+ 
+ from libqtile.log_utils import logger
+ 
+-ColorType = str | tuple[int, int, int] | tuple[int, int, int, float]
+-ColorsType = ColorType | list[ColorType]
++ColorType = Union[str, tuple[int, int, int], tuple[int, int, int, float]]
++ColorsType = Union[ColorType, list[ColorType]]
+ if TYPE_CHECKING:
+     from collections.abc import Callable, Coroutine
+     from typing import Any, TypeVar
+@@ -112,7 +112,7 @@
+ 
+     Which is returned as (1.0, 0.0, 0.0, 0.5).
+     """
+-    if isinstance(x, tuple | list):
++    if isinstance(x, (tuple, list)):
+         if len(x) == 4:
+             alpha = x[-1]
+         else:
+@@ -152,7 +152,7 @@
+     Where a list of colours is passed, returns True if any
+     colour is not fully opaque.
+     """
+-    if isinstance(colour, str | tuple):
++    if isinstance(colour, (str, tuple)):
+         return rgb(colour)[3] < 1
+     return any(has_transparency(c) for c in colour)
+ 
+@@ -161,7 +161,7 @@
+     """
+     Returns a tuple of (r, g, b) with no alpha.
+     """
+-    if isinstance(colour, str | tuple):
++    if isinstance(colour, (str, tuple)):
+         return tuple(x * 255.0 for x in rgb(colour)[:3])
+     return [remove_transparency(c) for c in colour]
+
 --- a/libqtile/widget/base.py
 +++ b/libqtile/widget/base.py
 @@ -35,7 +35,7 @@
