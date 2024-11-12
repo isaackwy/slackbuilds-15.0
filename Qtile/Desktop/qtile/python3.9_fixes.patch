@@ -169,7 +169,7 @@
 -        self.on_host_removed: Callable | None = None
 +        self.on_item_added: Optional[Callable] = None
 +        self.on_host_added: Optional[Callable] = None
-+        self.on_item_removed: Optional[Callable] = None 
++        self.on_item_removed: Optional[Callable] = None
 +        self.on_host_removed: Optional[Callable] = None
  
      async def start(self):
