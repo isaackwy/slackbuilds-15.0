@@ -28,6 +28,24 @@
  if TYPE_CHECKING:
      from collections.abc import Callable, Coroutine
      from typing import Any, TypeVar
+@@ -152,7 +152,7 @@
+     Where a list of colours is passed, returns True if any
+     colour is not fully opaque.
+     """
+-    if isinstance(colour, str | tuple):
++    if isinstance(colour, (str, tuple)):
+         return rgb(colour)[3] < 1
+     return any(has_transparency(c) for c in colour)
+ 
+@@ -161,7 +161,7 @@
+     """
+     Returns a tuple of (r, g, b) with no alpha.
+     """
+-    if isinstance(colour, str | tuple):
++    if isinstance(colour, (str, tuple)):
+         return tuple(x * 255.0 for x in rgb(colour)[:3])
+     return [remove_transparency(c) for c in colour]
+ 
 --- a/libqtile/backend/base/window.py
 +++ b/libqtile/backend/base/window.py
 @@ -581,4 +581,4 @@
