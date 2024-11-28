@@ -57,8 +57,8 @@ rm -r usr/share/folder-color-switcher
 # Remove broken relative symlinks
 find $PKG/usr/share/icons -xtype l -delete
 
-# Add missing icons for Bleachbit
-# This fix does not apply to the Mint-Y theme itself
+# Add suitable icons for Bleachbit
+# These fixes do not apply to the Mint-Y theme itself
 COLORS=( Aqua Blue Cyan Grey Navy Orange Pink Purple Red Sand Teal Yaru )
 for COLOR in ${COLORS[@]}; do
   cp $CWD/icons/22/edit-find.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/edit-find.svg
