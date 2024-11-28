@@ -57,22 +57,13 @@ rm -r usr/share/folder-color-switcher
 # Remove broken relative symlinks
 find $PKG/usr/share/icons -xtype l -delete
 
-# Add missing icons for various programs
+# Add missing icons for Bleachbit
 COLORS=( Aqua Blue Cyan Grey Navy Orange Pink Purple Red Sand Teal Yaru )
 for COLOR in ${COLORS[@]}; do
-
-  # Icons for BleachBit
   cp $CWD/icons/22/edit-find.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/edit-find.svg
   cp $CWD/icons/22/edit-clear-all.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/edit-clear-all.svg
   cp $CWD/icons/22/edit-clear-list.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/edit-clear-list.svg
   cp $CWD/icons/22/process-stop.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/process-stop.svg
-
-  # Icons for PCManFM-Qt
-  cp $CWD/icons/22/view-list-icons.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/view-list-icons.svg
-  cp $CWD/icons/22/view-grid.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/view-grid.svg
-  cp $CWD/icons/22/view-preview.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/view-preview.svg
-  cp $CWD/icons/22/view-list-text.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/view-list-text.svg
-  cp $CWD/icons/22/view-list-details.svg $PKG/usr/share/icons/Mint-Y-$COLOR/places/22/view-list-details.svg
 done
 
 # install docs & license
