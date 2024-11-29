@@ -1,0 +1,8 @@
+This is a fork of Mint-Y-Icons which brings back monochrome icons.
+
+Since Linux Mint 21.2, monochrome icons had been replaced by symbolic
+ones. However, the missing icons are inherited from other themes
+(ex. Adwaita), making the visual experience mixed and inconsistent.
+
+The fork addresses visual inconsistency issues within certain
+applications (ex. BleachBit).
