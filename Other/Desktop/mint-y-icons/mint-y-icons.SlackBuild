@@ -58,7 +58,7 @@ rm -r usr/share/folder-color-switcher
 find $PKG/usr/share/icons -xtype l -delete
 
 # Add monochrome icons for various programs
-# This change does not apply to the Mint-Y theme itself
+# These changes do not apply to the Mint-Y theme itself
 COLORS=( Aqua Blue Cyan Grey Navy Orange Pink Purple Red Sand Teal Yaru )
 for COLOR in ${COLORS[@]}; do
 
