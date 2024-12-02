@@ -48,8 +48,8 @@ rm -rf $PKG
 mkdir -p $TMP $PKG/usr/doc/$PRGNAM-$VERSION $OUTPUT
 cd $PKG
 # tar directly into $PKG
-tar xvf $CWD/$PRGNAM"_"$VERSION.tar.xz --strip-components=1 \
-  $PRGNAM/usr/
+tar xvf $CWD/$PRGNAM-$VERSION.tar.gz --strip-components=1 \
+  $PRGNAM-$VERSION/usr/
 
 # Remove the folder-color-switcher folder
 rm -r usr/share/folder-color-switcher
@@ -60,8 +60,8 @@ find $PKG/usr/share/icons -xtype l -delete
 # install docs & license
 (
   cd $PKG/usr/doc/$PRGNAM-$VERSION
-  tar xvf $CWD/$PRGNAM"_"$VERSION.tar.xz --strip-components=2 \
-    $PRGNAM/debian/{changelog,copyright}
+  tar xvf $CWD/$PRGNAM-$VERSION.tar.gz --strip-components=2 \
+    $PRGNAM-$VERSION/debian/{changelog,copyright}
 )
 
 chown -R root:root .
