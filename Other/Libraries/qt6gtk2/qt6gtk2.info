@@ -1,6 +1,6 @@
 PRGNAM="qt6gtk2"
 VERSION="0.4"
-HOMEPAGE="https://www.opencode.net/trialuser/qt6gtk2/"
+HOMEPAGE="https://www.opencode.net/trialuser/qt6gtk2"
 DOWNLOAD="UNSUPPORTED"
 MD5SUM=""
 DOWNLOAD_x86_64="https://www.opencode.net/trialuser/qt6gtk2/-/archive/0.4/qt6gtk2-0.4.tar.gz"
