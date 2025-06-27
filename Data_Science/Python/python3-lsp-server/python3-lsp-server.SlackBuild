@@ -72,7 +72,7 @@ sed -i "s|pyflakes>=3.1.0,<3.2.0|pyflakes>=3.1.0|" -i pyproject.toml
 sed -i "s|pylint>=2.5.0,<3.1|pylint>=2.5.0|" -i pyproject.toml
 
 # If yapf is still on 0.32.0, take this into account
-# Revert the following pull requests:
+# This involves reverting the following pull requests:
 # https://github.com/python-lsp/python-lsp-server/pull/346
 # https://github.com/python-lsp/python-lsp-server/pull/377 
 sed -i "s|yapf>=0.33.0|yapf>=0.32.0|" -i pyproject.toml
