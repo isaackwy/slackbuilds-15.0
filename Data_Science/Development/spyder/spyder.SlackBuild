@@ -85,6 +85,13 @@ patch -p1 -b < $CWD/replace-pkg_resources.patch
 
 python3 setup.py install --root=$PKG
 
+# If Python version is 3.9 (i.e. Slackware 15 is installed):
+# Then look for additional Python modules at /opt/python3.9/site-packages
+# This is for fixing an incorrect claim of missing setuptools
+PYVER=$(python3 -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+[[ $PYVER == 3.9 ]] && sed -i "/import sys/a\
+sys.path.insert(0, '/opt/python$PYVER/site-packages')" $PKG/usr/bin/spyder
+
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
