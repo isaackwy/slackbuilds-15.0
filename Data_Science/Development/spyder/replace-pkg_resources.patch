@@ -248,7 +248,7 @@
  import itertools
  import os
  import os.path as osp
-@@ -19,13 +19,12 @@
+@@ -19,12 +19,12 @@
  import subprocess
  import sys
  import tempfile
@@ -259,11 +259,10 @@
  # Third party imports
  from packaging.version import parse
 -import pkg_resources
--import psutil
+ import psutil
  
  # Local imports
- from spyder.config.base import (running_under_pytest, get_home_dir,
-@@ -845,13 +844,9 @@
+@@ -845,13 +845,9 @@
  
  def get_package_version(package_name):
      """Return package version or None if version can't be retrieved."""
@@ -278,7 +277,7 @@
 +    except PackageNotFoundError:
          return None
  
-
+ 
 --- a/spyder/utils/tests/test_programs.py
 +++ b/spyder/utils/tests/test_programs.py
 @@ -287,7 +287,7 @@
