@@ -134,7 +134,7 @@ do
   # The general rule is to extract the tarball: "tar xvf $CWD/$NAME-*.tar.gz"
   # However, a few exceptions to this are necessary.
   if [ $DIR = "vendor/github.com/golang/protobuf" ]; then
-    tar xvf $CWD/$NAME-[0-9]*.tar.gz
+    tar xvf $CWD/$NAME-1.5.0.tar.gz
   elif [ $DIR = "vendor/github.com/mdlayher/netlink" ]; then
     tar xvf $CWD/$NAME-1.7.2.tar.gz
   elif [ $DIR = "vendor/github.com/varlink/go" ]; then
@@ -144,7 +144,7 @@ do
   elif [ $DIR = "vendor/google.golang.org/genproto" ]; then
     tar xvf $CWD/go-$NAME-*.tar.gz
   elif [ $DIR = "vendor/google.golang.org/protobuf" ]; then
-    tar xvf $CWD/$NAME-go-*.tar.gz
+    tar xvf $CWD/$NAME-go-1.26.0.tar.gz
   else
     tar xvf $CWD/$NAME-*.tar.gz
   fi
