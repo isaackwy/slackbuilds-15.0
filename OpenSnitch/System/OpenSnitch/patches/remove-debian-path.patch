@@ -12,4 +12,4 @@ https://gitlab.archlinux.org/archlinux/packaging/packages/opensnitch/-/blob/main
 -
  from opensnitch.service import UIService
  from opensnitch.config import Config
- from opensnitch.utils import Themes, Utils, Versions
+ from opensnitch.utils import Themes, Utils, Versions, Message
