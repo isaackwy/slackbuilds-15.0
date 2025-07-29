@@ -108,7 +108,7 @@ export GOCACHE="${GOCACHE:-$TMP/$PRGNAM-$VERSION/go-cache}"
 export GOMODCACHE="${GOMODCACHE:-$TMP/$PRGNAM-$VERSION/go}"
 
 make
-make install DESTDIR=$PKG PREFIX=/usr
+make install DESTDIR=$PKG PREFIX=/usr PAM_MODULE_DIR=/lib${LIBDIRSUFFIX}/security
 
 # Allow fscrypt to check login passphrase when creating a login protector
 install -Dm644 $CWD/pam_config $PKG/etc/pam.d/fscrypt
