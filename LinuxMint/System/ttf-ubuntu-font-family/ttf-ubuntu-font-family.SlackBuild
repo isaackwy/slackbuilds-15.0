@@ -51,7 +51,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf ubuntu-font-family-$VERSION
-unzip $CWD/0cef8205-ubuntu-font-family-$VERSION.zip ubuntu-font-family-0.83/*
+unzip $CWD/0cef8205-ubuntu-font-family-$VERSION.zip ubuntu-font-family-$VERSION/*
 cd ubuntu-font-family-$VERSION
 chown -R root:root .
 find -L . \
