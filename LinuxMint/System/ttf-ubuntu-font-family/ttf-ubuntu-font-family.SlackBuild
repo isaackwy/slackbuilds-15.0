@@ -35,6 +35,8 @@ TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
 ARCH=noarch
+SRCNAM=ubuntu-font-family
+SRCPREFIX=0cef8205
 
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
@@ -50,9 +52,9 @@ set -eu
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf ubuntu-font-family-$VERSION
-unzip $CWD/0cef8205-ubuntu-font-family-$VERSION.zip ubuntu-font-family-$VERSION/*
-cd ubuntu-font-family-$VERSION
+rm -rf $SRCNAM-$VERSION
+unzip $CWD/$SRCPREFIX-$SRCNAM-$VERSION.zip $SRCNAM-$VERSION/* || unzip $CWD/$SRCNAM-$VERSION.zip $SRCNAM-$VERSION/*
+cd $SRCNAM-$VERSION
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
