@@ -9,7 +9,7 @@
 xreader: xreader (A generic Document Reader)
 xreader:
 xreader: Xreader is a document viewer capable of displaying multiple and single
-xreader: page document formats like PDF and postscript.
+xreader: page document formats like PDF and Postscript.
 xreader:
 xreader: URL: https://github.com/linuxmint/xreader
 xreader:
