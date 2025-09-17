@@ -23,7 +23,7 @@ DOWNLOAD="https://github.com/evilsocket/opensnitch/archive/v1.7.1/opensnitch-1.7
           https://github.com/google/go-cmp/archive/v0.6.0/go-cmp-0.6.0.tar.gz \
           https://github.com/golang/exp/archive/c95f2b4/exp-c95f2b4c22f226b18030fd3b7d5cd47e0d12395a.tar.gz \
           https://github.com/golang/sync/archive/v0.6.0/sync-0.6.0.tar.gz"
-MD5SUM="5c85fae5ed7497a0d639e7c6b8dd8c23 \
+MD5SUM="7c42941541df1cdb3b04eafa6ea4e161 \
         a489bbe9f2f2df1f7f029fc7da2fccff \
         e23b3240fc9e807fcffb97d12a433138 \
         7bff4630d93dc4f9081b5dbc31067899 \
