@@ -1,7 +1,7 @@
 PRGNAM="OpenSnitch"
 VERSION="1.7.1"
 HOMEPAGE="https://github.com/evilsocket/opensnitch"
-DOWNLOAD="https://github.com/evilsocket/opensnitch/archive/v1.7.0.0/opensnitch-1.7.0.0.tar.gz \
+DOWNLOAD="https://github.com/evilsocket/opensnitch/archive/v1.7.1/opensnitch-1.7.1.tar.gz \
           https://github.com/cilium/ebpf/archive/v0.16.0/ebpf-0.16.0.tar.gz \
           https://github.com/fsnotify/fsnotify/archive/v1.4.7/fsnotify-1.4.7.tar.gz \
           https://github.com/golang/protobuf/archive/v1.5.0/protobuf-1.5.0.tar.gz \
