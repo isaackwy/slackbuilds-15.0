@@ -1,11 +1,6 @@
-commit 478d595a7d086423733e9f5da5edfe9f1df48682
-Author: Troy Curtis Jr <troy@troycurtisjr.com>
-Date:   Thu Aug 10 21:51:15 2023 -0400
-
-    Make asyncore support optional for Python 3.
-    
-    Fixes #204.
-
+Make asyncore support optional for Python 3.
+Patch taken from Arch Linux:
+https://gitlab.archlinux.org/archlinux/packaging/packages/python-pyinotify/-/blob/main/pyinotify-python-3.12-fix.patch
 diff --git a/python3/pyinotify.py b/python3/pyinotify.py
 index bc24313..f4a5a90 100755
 --- a/python3/pyinotify.py
