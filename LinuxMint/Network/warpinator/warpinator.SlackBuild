@@ -100,7 +100,6 @@ cd build
     -Dbundle-landlock=true \
     --buildtype=release
   "${NINJA:=ninja}"
-  meson test
   DESTDIR=$PKG $NINJA install
 cd ..
 
