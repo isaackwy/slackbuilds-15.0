@@ -95,11 +95,12 @@ cd build
     --mandir=/usr/man \
     --sysconfdir=/etc \
     --libexecdir=/usr/lib$LIBDIRSUFFIX \
-    -Dbundle-zeroconf=true \
+    -Dbundle-zeroconf=false \
     -Dbundle-grpc=false \
     -Dbundle-landlock=true \
     --buildtype=release
   "${NINJA:=ninja}"
+  meson test
   DESTDIR=$PKG $NINJA install
 cd ..
 
