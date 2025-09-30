@@ -33,7 +33,7 @@ PKGTYPE=${PKGTYPE:-tgz}
 
 ARCH=noarch
 
-# Initalize SRCPREFIX variable for extracting source tarball
+# Initalize SRCPREFIX variable for extracting tarball
 SRCPREFIX=master.lmde7
 
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
