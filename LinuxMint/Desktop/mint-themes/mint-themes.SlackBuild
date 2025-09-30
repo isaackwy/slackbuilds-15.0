@@ -34,7 +34,7 @@ PKGTYPE=${PKGTYPE:-tgz}
 ARCH=noarch
 
 # Initalize SRCPREFIX variable for extracting the tarball
-SRCPREFIX=master.lmde7
+SRCSUFFIX=master.lmde7
 
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
@@ -55,7 +55,7 @@ rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
 rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$SRCPREFIX.tar.gz --transform s/$PRGNAM-$SRCPREFIX/$PRGNAM-$VERSION/
+tar xvf $CWD/$PRGNAM-$SRCSUFFIX.tar.gz --transform s/$PRGNAM-$SRCSUFFIX/$PRGNAM-$VERSION/
 cd $PRGNAM-$VERSION
 chown -R root:root .
 find -L . \
