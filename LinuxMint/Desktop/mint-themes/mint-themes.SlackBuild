@@ -48,8 +48,8 @@ OUTPUT=${OUTPUT:-/tmp}
 set -e
 
 # "tar xvf" command explanation:
-# The source tarball contains a folder named 'mint-themes-master.lmde7'
-# While extracting the tarball, rename the extracted folder to 'mint-themes-2.3.3'
+# The source tarball is named 'mint-themes-master.lmde7'
+# Extract the tarball and rename the extracted folder to 'mint-themes-2.3.3'
 
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
