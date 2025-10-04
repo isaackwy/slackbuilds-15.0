@@ -1,8 +1,8 @@
 PRGNAM="OpenSnitch"
-VERSION="1.7.1"
+VERSION="1.7.2"
 HOMEPAGE="https://github.com/evilsocket/opensnitch"
-DOWNLOAD="https://github.com/evilsocket/opensnitch/archive/v1.7.1/opensnitch-1.7.1.tar.gz \
-          https://github.com/cilium/ebpf/archive/v0.16.0/ebpf-0.16.0.tar.gz \
+DOWNLOAD="https://github.com/evilsocket/opensnitch/archive/v1.7.2/opensnitch-1.7.2.tar.gz \
+          https://github.com/cilium/ebpf/archive/v0.19.0/ebpf-0.19.0.tar.gz \
           https://github.com/fsnotify/fsnotify/archive/v1.4.7/fsnotify-1.4.7.tar.gz \
           https://github.com/golang/protobuf/archive/v1.5.0/protobuf-1.5.0.tar.gz \
           https://github.com/google/gopacket/archive/v1.1.19/gopacket-1.1.19.tar.gz \
@@ -14,17 +14,16 @@ DOWNLOAD="https://github.com/evilsocket/opensnitch/archive/v1.7.1/opensnitch-1.7
           https://github.com/varlink/go/archive/v0.4.0/go-0.4.0.tar.gz \
           https://github.com/vishvananda/netlink/archive/v1.3.0/netlink-1.3.0.tar.gz \
           https://github.com/vishvananda/netns/archive/v0.0.4/netns-0.0.4.tar.gz \
-          https://github.com/golang/net/archive/v0.23.0/net-0.23.0.tar.gz \
-          https://github.com/golang/sys/archive/v0.20.0/sys-0.20.0.tar.gz \
-          https://github.com/golang/text/archive/v0.14.0/text-0.14.0.tar.gz \
+          https://github.com/golang/net/archive/v0.38.0/net-0.38.0.tar.gz \
+          https://github.com/golang/sys/archive/v0.31.0/sys-0.31.0.tar.gz \
+          https://github.com/golang/text/archive/v0.23.0/text-0.23.0.tar.gz \
           https://github.com/googleapis/go-genproto/archive/24fa4b2/go-genproto-24fa4b261c55da65468f2abfdae2b024eef27dfb.tar.gz \
           https://github.com/grpc/grpc-go/archive/v1.32.0/grpc-go-1.32.0.tar.gz \
           https://github.com/protocolbuffers/protobuf-go/archive/v1.26.0/protobuf-go-1.26.0.tar.gz \
           https://github.com/google/go-cmp/archive/v0.6.0/go-cmp-0.6.0.tar.gz \
-          https://github.com/golang/exp/archive/c95f2b4/exp-c95f2b4c22f226b18030fd3b7d5cd47e0d12395a.tar.gz \
-          https://github.com/golang/sync/archive/v0.6.0/sync-0.6.0.tar.gz"
-MD5SUM="7c42941541df1cdb3b04eafa6ea4e161 \
-        a489bbe9f2f2df1f7f029fc7da2fccff \
+          https://github.com/golang/sync/archive/v0.12.0/sync-0.12.0.tar.gz"
+MD5SUM="59a4e5ea0306c9b74f10a62db954c2bb \
+        edb6f8a7fb2125e8c7bb4751fe76edff \
         e23b3240fc9e807fcffb97d12a433138 \
         7bff4630d93dc4f9081b5dbc31067899 \
         c7ca96771a70a3734df976df46e3498a \
@@ -35,16 +34,15 @@ MD5SUM="7c42941541df1cdb3b04eafa6ea4e161 \
         320b70704abb4a2af1e20c79b240296e \
         3527e437021606aa13d0eb55f50edb75 \
         aeeb7ed8ebef126d3442ab1039fd22c3 \
-        5918a49a9fac325f9a4425511b92a319 \
-        fa37a0b1c9aaac95a907a8dfff1dc412 \
+        5960b33ac521ace7138d026e401a7916 \
+        a8b6c066dc1128d4827f946b80576ce8 \
         7b645e9b79a0c60a4272df2e6cc9a5f3 \
-        9f64144d4b1647ce4597abf657028a8d \
+        7c3766f030230e817f4bfb31f34c52dd \
         cbb310e9b9ede71e0ff38df5f5dc8268 \
         44d6398e2ee17187a8143446db595522 \
         2e97ffc1575be0c3c82702464a8d7e01 \
         5f88097e0cfd038e6f44c80c3580fa78 \
-        1cb22d1950f1652529c54182c013552f \
-        85888b0694f3bcbe23e64ced0c3446c7"
+        43665ed08f7a47e5d9340886f5835005"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
 REQUIRES="protoc-gen-go-grpc python3-grpcio python3-pyinotify python3-slugify"
