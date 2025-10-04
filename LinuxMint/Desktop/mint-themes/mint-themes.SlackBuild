@@ -33,9 +33,6 @@ PKGTYPE=${PKGTYPE:-tgz}
 
 ARCH=noarch
 
-# Initalize SRCPREFIX variable for extracting the tarball
-SRCSUFFIX=master.lmde7
-
 if [ ! -z "${PRINT_PACKAGE_NAME}" ]; then
   echo "$PRGNAM-$VERSION-$ARCH-$BUILD$TAG.$PKGTYPE"
   exit 0
@@ -47,16 +44,12 @@ OUTPUT=${OUTPUT:-/tmp}
 
 set -e
 
-# "tar xvf" command explanation:
-# The source tarball is named 'mint-themes-master.lmde7'
-# Extract the tarball and rename the extracted folder to 'mint-themes-2.3.3'
-
 rm -rf $PKG
 mkdir -p $TMP $PKG $OUTPUT
 cd $TMP
-rm -rf $PRGNAM-$VERSION
-tar xvf $CWD/$PRGNAM-$SRCSUFFIX.tar.gz --transform s/$PRGNAM-$SRCSUFFIX/$PRGNAM-$VERSION/
-cd $PRGNAM-$VERSION
+rm -rf $PRGNAM
+tar xvf $CWD/$PRGNAM"_"$VERSION.tar.xz
+cd $PRGNAM
 chown -R root:root .
 find -L . \
  \( -perm 777 -o -perm 775 -o -perm 750 -o -perm 711 -o -perm 555 \
