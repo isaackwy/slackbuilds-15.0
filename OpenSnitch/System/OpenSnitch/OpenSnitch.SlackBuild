@@ -85,7 +85,7 @@ if [ ${eBPF:-no} = yes ]; then
 
   # set -fno-stack-protector to work around a clang regression
   # this is fine - bpf programs do not use stack protectors
-  # Reference: https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=opensnitch-ebpf-module
+  # Reference: https://gitlab.archlinux.org/archlinux/packaging/packages/opensnitch/-/blob/main/PKGBUILD
   CLANG="clang -fno-stack-protector" ARCH="$ARCH" KERNEL_DIR="$KDIR" KERNEL_HEADERS="$KDIR" make
 
   # Remove debug info
