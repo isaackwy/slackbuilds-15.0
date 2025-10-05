@@ -47,7 +47,7 @@ set -e
 
 # "tar xvf" command explanation:
 # This SlackBuild downloads according to the commit, not the package version.
-# (i.e. the tarball file is mint-themes-35a509d46d0b105da1236e4ae4d3b6ace4d3f2a8.tar.gz)
+# (i.e. the tarball filename is mint-themes-35a509d46d0b105da1236e4ae4d3b6ace4d3f2a8.tar.gz)
 # Extract the tarball and rename the extracted folder to 'mint-themes-2.3.3'
 
 rm -rf $PKG
