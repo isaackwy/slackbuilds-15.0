@@ -5,3 +5,5 @@ The library is able to use GTK+ icon theme caches for faster
 icon lookup. The cache file can be generated with utility
 gtk-update-icon-cache on a theme directory. If the cache is not
 present, corrupted, or outdated, the normal slow lookup is still run.
+
+libqtxdg can be installed alongside libqt6xdg.
