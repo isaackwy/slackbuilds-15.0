@@ -5,6 +5,6 @@ DOWNLOAD="https://github.com/lxqt/lxqt-qtplugin/releases/download/2.2.0/lxqt-qtp
 MD5SUM="e3cc5c14605f50a93da768d9d58849a7"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="libfm-qt6 libqt6xdg"
+REQUIRES="libdbusmenu-lxqt libfm-qt6 libqt6xdg"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu@protonmail.com"
