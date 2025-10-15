@@ -8,7 +8,7 @@
               |-----handy-ruler------------------------------------------------------|
 lxqt-qt6plugin: lxqt-qt6plugin (LXQt Qt platform integration plugin)
 lxqt-qt6plugin:
-lxqt-qt6plugin: lxqt-qt6plugin provides the library libqtlxqt to integrate Qt with
+lxqt-qt6plugin: lxqt-qtplugin provides the library libqtlxqt to integrate Qt with
 lxqt-qt6plugin: LXQt. With this plugin, all Qt-based programs can adopt settings of
 lxqt-qt6plugin: LXQt, such as the icon theme.
 lxqt-qt6plugin:
