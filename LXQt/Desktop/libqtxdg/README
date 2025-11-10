@@ -6,5 +6,5 @@ icon lookup. The cache file can be generated with utility
 gtk-update-icon-cache on a theme directory. If the cache is not
 present, corrupted, or outdated, the normal slow lookup is still run.
 
-This SlackBuild (which supports qt5) can be installed alongside
-libqt6xdg (which instead supports qt6).
+libqtxdg (which supports qt5) can be installed alongside libqt6xdg
+(which instead supports qt6).
