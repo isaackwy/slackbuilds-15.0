@@ -1,4 +1,4 @@
-PRGNAM="numpydoc"
+PRGNAM="python3-numpydoc"
 VERSION="1.6.0"
 HOMEPAGE="https://github.com/numpy/numpydoc"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/n/numpydoc/numpydoc-1.6.0.tar.gz"
