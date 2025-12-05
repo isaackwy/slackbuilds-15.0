@@ -1,4 +1,4 @@
-PRGNAM="tinycss2"
+PRGNAM="python3-tinycss2"
 VERSION="1.4.0"
 HOMEPAGE="https://www.courtbouillon.org/tinycss2"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/t/tinycss2/tinycss2-1.4.0.tar.gz"
