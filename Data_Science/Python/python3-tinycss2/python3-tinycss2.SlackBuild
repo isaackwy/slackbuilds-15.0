@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# Slackware build script for tinycss2
+# Slackware build script for python3-tinycss2
 
 # Copyright 2021-2024 Dimitris Zlatanidis Orestiada, Greece <d.zlatanidis@gmail.com>
 # Copyright 2024 Isaac Yu <isaacyu@protonmail.com>
