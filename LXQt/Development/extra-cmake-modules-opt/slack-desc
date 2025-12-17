@@ -6,7 +6,7 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
                        |-----handy-ruler------------------------------------------------------|
-extra-cmake-modules-opt: extra-cmake-modules-opt (a newer extra-cmake-modules in /opt)
+extra-cmake-modules-opt: extra-cmake-modules-opt (newer extra-cmake-modules in /opt)
 extra-cmake-modules-opt:
 extra-cmake-modules-opt: This SlackBuild installs a newer version of extra-cmake-modules in the
 extra-cmake-modules-opt: /opt directory.
