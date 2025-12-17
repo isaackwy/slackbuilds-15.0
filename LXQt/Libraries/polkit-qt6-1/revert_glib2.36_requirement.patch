@@ -1,0 +1,142 @@
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -44,7 +44,7 @@
+ 
+ pkg_check_modules(POLKIT_GOBJECT polkit-gobject-1 REQUIRED IMPORTED_TARGET)
+ pkg_check_modules(POLKIT_AGENT polkit-agent-1 REQUIRED IMPORTED_TARGET)
+-pkg_check_modules(GLIB2 glib-2.0>=2.36 REQUIRED IMPORTED_TARGET)
++pkg_check_modules(GLIB2 glib-2.0 REQUIRED IMPORTED_TARGET)
+ pkg_check_modules(GOBJECT gobject-2.0 REQUIRED IMPORTED_TARGET)
+ 
+ add_definitions(-DQT_NO_KEYWORDS)
+--- a/agent/polkitqt1-agent-listener.cpp
++++ b/agent/polkitqt1-agent-listener.cpp
+@@ -34,6 +34,8 @@
+ Listener::Listener(QObject *parent)
+         : QObject(parent), d(new ListenerPrivate)
+ {
++    g_type_init();
++
+     d->listener = polkit_qt_listener_new();
+ 
+     qDebug() << "New PolkitAgentListener " << d->listener;
+@@ -44,6 +46,8 @@
+ Listener::Listener(PolkitAgentListener *listener, QObject *parent)
+         : QObject(parent), d(new ListenerPrivate)
+ {
++    g_type_init();
++
+     d->listener = listener;
+     
+     if (d->listener != nullptr) {
+--- a/agent/polkitqtlistener.cpp
++++ b/agent/polkitqtlistener.cpp
+@@ -49,6 +49,7 @@
+ 
+ static void polkit_qt_listener_init(PolkitQtListener *listener)
+ {
++    g_type_init();
+ }
+ 
+ static void polkit_qt_listener_finalize(GObject *object)
+--- a/core/polkitqt1-actiondescription.cpp
++++ b/core/polkitqt1-actiondescription.cpp
+@@ -55,6 +55,8 @@
+ ActionDescription::ActionDescription(PolkitActionDescription *polkitActionDescription)
+         : d(new Data)
+ {
++    g_type_init();
++
+     d->actionId = QString::fromUtf8(polkit_action_description_get_action_id(polkitActionDescription));
+     d->description = QString::fromUtf8(polkit_action_description_get_description(polkitActionDescription));
+     d->message = QString::fromUtf8(polkit_action_description_get_message(polkitActionDescription));
+--- a/core/polkitqt1-authority.cpp
++++ b/core/polkitqt1-authority.cpp
+@@ -172,6 +172,8 @@
+     QDBusError error;
+     QDBusError dbus_error;
+ 
++    g_type_init();
++
+     m_systemBus = new QDBusConnection(QDBusConnection::connectToBus(QDBusConnection::SystemBus,
+                                                                     QStringLiteral("polkit_qt_system_bus")));
+--- a/core/polkitqt1-details.cpp
++++ b/core/polkitqt1-details.cpp
+@@ -39,12 +39,14 @@
+ Details::Details()
+         : d(new Data)
+ {
++    g_type_init();
+     d->polkitDetails = polkit_details_new();
+ }
+ 
+ Details::Details(PolkitDetails *pkDetails)
+         : d(new Data)
+ {
++    g_type_init();
+     d->polkitDetails = pkDetails;
+     
+     if (d->polkitDetails != nullptr) {
+--- a/core/polkitqt1-identity.cpp
++++ b/core/polkitqt1-identity.cpp
+@@ -39,11 +39,13 @@
+ Identity::Identity()
+         : d(new Data)
+ {
++    g_type_init();
+ }
+ 
+ Identity::Identity(PolkitIdentity *polkitIdentity)
+         : d(new Data)
+ {
++    g_type_init();
+     d->identity = polkitIdentity;
+ 
+     if (d->identity) {
+--- a/core/polkitqt1-subject.cpp
++++ b/core/polkitqt1-subject.cpp
+@@ -39,11 +39,13 @@
+ Subject::Subject()
+         : d(new Data)
+ {
++    g_type_init();
+ }
+ 
+ Subject::Subject(PolkitSubject *subject)
+         : d(new Data)
+ {
++    g_type_init();
+     d->subject = subject;
+     
+     if (d->subject != nullptr) {
+@@ -93,6 +95,9 @@
+ 
+ Subject Subject::fromString(const QString &string)
+ {
++    // should be in polkit library!!! but for strange reason it's necessary to have it here
++    g_type_init();
++
+     Subject subject;
+     GError *error = nullptr;
+     subject.d->subject = polkit_subject_from_string(string.toUtf8().data(), &error);
+--- a/core/polkitqt1-temporaryauthorization.cpp
++++ b/core/polkitqt1-temporaryauthorization.cpp
+@@ -38,6 +38,7 @@
+ TemporaryAuthorization::TemporaryAuthorization(PolkitTemporaryAuthorization *pkTemporaryAuthorization)
+         : d(new Data)
+ {
++    g_type_init();
+     d->id = QString::fromUtf8(polkit_temporary_authorization_get_id(pkTemporaryAuthorization));
+     d->actionId = QString::fromUtf8(polkit_temporary_authorization_get_action_id(pkTemporaryAuthorization));
+     d->subject = Subject::fromString(polkit_subject_to_string(polkit_temporary_authorization_get_subject(pkTemporaryAuthorization)));
+--- a/examples/agent/pkagentexample.cpp
++++ b/examples/agent/pkagentexample.cpp
+@@ -9,6 +9,8 @@
+ PkAgentExample::PkAgentExample(int &argc, char **argv)
+         : QCoreApplication(argc, argv)
+ {
++    g_type_init();
++
+     PolkitQt1::UnixSessionSubject session(getpid());
+ 
+     m_listener.registerListener(session, "/org/kde/PolicyKit1/AuthenticationAgent");
