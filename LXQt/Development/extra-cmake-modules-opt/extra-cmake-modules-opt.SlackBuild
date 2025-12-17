@@ -31,7 +31,6 @@ TAG=${TAG:-_SBo}
 PKGTYPE=${PKGTYPE:-tgz}
 
 SRCNAM=extra-cmake-modules
-ARCH=noarch
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
