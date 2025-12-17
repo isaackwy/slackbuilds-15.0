@@ -1,5 +1,5 @@
 This SlackBuild installs a newer version of extra-cmake-modules in the
 /opt directory.
 
-If Sphinx is installed, then the SlackBuild will build HTML
-documentation files as well.
+Additional (optional) dependencies:
+- Sphinx (build HTML documentation files)

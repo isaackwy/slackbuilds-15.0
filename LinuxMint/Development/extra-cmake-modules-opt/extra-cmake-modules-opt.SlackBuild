@@ -79,16 +79,12 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \+
 
-# If Sphinx is installed, then build HTML documentation
-[ python3 -c 'import sphinx' 2>/dev/null ] && SPHINX=ON || SPHINX=OFF
-
 mkdir -p build
 cd build
   cmake \
     -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
     -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
     -DCMAKE_INSTALL_PREFIX=/opt/$PRGNAM \
-    -DBUILD_HTML_DOCS=$SPHINX \
     -DCMAKE_BUILD_TYPE=Release ..
   make
   make install DESTDIR=$PKG
@@ -97,10 +93,6 @@ cd ..
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
-# If Sphinx is installed, copy HTML documentation
-if (python3 -c 'import sphinx' 2>/dev/null); then
-  cp -a build/doc/html $PKG/usr/doc/$PRGNAM-$VERSION
-fi
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a README.rst $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
