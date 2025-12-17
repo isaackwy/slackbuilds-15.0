@@ -82,6 +82,7 @@ find -L . \
 # https://invent.kde.org/libraries/polkit-qt-1/-/commit/2656bf02e19f282ee963309a48ba497873e9fa40
 patch -p1 < $CWD/revert_glib2.36_requirement.patch
 
+# Only build polkit-qt-1's Qt6 modules (Slackware 15.0 already has provided Qt5 support).
 mkdir -p build
 cd build
   cmake \
