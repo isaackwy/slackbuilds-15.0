@@ -90,8 +90,8 @@ cd build
     -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DCMAKE_INSTALL_LIBDIR=lib${LIBDIRSUFFIX} \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DQT_MAJOR_VERSION=6
+    -DQT_MAJOR_VERSION=6 \
+    -DCMAKE_BUILD_TYPE=Release ..
   make
   make install DESTDIR=$PKG
 cd ..
@@ -100,7 +100,7 @@ find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | gr
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a AUTHORS INSTALL README $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a AUTHORS README $PKG/usr/doc/$PRGNAM-$VERSION
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM.SlackBuild
 
 mkdir -p $PKG/install
