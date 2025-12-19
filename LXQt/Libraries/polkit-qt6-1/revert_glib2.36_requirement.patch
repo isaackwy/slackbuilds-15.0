@@ -60,6 +60,7 @@
 +
      m_systemBus = new QDBusConnection(QDBusConnection::connectToBus(QDBusConnection::SystemBus,
                                                                      QStringLiteral("polkit_qt_system_bus")));
+
 --- a/core/polkitqt1-details.cpp
 +++ b/core/polkitqt1-details.cpp
 @@ -39,12 +39,14 @@
