@@ -5,6 +5,6 @@ DOWNLOAD="https://download.kde.org/stable/frameworks/6.13/kwindowsystem-6.13.0.t
 MD5SUM="9ff25f2b5a06c4531efb01ae5c5d7deb"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="extra-cmake-modules-opt plasma-wayland-protocols-opt qt6"
+REQUIRES="extra-cmake-modules-opt qt6"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu@protonmail.com"
