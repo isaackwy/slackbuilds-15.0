@@ -8,7 +8,7 @@
                |-----handy-ruler------------------------------------------------------|
 layer-shell-qt6: layer-shell-qt6 (Qt6 build of layer-shell-qt)
 layer-shell-qt6:
-layer-shell-qt6: This is the qt6 build of KDE's LayerShellQt library.
+layer-shell-qt6: This is the Qt6 build of KDE's LayerShellQt library.
 layer-shell-qt6:
 layer-shell-qt6:
 layer-shell-qt6:
