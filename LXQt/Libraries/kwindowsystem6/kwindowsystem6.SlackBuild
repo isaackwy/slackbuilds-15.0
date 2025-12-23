@@ -84,13 +84,10 @@ export PATH="/opt/extra-cmake-modules-opt/bin:$PATH"
 mkdir -p build
 cd build
   cmake .. \
-    -DBUILD_TESTING=OFF \
-    -DCMAKE_BUILD_TYPE=Release \
-    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
     -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
+    -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
     -DCMAKE_INSTALL_PREFIX=/usr \
-    -DCMAKE_VERBOSE_MAKEFILE=ON \
-    -DKDE_INSTALL_MANDIR=/usr/man
+    -DCMAKE_BUILD_TYPE=Release ..
   make
   make install DESTDIR=$PKG
 cd ..
