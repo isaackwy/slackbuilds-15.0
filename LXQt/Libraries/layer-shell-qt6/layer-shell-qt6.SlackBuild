@@ -81,9 +81,9 @@ find -L . \
 # Build with extra-cmake-modules-opt (the newer extra-cmake-modules)
 export PATH="/opt/extra-cmake-modules-opt/bin:$PATH"
 
-# Change the /usr/include/LayerShellQt directory to /usr/include/LayerShellQt6
-# Slackware's default layer-shell-qt already installs to /usr/include/LayerShellQt
-patch -p1 < $CWD/Change_directory_to_LayerShellQt6.patch
+# Slackware's layer-shell-qt already installs to /usr/include/LayerShellQt and /usr/lib*/cmake/LayerShellQt
+# Change the folder names to LayerShellQt6 (to prevent overlapping with Slackware's default files)
+patch -p1 < $CWD/Change_folder_names_to_LayerShellQt6.patch
 
 mkdir -p build
 cd build
