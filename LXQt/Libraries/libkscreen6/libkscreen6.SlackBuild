@@ -79,9 +79,11 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 # Build with extra-cmake-modules-opt (the newer extra-cmake-modules)
+# Also, build with plasma-wayland-protocols-opt (the newer plasma-wayland-protocols)
 export PATH="/opt/extra-cmake-modules-opt/bin:$PATH"
+export PATH="/opt/plasma-wayland-protocols-opt/bin:$PATH"
 
-# Fix for Qt6 >= 6.10 (this is useful for Slackware-current in particular)
+# Fix for Qt6 >= 6.10 (this is necessary for Slackware-current)
 patch -p1 < $CWD/qt-6.10_fix.patch
 
 mkdir -p build
