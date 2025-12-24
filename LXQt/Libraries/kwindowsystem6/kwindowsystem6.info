@@ -1,6 +1,6 @@
 PRGNAM="kwindowsystem6"
 VERSION="6.13.0"
-HOMEPAGE="https://invent.kde.org/libraries/kwindowsystem"
+HOMEPAGE="https://invent.kde.org/frameworks/kwindowsystem"
 DOWNLOAD="https://download.kde.org/stable/frameworks/6.13/kwindowsystem-6.13.0.tar.xz"
 MD5SUM="9ff25f2b5a06c4531efb01ae5c5d7deb"
 DOWNLOAD_x86_64=""
