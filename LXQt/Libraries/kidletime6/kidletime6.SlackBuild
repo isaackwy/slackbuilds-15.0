@@ -81,7 +81,7 @@ find -L . \
 # Build with extra-cmake-modules-opt (the newer extra-cmake-modules)
 export PATH="/opt/extra-cmake-modules-opt/bin:$PATH"
 
-# Do not include Wayland support if wayland-protocols is at version < 1.27
+# Do not enable Wayland support if wayland-protocols is at version < 1.27
 # Otherwise, this build script fails
 # For context, Slackware 15 has wayland-protocols 1.25
 WAYLAND_PROTOCOLS_VER=$(cat /usr/share/pkgconfig/wayland-protocols.pc | awk 'END{PRINT $NF}')
