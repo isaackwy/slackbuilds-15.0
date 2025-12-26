@@ -81,6 +81,16 @@ find -L . \
 # Build with extra-cmake-modules-opt (the newer extra-cmake-modules)
 export PATH="/opt/extra-cmake-modules-opt/bin:$PATH"
 
+# Do not include Wayland support if wayland-protocols is at version < 1.27
+# Otherwise, this build script fails
+# For context, Slackware 15 has wayland-protocols 1.25
+WAYLAND_PROTOCOLS_VER=$(cat /usr/share/pkgconfig/wayland-protocols.pc | awk 'END{PRINT $NF}')
+if [[ $WAYLAND_PROTOCOLS_VER < 1.27 ]]; then
+  WAYLAND=NO;
+else
+  WAYLAND=YES;
+fi
+
 mkdir -p build
 cd build
   cmake .. \
@@ -88,7 +98,7 @@ cd build
     -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
     -DCMAKE_INSTALL_PREFIX=/usr \
     -DBUILD_TESTING=OFF \
-    -DWITH_WAYLAND=NO \
+    -DWITH_WAYLAND=$WAYLAND \
     -DCMAKE_BUILD_TYPE=Release ..
   make
   make install DESTDIR=$PKG
