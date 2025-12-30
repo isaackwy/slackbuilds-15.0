@@ -5,6 +5,6 @@ DOWNLOAD="https://github.com/lxqt/lxqt-notificationd/releases/download/2.3.1/lxq
 MD5SUM="98dc4ca92f2773fdbf1b894fb988274b"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
-REQUIRES="layer-shell-qt6 liblxqt"
+REQUIRES="kwindowsystem6 layer-shell-qt6 liblxqt"
 MAINTAINER="Isaac Yu"
 EMAIL="isaacyu@protonmail.com"
