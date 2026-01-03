@@ -186,4 +186,15 @@
 +            mLayerWindow->setExclusiveEdge(LayerShellQt6::Window::AnchorNone);
              mLayerWindow->setExclusiveZone(0);
          }
+
+--- a/panel/lxqtpanel.h
++++ b/panel/lxqtpanel.h
+@@ -722,7 +722,7 @@
+     QPropertyAnimation *mAnimation; // on X11
+     QVariantAnimation *mWAnimation; // on Wayland
  
+-    LayerShellQt::Window *mLayerWindow;
++    LayerShellQt6::Window *mLayerWindow;
+ 
+     /**
+      * @brief Flag for providing the configuration options in panel's context menu
