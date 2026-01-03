@@ -9,3 +9,181 @@
  
  // Turn on this to show the time required to load each plugin during startup
  // #define DEBUG_PLUGIN_LOADTIME
+@@ -255,15 +255,15 @@
+         else
+         {
+             // Init Layer Shell (Must be done before showing widget)
+-            mLayerWindow = LayerShellQt::Window::get(windowHandle());
+-            mLayerWindow->setLayer(LayerShellQt::Window::LayerTop);
++            mLayerWindow = LayerShellQt6::Window::get(windowHandle());
++            mLayerWindow->setLayer(LayerShellQt6::Window::LayerTop);
+ 
+             mLayerWindow->setScope(QStringLiteral("dock"));
+ 
+-            LayerShellQt::Window::Anchors anchors;
+-            anchors.setFlag(LayerShellQt::Window::AnchorLeft);
+-            anchors.setFlag(LayerShellQt::Window::AnchorBottom);
+-            anchors.setFlag(LayerShellQt::Window::AnchorRight);
++            LayerShellQt6::Window::Anchors anchors;
++            anchors.setFlag(LayerShellQt6::Window::AnchorLeft);
++            anchors.setFlag(LayerShellQt6::Window::AnchorBottom);
++            anchors.setFlag(LayerShellQt6::Window::AnchorRight);
+             mLayerWindow->setAnchors(anchors);
+ 
+ #if (QT_VERSION >= QT_VERSION_CHECK(6,8,0))
+@@ -272,14 +272,14 @@
+             const QRegularExpression desktops(QStringLiteral("(?i)(kde|kwin|wayfire|hyprland)"));
+ 
+             if (desktops.match(qEnvironmentVariable("XDG_CURRENT_DESKTOP")).hasMatch())
+-                mLayerWindow->setKeyboardInteractivity(LayerShellQt::Window::KeyboardInteractivityNone);
++                mLayerWindow->setKeyboardInteractivity(LayerShellQt6::Window::KeyboardInteractivityNone);
+             else
+ #endif
+-                mLayerWindow->setKeyboardInteractivity(LayerShellQt::Window::KeyboardInteractivityOnDemand);
++                mLayerWindow->setKeyboardInteractivity(LayerShellQt6::Window::KeyboardInteractivityOnDemand);
+ 
+             mLayerWindow->setCloseOnDismissed(false);
+ 
+-            mLayerWindow->setExclusiveEdge(LayerShellQt::Window::AnchorBottom);
++            mLayerWindow->setExclusiveEdge(LayerShellQt6::Window::AnchorBottom);
+             mLayerWindow->setExclusiveZone(height());
+         }
+     }
+@@ -630,7 +630,7 @@
+     const QRect currentScreen = screens.at(mActualScreenNum)->geometry();
+ 
+     QRect rect;
+-    LayerShellQt::Window::Anchors anchors;
++    LayerShellQt6::Window::Anchors anchors;
+ 
+     if (isHorizontal())
+     {
+@@ -652,7 +652,7 @@
+         switch (mAlignment)
+         {
+         case LXQtPanel::AlignmentLeft:
+-            anchors.setFlag(LayerShellQt::Window::AnchorLeft);
++            anchors.setFlag(LayerShellQt6::Window::AnchorLeft);
+             rect.moveLeft(currentScreen.left());
+             break;
+ 
+@@ -661,7 +661,7 @@
+             break;
+ 
+         case LXQtPanel::AlignmentRight:
+-            anchors.setFlag(LayerShellQt::Window::AnchorRight);
++            anchors.setFlag(LayerShellQt6::Window::AnchorRight);
+             rect.moveRight(currentScreen.right());
+             break;
+         }
+@@ -669,14 +669,14 @@
+         if(lengthInPercents() && mLength == 100)
+         {
+             //Fill all available width
+-            anchors.setFlag(LayerShellQt::Window::AnchorLeft);
+-            anchors.setFlag(LayerShellQt::Window::AnchorRight);
++            anchors.setFlag(LayerShellQt6::Window::AnchorLeft);
++            anchors.setFlag(LayerShellQt6::Window::AnchorRight);
+         }
+ 
+         // Vert .......................
+         if (mPosition == ILXQtPanel::PositionTop)
+         {
+-            anchors.setFlag(LayerShellQt::Window::AnchorTop);
++            anchors.setFlag(LayerShellQt6::Window::AnchorTop);
+ 
+             if (mHidden)
+                 rect.moveBottom(currentScreen.top() + PANEL_HIDE_SIZE - 1);
+@@ -685,7 +685,7 @@
+         }
+         else
+         {
+-            anchors.setFlag(LayerShellQt::Window::AnchorBottom);
++            anchors.setFlag(LayerShellQt6::Window::AnchorBottom);
+ 
+             if (mHidden)
+                 rect.moveTop(currentScreen.bottom() - PANEL_HIDE_SIZE + 1);
+@@ -713,7 +713,7 @@
+         switch (mAlignment)
+         {
+         case LXQtPanel::AlignmentLeft:
+-            anchors.setFlag(LayerShellQt::Window::AnchorTop);
++            anchors.setFlag(LayerShellQt6::Window::AnchorTop);
+             rect.moveTop(currentScreen.top());
+             break;
+ 
+@@ -722,7 +722,7 @@
+             break;
+ 
+         case LXQtPanel::AlignmentRight:
+-            anchors.setFlag(LayerShellQt::Window::AnchorBottom);
++            anchors.setFlag(LayerShellQt6::Window::AnchorBottom);
+             rect.moveBottom(currentScreen.bottom());
+             break;
+         }
+@@ -730,14 +730,14 @@
+         if(lengthInPercents() && mLength == 100)
+         {
+             //Fill all available width
+-            anchors.setFlag(LayerShellQt::Window::AnchorTop);
+-            anchors.setFlag(LayerShellQt::Window::AnchorBottom);
++            anchors.setFlag(LayerShellQt6::Window::AnchorTop);
++            anchors.setFlag(LayerShellQt6::Window::AnchorBottom);
+         }
+ 
+         // Horiz ......................
+         if (mPosition == ILXQtPanel::PositionLeft)
+         {
+-            anchors.setFlag(LayerShellQt::Window::AnchorLeft);
++            anchors.setFlag(LayerShellQt6::Window::AnchorLeft);
+ 
+             if (mHidden)
+                 rect.moveRight(currentScreen.left() + PANEL_HIDE_SIZE - 1);
+@@ -746,7 +746,7 @@
+         }
+         else
+         {
+-            anchors.setFlag(LayerShellQt::Window::AnchorRight);
++            anchors.setFlag(LayerShellQt6::Window::AnchorRight);
+ 
+             if (mHidden)
+                 rect.moveLeft(currentScreen.right() - PANEL_HIDE_SIZE + 1);
+@@ -971,24 +971,24 @@
+             // However, there is no reason to reserve space for a hiding panel on Wayland.
+             && !mHidable)
+         {
+-            LayerShellQt::Window::Anchor edge = LayerShellQt::Window::AnchorBottom;
++            LayerShellQt6::Window::Anchor edge = LayerShellQt6::Window::AnchorBottom;
+ 
+             switch (mPosition)
+             {
+             case LXQtPanel::PositionTop:
+-                edge = LayerShellQt::Window::AnchorTop;
++                edge = LayerShellQt6::Window::AnchorTop;
+                 break;
+ 
+             case LXQtPanel::PositionBottom:
+-                edge = LayerShellQt::Window::AnchorBottom;
++                edge = LayerShellQt6::Window::AnchorBottom;
+                 break;
+ 
+             case LXQtPanel::PositionLeft:
+-                edge = LayerShellQt::Window::AnchorLeft;
++                edge = LayerShellQt6::Window::AnchorLeft;
+                 break;
+ 
+             case LXQtPanel::PositionRight:
+-                edge = LayerShellQt::Window::AnchorRight;
++                edge = LayerShellQt6::Window::AnchorRight;
+                 break;
+             }
+ 
+@@ -997,7 +997,7 @@
+         }
+         else
+         {
+-            mLayerWindow->setExclusiveEdge(LayerShellQt::Window::AnchorNone);
++            mLayerWindow->setExclusiveEdge(LayerShellQt6::Window::AnchorNone);
+             mLayerWindow->setExclusiveZone(0);
+         }
+ 
