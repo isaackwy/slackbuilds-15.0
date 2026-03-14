@@ -79,9 +79,9 @@ do
   NAME=$(echo $DIR | sed 's/[./]v[0-9]\+$//' | xargs basename)
   DIR=vendor/$DIR
 
-  # Extract the tarball 
+  # Extract the tarball
   if [ $DIR = "vendor/github.com/urfave/cli" ]; then
-    tar xvf $CWD/cli-1.22.17.tar.gz 
+    tar xvf $CWD/cli-1.22.17.tar.gz
   elif [ $DIR = "vendor/golang.org/x/exp/typeparams" ]; then
     tar --wildcards -xvf $CWD/exp-2478ac8*.tar.gz exp-2478ac8*/typeparams --strip-components=1
   elif [ $DIR = "vendor/golang.org/x/tools" ]; then
