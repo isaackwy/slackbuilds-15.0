@@ -58,6 +58,8 @@ google.golang.org/protobuf/reflect/protoreflect
 google.golang.org/protobuf/reflect/protoregistry
 google.golang.org/protobuf/reflect/protoiface
 google.golang.org/protobuf/reflect/protoimpl
+google.golang.org/protobuf/runtime/protoiface
+google.golang.org/protobuf/runtime/protoimpl
 # honnef.co/go/tools v0.6.1
 ## explicit
 honnef.co/go/tools/cmd/staticcheck
