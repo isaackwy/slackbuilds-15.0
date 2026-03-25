@@ -1,4 +1,4 @@
-PRGNAM="jsonpointer"
+PRGNAM="python3-jsonpointer"
 VERSION="3.0.0"
 HOMEPAGE="https://pypi.org/project/jsonpointer/"
 DOWNLOAD="https://files.pythonhosted.org/packages/source/j/jsonpointer/jsonpointer-3.0.0.tar.gz"
