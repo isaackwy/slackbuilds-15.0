@@ -1,0 +1,2 @@
+bemenu is a dynamic menu library and client program inspired by dmenu.
+It is compatible with ncurses, x11 and Wayland.
