@@ -8,7 +8,7 @@ DOWNLOAD="https://github.com/schachmat/wego/archive/2.4/wego-2.4.tar.gz \
           https://github.com/muesli/roff/archive/v0.1.0/roff-0.1.0.tar.gz \
           https://github.com/schachmat/ingo/archive/a4bdc07/ingo-a4bdc0729a3fda62cc4069b6e490fc657fd54e33.tar.gz \
           https://github.com/clipperhouse/uax29/archive/v2.2.0/uax29-2.2.0.tar.gz \
-          https://github.com/mattn/go-isatty/archive/v0.0.19/go-isatty-0.0.19.tar.gz \
+          https://github.com/mattn/go-isatty/archive/v0.0.20/go-isatty-0.0.20.tar.gz \
           https://github.com/golang/sys/archive/v0.29.0/sys-0.29.0.tar.gz"
 MD5SUM="ef761eaab388baf06fdc31fb8c25a586 \
         64851c950c3a650f5aa2968c55e5bae8 \
@@ -17,7 +17,7 @@ MD5SUM="ef761eaab388baf06fdc31fb8c25a586 \
         49bc0f537b0f7faca462800ffb15f385 \
         6077da012ebc665f84b9baf79b56c0b6 \
         a9fa336f274e3f0f88dd513ee41ef8e9 \
-        e10ea58c2288fbef0d8ea37dea93718a \
+        0e9df2fea5b77d464d518a6c60ce8ba2 \
         b1240d4a436cf3beaa74f391972015c0"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
