@@ -13,7 +13,7 @@ github.com/muesli/roff
 # github.com/schachmat/ingo v0.0.0-20170403011506-a4bdc0729a3f
 ## explicit
 github.com/schachmat/ingo
-# github.com/clipperhouse/uax29/v2 v2.2.0 
+# github.com/clipperhouse/uax29/v2 v2.2.0
 ## explicit
 github.com/clipperhouse/uax29/v2
 # github.com/mattn/go-isatty v0.0.20
