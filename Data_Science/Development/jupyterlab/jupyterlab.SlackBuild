@@ -64,6 +64,7 @@ find -L . \
 
 # Fix runtime error on Slackware 15.0
 # The problem is that packaging < 23.2 does not include the InvalidName class
+# This patch does not need to be installed on Slackware-current (its packaging is >= 23.2)
 PACKAGING_VER=$(python3 -c 'import packaging; print(float(packaging.__version__))')
 [[ $PACKAGING_VER < 23.2 ]] && patch -p1 < $CWD/pypi_extension_manager_fix.patch
 
