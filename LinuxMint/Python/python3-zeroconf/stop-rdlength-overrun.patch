@@ -47,6 +47,8 @@
 +                rec = None
              if rec is not None:
                  self._answers.append(rec)
+
+
 --- a/tests/test_protocol.py
 +++ b/tests/test_protocol.py
 @@ -805,6 +805,89 @@
