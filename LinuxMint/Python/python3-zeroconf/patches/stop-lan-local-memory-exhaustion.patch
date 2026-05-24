@@ -151,7 +151,7 @@
 +        logger = log.warning if _mark_seen(_seen_logs, args[0]) else log.debug
          logger(*args, exc_info=exc)
 --- /dev/null
---- b/tests/benchmarks/test_mark_seen.py
++++ b/tests/benchmarks/test_mark_seen.py
 +"""Benchmark for _logger._mark_seen."""
 +
 +from __future__ import annotations
