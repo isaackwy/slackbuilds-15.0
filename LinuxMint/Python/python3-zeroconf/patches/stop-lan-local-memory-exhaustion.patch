@@ -1,3 +1,38 @@
+--- a/src/zeroconf/_protocol/incoming.py
++++ b/src/zeroconf/_protocol/incoming.py
+@@ -37,7 +37,7 @@
+     DNSText,
+ )
+ from .._exceptions import IncomingDecodeError
+-from .._logger import log
++from .._logger import _mark_seen, log
+ from .._utils.time import current_time_millis
+ from ..const import (
+     _FLAGS_QR_MASK,
+@@ -63,7 +63,7 @@
+ DECODE_EXCEPTIONS = (IndexError, struct.error, IncomingDecodeError, RecursionError)
+ 
+ 
+-_seen_logs: dict[str, int | tuple] = {}
++_seen_logs: dict[str, None] = {}
+ _str = str
+ _int = int
+ 
+@@ -182,13 +182,7 @@
+ 
+     @classmethod
+     def _log_exception_debug(cls, *logger_data: Any) -> None:
+-        log_exc_info = False
+-        exc_info = sys.exc_info()
+-        exc_str = str(exc_info[1])
+-        if exc_str not in _seen_logs:
+-            # log the trace only on the first time
+-            _seen_logs[exc_str] = exc_info
+-            log_exc_info = True
++        log_exc_info = _mark_seen(_seen_logs, str(sys.exc_info()[1]))
+         log.debug(*(logger_data or ["Exception occurred"]), exc_info=log_exc_info)
+ 
+     def answers(self) -> list[DNSRecord]:
 --- a/src/zeroconf/_logger.py
 +++ b/src/zeroconf/_logger.py
 @@ -25,7 +25,7 @@
@@ -115,41 +150,6 @@
 -        cls._seen_logs[msg_str] = cast(int, cls._seen_logs[msg_str]) + 1
 +        logger = log.warning if _mark_seen(_seen_logs, args[0]) else log.debug
          logger(*args, exc_info=exc)
---- a/src/zeroconf/_protocol/incoming.py
-+++ b/src/zeroconf/_protocol/incoming.py
-@@ -37,7 +37,7 @@
-     DNSText,
- )
- from .._exceptions import IncomingDecodeError
--from .._logger import log
-+from .._logger import _mark_seen, log
- from .._utils.time import current_time_millis
- from ..const import (
-     _FLAGS_QR_MASK,
-@@ -63,7 +63,7 @@
- DECODE_EXCEPTIONS = (IndexError, struct.error, IncomingDecodeError, RecursionError)
- 
- 
--_seen_logs: dict[str, int | tuple] = {}
-+_seen_logs: dict[str, None] = {}
- _str = str
- _int = int
- 
-@@ -182,13 +182,7 @@
- 
-     @classmethod
-     def _log_exception_debug(cls, *logger_data: Any) -> None:
--        log_exc_info = False
--        exc_info = sys.exc_info()
--        exc_str = str(exc_info[1])
--        if exc_str not in _seen_logs:
--            # log the trace only on the first time
--            _seen_logs[exc_str] = exc_info
--            log_exc_info = True
-+        log_exc_info = _mark_seen(_seen_logs, str(sys.exc_info()[1]))
-         log.debug(*(logger_data or ["Exception occurred"]), exc_info=log_exc_info)
- 
-     def answers(self) -> list[DNSRecord]:
 --- /dev/null
 --- b/tests/benchmarks/test_mark_seen.py
 +"""Benchmark for _logger._mark_seen."""
