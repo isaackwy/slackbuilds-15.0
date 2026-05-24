@@ -152,6 +152,7 @@
          logger(*args, exc_info=exc)
 --- /dev/null
 +++ b/tests/benchmarks/test_mark_seen.py
+@@ -0,0 +1,39 @@
 +"""Benchmark for _logger._mark_seen."""
 +
 +from __future__ import annotations
