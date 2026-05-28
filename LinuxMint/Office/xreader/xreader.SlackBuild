@@ -74,7 +74,6 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 # If libgxps is installed, build xreader with xps support
-# This bypasses a build error from libgxps not being installed
 xpstopdf --help >/dev/null 2&>1 && XPS=true || XPS=false
 
 mkdir -p build
