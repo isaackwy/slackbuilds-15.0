@@ -76,10 +76,6 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-# If gspell is installed, build xed with gspell support
-# This bypasses a build error from gspell not being installed
-pkg-config --modversion gspell-1  >/dev/null 2&>1 && GSPELL=true || GSPELL=false
-
 mkdir -p build
 cd build
 meson setup \
@@ -88,7 +84,6 @@ meson setup \
   --libdir=lib${LIBDIRSUFFIX} \
   --libexecdir=/usr/lib${LIBDIRSUFFIX} \
   --mandir=/usr/man \
-  -Denable_spell=$GSPELL \
   ..
 
   ninja
