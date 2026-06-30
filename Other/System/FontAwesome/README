@@ -1,2 +1,6 @@
 Font Awesome is the Internet's icon library and toolkit, used by
 millions of designers, developers, and content creators.
+
+This SlackBuild only installs .otf fonts.
+.ttf fonts are no longer available in Font Awesome >= 7.
+For .ttf fonts, please install FontAwesome6.
