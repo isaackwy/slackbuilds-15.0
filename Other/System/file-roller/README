@@ -1,0 +1,15 @@
+File Roller is an archive manager for the GNOME environment. It allows
+you to:
+
+ * Create and modify archives
+ * View and search the content of an archive
+ * View a file contained in an archive
+ * Extract files from the archive
+
+File Roller doesn't perform archive operations by itself, but relies on
+standard tools for this.
+
+It integrates well with Thunar (XFCE) using thunar-archive-plugin.
+
+file-roller 43.1 is the last available version for Slackware 15.0. Newer
+versions require a newer GTK4. 
