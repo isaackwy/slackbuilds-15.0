@@ -1,4 +1,4 @@
-PRGNAM="python3-proton-vpn-local-agent"
+PRGNAM="proton-vpn-local-agent"
 VERSION="1.6.3"
 HOMEPAGE="https://github.com/ProtonVPN/local-agent-rs"
 DOWNLOAD="https://github.com/ProtonVPN/local-agent-rs/archive/1.6.3/local-agent-rs-1.6.3.tar.gz \
