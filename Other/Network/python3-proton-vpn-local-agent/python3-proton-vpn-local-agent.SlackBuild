@@ -151,8 +151,10 @@ CXXFLAGS="$SLKCFLAGS" \
 cargo build --offline --release $CARGOTARGET
 
 PYVER=$(python3 -c 'import sys; print("%d.%d" % sys.version_info[:2])')
+CARGOTARGET_RELEASE_ARCH=$(echo $CARGOTARGET | awk '{print $2}')
+
 mkdir -p $PKG/usr/lib$LIBDIRSUFFIX/python$PYVER/site-packages/proton/vpn
-install -Dm755 target/release/libpython_proton_vpn_local_agent.so \
+install -Dm755 target/$CARGOTARGET_RELEASE_ARCH/release/libpython_proton_vpn_local_agent.so \
   $PKG/usr/lib$LIBDIRSUFFIX/python$PYVER/site-packages/proton/vpn/local_agent.abi3.so
 
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
