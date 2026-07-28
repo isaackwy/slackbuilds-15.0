@@ -1,7 +1,7 @@
 PRGNAM="python3-proton-vpn-api-core"
 VERSION="5.2.5"
 HOMEPAGE="https://github.com/ProtonVPN/python-proton-vpn-api-core"
-DOWNLOAD="https://github.com/ProtonVPN/python-proton-vpn-api-core/archive/v5.2.5/python-proton-vpn-api-core.tar.gz"
+DOWNLOAD="https://github.com/ProtonVPN/python-proton-vpn-api-core/archive/v5.2.5/python-proton-vpn-api-core-5.2.5.tar.gz"
 MD5SUM="639b701e583a0bfdd86582d783ddabe5"
 DOWNLOAD_x86_64=""
 MD5SUM_x86_64=""
