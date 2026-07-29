@@ -90,7 +90,7 @@ sed -i 's|^prefix ?= /usr/local|prefix ?= /usr|' Makefile
 # Build instructions adapted from the Arch Linux PKGBUILD:
 # https://gitlab.archlinux.org/archlinux/packaging/packages/grpc/-/blob/main/PKGBUILD
 # However, this SlackBuild does not build tests (therefore, grpc-cli will not be installed)
-# In addition, disable gRPC_BUILD_CODEGEN (enabling it causes build failure on i*86 systems)
+# In addition, disable gRPC_BUILD_CODEGEN (enabling it causes build failure on 32-bit systems)
 cmake -Bbuild \
   -DCMAKE_C_FLAGS:STRING="$SLKCFLAGS" \
   -DCMAKE_CXX_FLAGS:STRING="$SLKCFLAGS" \
