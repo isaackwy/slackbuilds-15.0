@@ -88,7 +88,7 @@ find -L . \
 sed -i 's|^prefix ?= /usr/local|prefix ?= /usr|' Makefile
 
 # If arch is 32-bit, disable gRPC_BUILD_CODEGEN (otherwise, build fails there)
-[[ $ARCH == i586 ]] && ENABLE_CODEGEN=OFF || ENABLE_CODEGEN=ON
+[[ $ARCH == i586 || $ARCH == i686 ]] && ENABLE_CODEGEN=OFF || ENABLE_CODEGEN=ON
 
 # Build instructions adapted from the Arch Linux PKGBUILD:
 # https://gitlab.archlinux.org/archlinux/packaging/packages/grpc/-/blob/main/PKGBUILD
