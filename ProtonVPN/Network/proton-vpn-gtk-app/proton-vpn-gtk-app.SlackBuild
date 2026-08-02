@@ -67,9 +67,11 @@ python3 setup.py install --root=$PKG
 find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
   | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
-cp rpmbuild/SOURCES/proton.vpn.app.gtk.desktop $PKG/usr/share/applications/proton.vpn.app.gtk.desktop
-cp rpmbuild/SOURCES/proton-vpn-logo.svg $PKG/usr/share/icons/hicolor/scalable/apps/proton-vpn-logo.svg
-cp proton/vpn/app/gtk/assets/icons/proton-vpn-sign.svg $PKG/usr/share/icons/hicolor/scalable/apps/proton-vpn-sign.svg
+mkdir -p $PKG/usr/share/applications
+mkdir -p $PKG/usr/share/icons/hicolor/scalable/apps
+cp rpmbuild/SOURCES/proton.vpn.app.gtk.desktop $PKG/usr/share/applications
+cp rpmbuild/SOURCES/proton-vpn-logo.svg $PKG/usr/share/icons/hicolor/scalable/apps
+cp proton/vpn/app/gtk/assets/icons/proton-vpn-sign.svg $PKG/usr/share/icons/hicolor/scalable/apps
 
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
 cp -a CONTRIBUTING.md COPYING.md LICENSE README.md $PKG/usr/doc/$PRGNAM-$VERSION
