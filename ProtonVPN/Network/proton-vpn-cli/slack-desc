@@ -6,9 +6,9 @@
 # customary to leave one space after the ':' except on otherwise blank lines.
 
               |-----handy-ruler------------------------------------------------------|
-proton-vpn-cli: proton-vpn-cli (Official ProtonVPN CLI app for Linux)
+proton-vpn-cli: proton-vpn-cli (Official Proton VPN CLI for Linux)
 proton-vpn-cli:
-proton-vpn-cli: This is the official ProtonVPN CLI app for Linux.
+proton-vpn-cli: This is the official Proton VPN CLI for Linux.
 proton-vpn-cli:
 proton-vpn-cli:
 proton-vpn-cli:
