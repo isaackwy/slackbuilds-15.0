@@ -16,6 +16,11 @@ if [ -x /usr/bin/lightdm ]; then
 fi
 
 
-To enable automatic unlocking of password-protected directories upon
+Build options:
+
+- To enable automatic unlocking of password-protected directories upon
 login, pass FSCRYPT=yes to the SlackBuild.
 This is useful (ex. when encrypting the /home directory with fscrypt).
+
+- To build GTK documentation (yelp-tools additionally required), pass
+GTK_DOCS=yes to the SlackBuild.
