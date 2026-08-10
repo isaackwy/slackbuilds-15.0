@@ -101,8 +101,8 @@ find -L . \
 patch -p1 < $CWD/default-config.patch
 sed -i s/systemd/elogind/ data/pam/*
 
-# Allow lightdm to build without yelp-tools, then run autogen.sh 
-if ! [[ ${GTK_DOCS:no} = yes ]]; then patch -p1 < $CWD/build-without-yelp-tools.patch; fi
+# Build lightdm without yelp-tools, then run autogen.sh
+patch -p1 < $CWD/build-without-yelp-tools.patch
 ./autogen.sh
 
 CFLAGS="$SLKCFLAGS" \
@@ -120,14 +120,15 @@ CXXFLAGS="$SLKCFLAGS" \
   --with-greeter-session=lightdm-gtk-greeter \
   --disable-liblightdm-qt5 \
   --disable-liblightdm-qt6 \
+  --disable-gtk-doc \
   --mandir=/usr/man \
   --docdir=/usr/doc/$PRGNAM-$VERSION \
   --build=$ARCH-slackware-linux
 
-# Do not build GTK docs if GTK_DOCS is not passed
+# Do not process GTK documentation (requires yelp-xsl)
 # sed statement taken from willysr:
 # https://github.com/CinnamonSlackBuilds/csb/blob/master/lightdm/lightdm.SlackBuild
-if ! [[ ${GTK_DOCS:no} = yes ]]; then sed -i "/\@YELP_HELP_RULES\@/d" help/Makefile; fi
+sed -i "/\@YELP_HELP_RULES\@/d" help/Makefile
 make
 make install DESTDIR=$PKG
 
