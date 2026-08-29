@@ -196,15 +196,6 @@ DOWNLOAD="https://github.com/ProtonVPN/python-proton-vpn-api-core/archive/v5.5.1
           https://static.crates.io/crates/proc-macro-error-attr2/proc-macro-error-attr2-2.0.0.crate \
           https://static.crates.io/crates/proc-macro-error2/proc-macro-error2-2.0.1.crate \
           https://static.crates.io/crates/proc-macro2/proc-macro2-1.0.106.crate \
-          https://static.crates.io/crates/proton-boringtun/proton-boringtun-3.0.0.crate \
-          https://static.crates.io/crates/proton-os-interface/proton-os-interface-0.2.6.crate \
-          https://static.crates.io/crates/proton-pfff/proton-pfff-0.10.1.crate \
-          https://static.crates.io/crates/proton-pfff-module/proton-pfff-module-0.6.4.crate \
-          https://static.crates.io/crates/proton-vpn-binary-status/proton-vpn-binary-status-1.0.0.crate \
-          https://static.crates.io/crates/proton-vpn-netstack/proton-vpn-netstack-0.6.0.crate \
-          https://static.crates.io/crates/proton-vpn-platform/proton-vpn-platform-5.5.15.crate \
-          https://static.crates.io/crates/protun/protun-0.1.0.crate \
-          https://static.crates.io/crates/pvpnclient/pvpnclient-0.3.12.crate \
           https://static.crates.io/crates/pyo3/pyo3-0.28.3.crate \
           https://static.crates.io/crates/pyo3-async-runtimes/pyo3-async-runtimes-0.28.0.crate \
           https://static.crates.io/crates/pyo3-async-runtimes-macros/pyo3-async-runtimes-macros-0.28.0.crate \
