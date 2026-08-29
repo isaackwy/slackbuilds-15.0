@@ -83,7 +83,6 @@ find -L . \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
 # Build offline using vendored .crate files
-mkdir .cargo
 cat << EOF >> .cargo/config.toml
 [source.crates-io]
 registry = 'https://github.com/rust-lang/crates.io-index'
