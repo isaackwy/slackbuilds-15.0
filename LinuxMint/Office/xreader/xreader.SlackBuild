@@ -85,7 +85,6 @@ meson setup \
   --libexecdir=/usr/lib${LIBDIRSUFFIX} \
   --mandir=/usr/man \
   -Dxps=$XPS \
-  -Dmathjax-directory=/usr/share/mathjax2 \
   ..
 
   ninja
