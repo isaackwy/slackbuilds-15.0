@@ -85,9 +85,9 @@ do
   elif [ $DIR = "vendor/golang.org/x/exp/typeparams" ]; then
     tar --wildcards -xvf $CWD/exp-2478ac8*.tar.gz exp-2478ac8*/typeparams --strip-components=1
   elif [ $DIR = "vendor/golang.org/x/tools" ]; then
-    tar xvf $CWD/tools-0.36.0.tar.gz 
+    tar xvf $CWD/tools-0.36.0.tar.gz
   elif [ $DIR = "vendor/golang.org/x/tools/go/expect" ]; then
-    tar xvf $CWD/tools-0.11.0.tar.gz tools-0.11.0/go/expect --strip-components=2 
+    tar xvf $CWD/tools-0.11.0.tar.gz tools-0.11.0/go/expect --strip-components=2
   elif [ $DIR = "vendor/honnef.co/go/tools" ]; then
     tar xvf $CWD/go-tools-0.6.1.tar.gz
   else
