@@ -208,7 +208,7 @@ DOWNLOAD="https://github.com/ProtonVPN/python-proton-vpn-api-core/archive/v5.5.1
           https://github.com/ProtonPrivacy/rust-registry/raw/refs/heads/master/downloads/proton-pfff-module@0.6.4.crate \
           https://github.com/ProtonPrivacy/rust-registry/raw/refs/heads/master/downloads/proton-vpn-binary-status@1.0.0.crate \
           https://github.com/ProtonPrivacy/rust-registry/raw/refs/heads/master/downloads/proton-vpn-netstack@0.6.0.crate \
-          https://github.com/ProtonPrivacy/rust-registry/raw/refs/heads/master/downloads/pvpnclient@0.3.12.crate \         
+          https://github.com/ProtonPrivacy/rust-registry/raw/refs/heads/master/downloads/pvpnclient@0.3.12.crate \
           https://static.crates.io/crates/pyo3/pyo3-0.28.3.crate \
           https://static.crates.io/crates/pyo3-async-runtimes/pyo3-async-runtimes-0.28.0.crate \
           https://static.crates.io/crates/pyo3-async-runtimes-macros/pyo3-async-runtimes-macros-0.28.0.crate \
