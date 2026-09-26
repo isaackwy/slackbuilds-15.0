@@ -115,7 +115,7 @@ mkdir vendor
     ver="$(printf "%s\n" "$dep" | cut -d= -f2)"
     dep="$(printf "%s\n" "$dep" | cut -d= -f1)"
 
-    tar xvf $CWD/$dep-$ver.crate
+    tar xvf $CWD/$dep-$ver.crate || tar xvf $CWD/$dep@$ver.crate
 
     touch $dep-$ver/.cargo-ok
 
