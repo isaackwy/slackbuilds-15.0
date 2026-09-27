@@ -136,6 +136,7 @@ DOWNLOAD="https://github.com/ProtonVPN/python-proton-vpn-api-core/archive/v5.6.2
           https://static.crates.io/crates/indexmap/indexmap-2.14.0.crate \
           https://static.crates.io/crates/inout/inout-0.1.4.crate \
           https://static.crates.io/crates/ipnet/ipnet-2.12.0.crate \
+          https://static.crates.io/crates/ipnetwork/ipnetwork-0.21.1.crate \
           https://static.crates.io/crates/is_terminal_polyfill/is_terminal_polyfill-1.70.2.crate \
           https://static.crates.io/crates/itoa/itoa-1.0.18.crate \
           https://static.crates.io/crates/jiff/jiff-0.2.23.crate \
