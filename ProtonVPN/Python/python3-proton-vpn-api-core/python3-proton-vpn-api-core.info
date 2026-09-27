@@ -42,6 +42,7 @@ DOWNLOAD="https://github.com/ProtonVPN/python-proton-vpn-api-core/archive/v5.6.2
           https://static.crates.io/crates/cc/cc-1.2.60.crate \
           https://static.crates.io/crates/cfg-if/cfg-if-1.0.4.crate \
           https://static.crates.io/crates/cfg_aliases/cfg_aliases-0.2.1.crate \
+          https://static.crates.io/crates/chacha20/chacha20-0.9.1.crate \
           https://static.crates.io/crates/chacha20/chacha20-0.10.1.crate \
           https://static.crates.io/crates/chacha20poly1305/chacha20poly1305-0.10.1.crate \
           https://static.crates.io/crates/cipher/cipher-0.4.4.crate \
@@ -448,6 +449,7 @@ MD5SUM="0a0f4b82a8144374b48352825928696d \
         fffcff3f177551994fefdbc35eb5e6c5 \
         7dbc461580b8ee7d163a6e02524c6d90 \
         f5215c4283a1984b95043a7185245e00 \
+        8209bcb742808b59b79e3c8ced7074d5 \
         f82cbbac56f07bf16ad631dfe8e0ef2f \
         20cd0fc6f8ca1fbe5c34e0c031de7278 \
         ef4cc5591659a050ca0de3363b6ab353 \
