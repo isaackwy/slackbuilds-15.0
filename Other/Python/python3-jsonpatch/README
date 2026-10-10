@@ -19,5 +19,5 @@ https://github.com/json-patch/json-patch-tests) use ext_test.py
 ./ext_tests.py ../json-patch-tests/tests.json
 
 
-python3-jasonpatch 1.33 is the last available version on Slackware 15.0.
+python3-jsonpatch 1.33 is the last available version on Slackware 15.0.
 Later versions require Python >= 3.10.
