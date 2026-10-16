@@ -86,9 +86,10 @@ find -L . \
 export GOCACHE="${GOCACHE:-"$TMP/$PRGNAM/go-cache"}"
 
 # Build syncthing
+# -tags libsqlite3: use system sqlite3 instead of bundled
 CGO_CFLAGS="$SLKCFLAGS" \
 CGO_CXXFLAGS="$SLKCFLAGS" \
-go build -mod vendor
+go run build.go -tags libsqlite3 -no-upgrade -version v$VERSION build
 
 # Install syncthing
 mkdir -p $PKG/usr/bin
