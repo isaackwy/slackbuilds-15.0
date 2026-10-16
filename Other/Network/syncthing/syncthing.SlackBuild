@@ -82,6 +82,9 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
+# Prevent creation of cache files in /root/.cache/go-build
+export GOCACHE="${GOCACHE:-"$TMP/$PRGNAM/go-cache"}"
+
 # Build syncthing
 CGO_CFLAGS="$SLKCFLAGS" \
 CGO_CXXFLAGS="$SLKCFLAGS" \
