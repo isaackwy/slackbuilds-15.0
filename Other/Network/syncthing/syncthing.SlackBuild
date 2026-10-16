@@ -100,6 +100,11 @@ mkdir -p $PKG/usr/bin
 install -Dm755 syncthing $PKG/usr/bin/syncthing
 strip --strip-unneeded $PKG/usr/bin/syncthing
 
+# Install desktop files
+mkdir -p $PKG/usr/share/applications
+install -Dm644 etc/linux-desktop/syncthing-start.desktop $PKG/usr/share/applications
+install -Dm644 etc/linux-desktop/syncthing-ui.desktop $PKG/usr/share/applications
+
 # Install rc script
 mkdir -p $PKG/etc/rc.d
 cat $CWD/rc.syncthing > $PKG/etc/rc.d/rc.syncthing.new
