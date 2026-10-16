@@ -90,6 +90,7 @@ go build -mod vendor
 # Install syncthing
 mkdir -p $PKG/usr/bin
 install -Dm755 syncthing $PKG/usr/bin/syncthing
+strip --strip-unneeded $PKG/usr/bin/syncthing
 
 # Install rc script
 mkdir -p $PKG/etc/rc.d
