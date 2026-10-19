@@ -15,5 +15,5 @@ syncthing: on a local network, or between remote devices over the Internet.
 syncthing:
 syncthing: This syncthing SlackBuild builds the program from source code. To
 syncthing: install the upstream binary release, please see network/syncthing-bin.
-syncthing: 
+syncthing:
 syncthing: https://syncthing.net
