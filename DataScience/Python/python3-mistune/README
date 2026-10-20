@@ -7,5 +7,5 @@ It has the following features:
 
 This SlackBuild only installs the python3 build of mistune.
 
-NOTE: Unable to update to versions >= 3.4.x on Slackware 15.0 (due to
+NOTE: Unable to update to versions >= 3.4.0 on Slackware 15.0 (due to
 requiring Python >= 3.10).
