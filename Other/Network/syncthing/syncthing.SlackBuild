@@ -108,7 +108,7 @@ install -Dm644 etc/linux-desktop/syncthing-ui.desktop $PKG/usr/share/application
 # Install desktop icons
 for icon_size in 32 64 128 256 512; do
   mkdir -p $PKG/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps
-  install -Dm644 assets/logo-${icon_size}.png $PKG/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps syncthing.png
+  install -Dm644 assets/logo-${icon_size}.png $PKG/usr/share/icons/hicolor/${icon_size}x${icon_size}/apps/syncthing.png
 done
 
 mkdir -p $PKG/usr/share/icons/hicolor/scalable/apps
