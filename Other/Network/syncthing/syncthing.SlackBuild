@@ -114,6 +114,13 @@ done
 mkdir -p $PKG/usr/share/icons/hicolor/scalable/apps
 install -Dm644 assets/logo-only.svg $PKG/usr/share/icons/hicolor/scalable/apps/syncthing.svg
 
+# Install man pages
+for man_num in 1 5 7; do 
+  mkdir -p $PKG/usr/man/man${man_num}
+  cp man/*.${man_num} $PKG/usr/man/man${man_num}
+  gzip -9 $PKG/usr/man/man${man_num}/*.${man_num}
+done
+
 # Install rc script
 mkdir -p $PKG/etc/rc.d
 cat $CWD/rc.syncthing > $PKG/etc/rc.d/rc.syncthing.new
