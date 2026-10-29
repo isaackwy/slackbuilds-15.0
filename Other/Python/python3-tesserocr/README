@@ -1,2 +1,0 @@
-tesserocr is a simple, Pillow-friendly Python wrapper around the
-tesseract-ocr API using Cython.
