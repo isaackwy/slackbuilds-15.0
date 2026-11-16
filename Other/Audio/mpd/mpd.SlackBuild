@@ -124,7 +124,7 @@ cd build
   meson .. \
     -Dsystemd=disabled \
     -Dpulse=$PULSE \
-    -Dio_uring=disabled \  # liburing support broken: https://github.com/MusicPlayerDaemon/MPD/issues/2241
+    -Dio_uring=disabled  # liburing support broken: https://github.com/MusicPlayerDaemon/MPD/issues/2241 \
     --buildtype=release \
     --infodir=/usr/info \
     --libdir=/usr/lib${LIBDIRSUFFIX} \
